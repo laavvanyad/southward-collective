@@ -385,7 +385,7 @@
     border-radius: 16px;
     padding: 48px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
   .context-section::after {
     content: '';
@@ -508,10 +508,24 @@
     .main { padding: 0 20px 60px; }
     .hero { padding-top: 48px; padding-bottom: 40px; }
     .sa-cards, .context-grid, .signup-section { grid-template-columns: 1fr; gap: 28px; }
-    .sa-corner, .context-section, .budget-header { padding: 32px 24px; }
-    .budget-controls, .budget-grid, .budget-summary-row, .budget-source-note { padding-left: 20px; padding-right: 20px; }
-    .ministry-main { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .ministry-expand-inner { grid-template-columns: 1fr 1fr; }
+    .context-section { padding: 28px 20px; overflow: hidden; }
+    .context-grid { grid-template-columns: 1fr; gap: 24px; }
+    .cf-input, .cf-select, .cf-textarea { font-size: 16px; /* prevents iOS zoom */ width: 100%; max-width: 100%; }
+    .cf-checkrow { gap: 6px; }
+    .cf-check { font-size: 11px; padding: 4px 10px; }
+    .context-submit { width: 100%; justify-content: center; }
+    .context-snapshot { min-height: 180px; padding: 20px; }
+    .snap-signal-title { font-size: 14px; }
+    .snap-signal-text { font-size: 12px; }
+    .sa-corner, .budget-header { padding: 32px 24px; }
+    .budget-controls, .budget-source-note { padding-left: 20px; padding-right: 20px; }
+    .ministry-main { grid-template-columns: 1fr 1fr; gap: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .ministry-expand { overflow: hidden; }
+    .ministry-row.open .ministry-expand { max-height: none; overflow: visible; }
+    .ministry-expand-inner { grid-template-columns: 1fr; }
+    .budget-grid { padding: 16px 20px 28px; }
+    .budget-summary-row { grid-template-columns: 1fr 1fr; gap: 12px; padding: 20px 20px 0; }
+    .summary-card-value { font-size: 20px; }
     .signup-section { padding: 36px 28px; }
     .brief-preview { padding: 24px; }
     .brief-doc-body { padding: 20px; }
@@ -534,7 +548,7 @@
 
 <div class="hero">
   <div class="hero-eyebrow">Live Policy Signal Tracker</div>
-  <h1>What's moving in India's gender policy landscape, <em>right now.Used by teams working on livelihoods, SHGs, and gender policy programmes across India.</em></h1>
+  <h1>What's moving in India's gender policy landscape, <em>right now.</em></h1>
   <p class="hero-sub">Five signals worth watching this month. Updated alongside every issue of The Policy Monitor. You bring the ground reality. We bring the policy architecture.</p>
   <div class="update-badge">
     <div class="dot"></div>
@@ -790,7 +804,7 @@
                 <div class="brief-lock-icon">🔒</div>
                 <div class="brief-lock-title">The full brief awaits.</div>
                 <div class="brief-lock-text">Three more signals, donor landscape intelligence, parliamentary digest, and stress-test prompts for your programme. Free pilot spots still open through June 2026.</div>
-                <a href="mailto:laavvanyadhankar8@gmail.com?subject=April Brief Request" class="brief-lock-btn">
+                <a href="/cdn-cgi/l/email-protection#620e03031414030c1b03060a030c0903105a22050f030b0e4c010d0f5d111700080701165f2312100b0e4220100b07044230071317071116" class="brief-lock-btn">
                   Request the full brief
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
@@ -930,7 +944,7 @@
       <p>This tracker shows the signals. The brief shows you what to do about them, with original analysis, donor landscape intelligence, and stress-test prompts specific to your programme context.</p>
       <div class="tier-pills">
         <div class="tier-pill">Rs 10,000/month — The Policy Monitor</div>
-        <div class="tier-pill">Rs 50,000/month — The Embedded Analyst: monthly policy + donor intelligence tailored to your programme</div>
+        <div class="tier-pill">Rs 50,000/month — The Embedded Analyst: monthly policy and donor intelligence tailored to your programme</div>
         <div class="tier-pill">Free pilot spots available</div>
       </div>
     </div>
@@ -952,11 +966,11 @@
           Request the April Brief
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
-        <p class="form-note">No commitment. Read it and tell us if it's useful. Currently in a limited early-access phase with a small number of organisations.</p>
+        <p class="form-note">No commitment. Read it and tell us if it's useful. Free pilot spots are still open for April, May, and June.</p>
       </div>
       <div class="success-message" id="successMsg">
         <h3>You're on the list.</h3>
-        <p>We'll send the April brief to your inbox shortly. If you have questions in the meantime, reach Laavvanya directly at laavvanyadhankar8@gmail.com</p>
+        <p>We'll send the April brief to your inbox shortly. If you have questions in the meantime, reach Laavvanya directly at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2beb3b3a4a4b3bcabb3b6bab3bcb9b3a0ea92b5bfb3bbbefcb1bdbf">[email&#160;protected]</a></p>
       </div>
     </div>
   </div>
@@ -967,13 +981,13 @@
   <div class="footer-brand">Southward Collective</div>
   <div class="footer-tagline">Policy intelligence for South Asia's gender and development sector</div>
   <div class="footer-links">
-    <a href="mailto:laavvanyadhankar8@gmail.com">laavvanyadhankar8@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#f39f92928585929d8a92979b929d989281cbb3949e929a9fdd909c9e"><span class="__cf_email__" data-cfemail="fb979a9a8d8d9a95829a9f939a95909a89c3bb9c969a9297d5989496">[email&#160;protected]</span></a>
     <a href="https://linkedin.com/in/laavvanya-d-b05532144" target="_blank">LinkedIn</a>
-    <a href="mailto:laavvanyadhankar8@gmail.com?subject=April Brief Request">Get the Brief</a>
+    <a href="/cdn-cgi/l/email-protection#c8a4a9a9bebea9a6b1a9aca0a9a6a3a9baf088afa5a9a1a4e6aba7a5f7bbbdaaa2adabbcf589b8baa1a4e88abaa1adaee89aadb9bdadbbbc">Request the Brief</a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ===================== BUDGET DATA =====================
 const budgetData = {
   '2026': [
@@ -1311,13 +1325,16 @@ function handleSubmit() {
   document.getElementById('successMsg').style.display = 'block';
 }
 
-// ===================== INIT =====================
+// ===================== INIT =================
 renderBudget();
 
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
   });
 }, { threshold: 0.1 });
 
