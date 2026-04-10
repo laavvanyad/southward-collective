@@ -40,22 +40,8 @@
     top: 0;
     z-index: 100;
   }
-
-  .nav-brand {
-    font-family: 'EB Garamond', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: 0.5px;
-  }
-
-  .nav-tag {
-    font-size: 12px;
-    color: var(--sage);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+  .nav-brand { font-family: 'EB Garamond', serif; font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.5px; }
+  .nav-tag { font-size: 12px; color: var(--sage); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
 
   /* HERO */
   .hero {
@@ -64,600 +50,452 @@
     position: relative;
     overflow: hidden;
   }
-
   .hero::before {
     content: '';
-    position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: rgba(90, 158, 114, 0.08);
-    pointer-events: none;
+    position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: rgba(90, 158, 114, 0.08); pointer-events: none;
   }
-
   .hero::after {
     content: '';
-    position: absolute;
-    bottom: -60px;
-    left: 20%;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(212, 234, 217, 0.05);
-    pointer-events: none;
+    position: absolute; bottom: -60px; left: 20%;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(212, 234, 217, 0.05); pointer-events: none;
   }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid-green); font-weight: 600; margin-bottom: 20px; }
+  .hero h1 { font-family: 'EB Garamond', serif; font-size: clamp(36px, 5vw, 58px); color: var(--white); line-height: 1.15; max-width: 700px; margin-bottom: 24px; font-weight: 600; }
+  .hero h1 em { color: var(--sage); font-style: italic; }
+  .hero-sub { font-size: 16px; color: var(--sage); max-width: 560px; line-height: 1.65; font-weight: 300; margin-bottom: 32px; }
+  .update-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(90, 158, 114, 0.15); border: 1px solid rgba(90, 158, 114, 0.3); padding: 8px 16px; border-radius: 100px; font-size: 13px; color: var(--mid-green); font-weight: 500; }
+  .update-badge .dot { width: 7px; height: 7px; background: var(--mid-green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
 
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--mid-green);
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-
-  .hero h1 {
-    font-family: 'EB Garamond', serif;
-    font-size: clamp(36px, 5vw, 58px);
-    color: var(--white);
-    line-height: 1.15;
-    max-width: 700px;
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-
-  .hero h1 em {
-    color: var(--sage);
-    font-style: italic;
-  }
-
-  .hero-sub {
-    font-size: 16px;
-    color: var(--sage);
-    max-width: 560px;
-    line-height: 1.65;
-    font-weight: 300;
-    margin-bottom: 32px;
-  }
-
-  .update-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(90, 158, 114, 0.15);
-    border: 1px solid rgba(90, 158, 114, 0.3);
-    padding: 8px 16px;
-    border-radius: 100px;
-    font-size: 13px;
-    color: var(--mid-green);
-    font-weight: 500;
-  }
-
-  .update-badge .dot {
-    width: 7px;
-    height: 7px;
-    background: var(--mid-green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  /* MAIN LAYOUT */
-  .main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 48px 80px;
-  }
+  /* MAIN */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 48px 80px; }
 
   /* SECTION HEADERS */
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin: 64px 0 32px;
-  }
-
-  .section-number {
-    font-family: 'EB Garamond', serif;
-    font-size: 13px;
-    color: var(--mid-green);
-    letter-spacing: 2px;
-    font-weight: 600;
-  }
-
-  .section-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 28px;
-    color: var(--dark-green);
-    font-weight: 600;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border-green);
-    margin-left: 8px;
-    margin-bottom: 4px;
-  }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin: 64px 0 32px; }
+  .section-number { font-family: 'EB Garamond', serif; font-size: 13px; color: var(--mid-green); letter-spacing: 2px; font-weight: 600; }
+  .section-title { font-family: 'EB Garamond', serif; font-size: 28px; color: var(--dark-green); font-weight: 600; }
+  .section-line { flex: 1; height: 1px; background: var(--border-green); margin-left: 8px; margin-bottom: 4px; }
 
   /* SIGNAL CARDS */
-  .signals-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+  .signals-grid { display: flex; flex-direction: column; gap: 20px; }
+  .signal-card { background: var(--white); border-radius: 12px; border: 1px solid var(--border-green); overflow: visible; transition: box-shadow 0.2s ease; cursor: pointer; }
+  .signal-card:hover { box-shadow: 0 8px 32px rgba(26, 58, 42, 0.1); }
+  .signal-card.open .signal-body { max-height: none; padding: 0 28px 24px; overflow: visible; }
+  .signal-card.open .chevron { transform: rotate(180deg); }
+  .signal-header { display: flex; align-items: center; gap: 20px; padding: 20px 28px; }
+  .status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+  .status-pill .pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .status-open { background: #E6F4EC; color: #2D7A4F; } .status-open .pill-dot { background: #2D7A4F; }
+  .status-watch { background: #FFF8E6; color: #8B6914; } .status-watch .pill-dot { background: #8B6914; }
+  .status-closing { background: #FFF0F0; color: #C0392B; } .status-closing .pill-dot { background: #C0392B; }
+  .signal-title { font-family: 'EB Garamond', serif; font-size: 19px; color: var(--dark-green); font-weight: 600; flex: 1; line-height: 1.3; }
+  .chevron { width: 20px; height: 20px; color: var(--muted); transition: transform 0.25s ease; flex-shrink: 0; }
+  .signal-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+  .signal-body-inner { border-top: 1px solid var(--sage); padding-top: 20px; }
+  .signal-what { font-size: 14px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .signal-detail { font-size: 15px; color: var(--body); line-height: 1.7; margin-bottom: 16px; }
+  .signal-action { background: var(--light-green); border-left: 3px solid var(--mid-green); padding: 12px 16px; border-radius: 0 8px 8px 0; }
+  .signal-action-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid-green); font-weight: 700; margin-bottom: 4px; }
+  .signal-action p { font-size: 14px; color: var(--dark-green); line-height: 1.55; font-style: italic; }
+  .signal-source { margin-top: 12px; font-size: 12px; color: var(--muted); }
+  .signal-source span { font-weight: 600; color: var(--dark-green); }
 
-  .signal-card {
+  /* ===================== GENDER BUDGET TRACKER ===================== */
+  .budget-tracker {
     background: var(--white);
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid var(--border-green);
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-  }
-
-  .signal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(26, 58, 42, 0.1);
-  }
-
-  /* FIX: on mobile, don't apply the translateY hover since it interferes with tap */
-  @media (hover: none) {
-    .signal-card:hover {
-      transform: none;
-      box-shadow: none;
-    }
-  }
-
-  .signal-card.open .signal-body {
-    max-height: none;
-    padding: 0 28px 24px;
-    overflow: visible;
-  }
-
-  .signal-card.open .chevron {
-    transform: rotate(180deg);
-  }
-
-  .signal-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 28px;
-  }
-
-  .status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .status-pill .pill-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-  }
-
-  .status-open { background: #E6F4EC; color: #2D7A4F; }
-  .status-open .pill-dot { background: #2D7A4F; }
-
-  .status-watch { background: #FFF8E6; color: #8B6914; }
-  .status-watch .pill-dot { background: #8B6914; }
-
-  .status-closing { background: #FFF0F0; color: #C0392B; }
-  .status-closing .pill-dot { background: #C0392B; }
-
-  .signal-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 19px;
-    color: var(--dark-green);
-    font-weight: 600;
-    flex: 1;
-    line-height: 1.3;
-  }
-
-  .chevron {
-    width: 20px;
-    height: 20px;
-    color: var(--muted);
-    transition: transform 0.25s ease;
-    flex-shrink: 0;
-  }
-
-  .signal-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.35s ease;
-  }
-
-  /* FIX: when open on mobile, allow natural height and scroll within page */
-  .signal-card.open .signal-body {
-    max-height: none;
-    overflow: visible;
-  }
-
-  .signal-body-inner {
-    border-top: 1px solid var(--sage);
-    padding-top: 20px;
-  }
-
-  .signal-what {
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .signal-detail {
-    font-size: 15px;
-    color: var(--body);
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-
-  .signal-action {
-    background: var(--light-green);
-    border-left: 3px solid var(--mid-green);
-    padding: 12px 16px;
-    border-radius: 0 8px 8px 0;
-  }
-
-  .signal-action-label {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--mid-green);
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .signal-action p {
-    font-size: 14px;
-    color: var(--dark-green);
-    line-height: 1.55;
-    font-style: italic;
-  }
-
-  .signal-source {
-    margin-top: 12px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .signal-source span {
-    font-weight: 600;
-    color: var(--dark-green);
-  }
-
-  /* SOUTH ASIA CORNER */
-  .sa-corner {
-    background: var(--dark-green);
-    border-radius: 16px;
-    padding: 48px;
     margin-top: 0;
+  }
+
+  .budget-header {
+    background: var(--dark-green);
+    padding: 40px 48px 36px;
     position: relative;
     overflow: hidden;
   }
-
-  .sa-corner::before {
-    content: '✦';
-    position: absolute;
-    right: 48px;
-    top: 40px;
-    font-size: 64px;
-    color: rgba(212, 234, 217, 0.08);
+  .budget-header::after {
+    content: '₹';
+    position: absolute; right: 40px; top: 20px;
     font-family: 'EB Garamond', serif;
+    font-size: 120px; color: rgba(212,234,217,0.06);
+    line-height: 1;
   }
+  .budget-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid-green); font-weight: 600; margin-bottom: 10px; }
+  .budget-title { font-family: 'EB Garamond', serif; font-size: 32px; color: var(--white); font-weight: 600; margin-bottom: 8px; }
+  .budget-sub { font-size: 14px; color: var(--sage); font-weight: 300; max-width: 500px; line-height: 1.6; margin-bottom: 24px; }
 
-  .sa-corner-eyebrow {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--mid-green);
-    font-weight: 600;
-    margin-bottom: 12px;
+  .budget-year-toggle { display: flex; gap: 8px; }
+  .year-btn {
+    padding: 7px 18px; border-radius: 100px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: 1px solid rgba(178,205,185,0.3);
+    background: rgba(255,255,255,0.08); color: var(--sage);
+    transition: all 0.2s ease; font-family: 'DM Sans', sans-serif;
   }
+  .year-btn.active { background: var(--mid-green); color: var(--white); border-color: var(--mid-green); }
 
-  .sa-corner-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 30px;
-    color: var(--white);
-    margin-bottom: 8px;
-    font-weight: 600;
+  .budget-controls {
+    padding: 24px 48px;
+    border-bottom: 1px solid var(--border-green);
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+    background: var(--light-green);
   }
-
-  .sa-corner-sub {
-    font-size: 14px;
-    color: var(--sage);
-    margin-bottom: 40px;
-    font-weight: 300;
-    max-width: 500px;
-    line-height: 1.6;
+  .filter-label { font-size: 12px; font-weight: 600; color: var(--dark-green); text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
+  .filter-btn {
+    padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500;
+    cursor: pointer; border: 1.5px solid var(--border-green);
+    background: var(--white); color: var(--muted);
+    transition: all 0.2s ease; font-family: 'DM Sans', sans-serif;
   }
+  .filter-btn.active { background: var(--dark-green); color: var(--white); border-color: var(--dark-green); }
 
-  .sa-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
+  .budget-grid { padding: 32px 48px 40px; display: flex; flex-direction: column; gap: 16px; }
 
-  .sa-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(178, 205, 185, 0.2);
+  .ministry-row {
+    border: 1px solid var(--border-green);
     border-radius: 12px;
-    padding: 24px;
-    transition: background 0.2s ease;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+  .ministry-row:hover { box-shadow: 0 4px 20px rgba(26,58,42,0.08); }
+
+  .ministry-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 16px;
+    background: var(--white);
+    cursor: pointer;
   }
 
-  .sa-card:hover {
-    background: rgba(255,255,255,0.1);
-  }
+  .ministry-name-block {}
+  .ministry-name { font-family: 'EB Garamond', serif; font-size: 17px; color: var(--dark-green); font-weight: 600; line-height: 1.2; margin-bottom: 3px; }
+  .ministry-abbr { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
 
-  .sa-flag {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
+  .budget-stat { text-align: right; }
+  .stat-value { font-family: 'EB Garamond', serif; font-size: 20px; color: var(--dark-green); font-weight: 600; }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.8px; }
 
-  .sa-country {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--mid-green);
-    font-weight: 600;
-    margin-bottom: 6px;
+  .change-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: 100px;
+    font-size: 12px; font-weight: 600;
   }
+  .change-up { background: #E6F4EC; color: #2D7A4F; }
+  .change-down { background: #FFF0F0; color: #C0392B; }
+  .change-flat { background: #F5F5F5; color: #666; }
 
-  .sa-headline {
-    font-family: 'EB Garamond', serif;
-    font-size: 17px;
-    color: var(--white);
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 10px;
+  /* Bar chart inside row */
+  .bar-col { display: flex; align-items: center; gap: 10px; }
+  .bar-track { flex: 1; height: 8px; background: var(--sage); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: var(--mid-green); transition: width 0.6s ease; }
+  .bar-fill.high { background: #2D7A4F; }
+  .bar-fill.mid { background: var(--mid-green); }
+  .bar-fill.low { background: var(--gold); }
+
+  /* Expand area */
+  .ministry-expand {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: var(--light-green);
   }
-
-  .sa-detail {
+  .ministry-row.open .ministry-expand { max-height: 300px; }
+  .ministry-expand-inner {
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-green);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .expand-stat { }
+  .expand-stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .expand-stat-value { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--dark-green); font-weight: 600; }
+  .signal-note {
+    grid-column: 1 / -1;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
     font-size: 13px;
-    color: var(--sage);
-    line-height: 1.6;
-    font-weight: 300;
+    color: var(--body);
+    line-height: 1.55;
   }
+  .signal-note-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: var(--gold); margin-bottom: 3px; }
 
-  .sa-year {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 600;
-    letter-spacing: 1px;
-    background: rgba(200, 130, 10, 0.18);
-    padding: 3px 10px;
-    border-radius: 100px;
+  /* Summary cards at top */
+  .budget-summary-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 28px 48px 0;
   }
+  .summary-card {
+    background: var(--light-green);
+    border: 1px solid var(--border-green);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .summary-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .summary-card-value { font-family: 'EB Garamond', serif; font-size: 26px; color: var(--dark-green); font-weight: 600; line-height: 1; margin-bottom: 4px; }
+  .summary-card-sub { font-size: 12px; color: var(--muted); }
 
-  /* SIGNUP SECTION */
-  .signup-section {
+  .budget-source-note { padding: 0 48px 24px; font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .budget-source-note a { color: var(--mid-green); text-decoration: none; }
+
+  /* ===================== SAMPLE BRIEF ===================== */
+  .brief-section {
     background: var(--white);
     border-radius: 16px;
     border: 1px solid var(--border-green);
-    padding: 56px 48px;
-    margin-top: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
+    overflow: hidden;
   }
 
-  .signup-left h2 {
-    font-family: 'EB Garamond', serif;
-    font-size: 32px;
-    color: var(--dark-green);
-    font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: 16px;
-  }
-
-  .signup-left p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  .tier-pills {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .tier-pill {
-    background: var(--light-green);
-    border: 1px solid var(--border-green);
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    color: var(--dark-green);
-    font-weight: 500;
-  }
-
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-group label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--dark-green);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .form-group label span {
-    color: var(--muted);
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 11px;
-  }
-
-  .form-group input {
-    padding: 12px 16px;
-    border: 1.5px solid var(--border-green);
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--body);
-    background: var(--white);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    outline: none;
-  }
-
-  .form-group input:focus {
-    border-color: var(--mid-green);
-    box-shadow: 0 0 0 3px rgba(90, 158, 114, 0.12);
-  }
-
-  .form-group input::placeholder {
-    color: #B0C4B8;
-  }
-
-  .submit-btn {
-    background: var(--dark-green);
-    color: var(--white);
-    border: none;
-    padding: 14px 28px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.15s ease;
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .submit-btn:hover {
-    background: #0f2219;
-    transform: translateY(-1px);
-  }
-
-  .submit-btn:active {
-    transform: translateY(0);
-  }
-
-  .form-note {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-    margin-top: 2px;
-  }
-
-  .success-message {
-    display: none;
-    background: var(--light-green);
-    border: 1px solid var(--border-green);
-    border-left: 4px solid var(--mid-green);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .success-message h3 {
-    font-family: 'EB Garamond', serif;
-    font-size: 22px;
-    color: var(--dark-green);
-    margin-bottom: 8px;
-  }
-
-  .success-message p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* FOOTER */
-  footer {
+  .brief-header {
     background: var(--dark-green);
     padding: 40px 48px;
-    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .brief-header::before {
+    content: '';
+    position: absolute; bottom: -30px; right: -30px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(90,158,114,0.1);
+  }
+  .brief-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+  .brief-title { font-family: 'EB Garamond', serif; font-size: 30px; color: var(--white); font-weight: 600; margin-bottom: 8px; }
+  .brief-sub { font-size: 14px; color: var(--sage); font-weight: 300; line-height: 1.6; }
+
+  .brief-preview {
+    padding: 40px 48px;
+    position: relative;
   }
 
-  .footer-brand {
-    font-family: 'EB Garamond', serif;
-    font-size: 22px;
-    color: var(--white);
-    font-weight: 600;
-    margin-bottom: 8px;
+  /* The actual brief preview content */
+  .brief-doc {
+    background: var(--white);
+    border: 1px solid var(--border-green);
+    border-radius: 8px;
+    overflow: hidden;
   }
-
-  .footer-tagline {
-    font-size: 13px;
-    color: var(--sage);
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
-
-  .footer-links {
+  .brief-doc-header {
+    background: var(--dark-green);
+    padding: 24px 32px;
     display: flex;
-    gap: 24px;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
   }
+  .brief-doc-brand { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--white); font-weight: 600; }
+  .brief-doc-meta { text-align: right; }
+  .brief-doc-issue { font-size: 11px; color: var(--mid-green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2px; }
+  .brief-doc-date { font-size: 12px; color: var(--sage); }
 
-  .footer-links a {
+  .brief-doc-body { padding: 32px; }
+  .brief-doc-title { font-family: 'EB Garamond', serif; font-size: 26px; color: var(--dark-green); font-weight: 600; margin-bottom: 6px; line-height: 1.2; }
+  .brief-doc-tagline { font-size: 14px; color: var(--gold); font-weight: 500; margin-bottom: 20px; }
+  .brief-doc-intro { font-size: 14px; color: var(--body); line-height: 1.75; margin-bottom: 20px; }
+
+  .brief-toc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+  .brief-toc { display: flex; flex-direction: column; gap: 6px; }
+  .brief-toc-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: 6px;
     font-size: 13px;
-    color: var(--border-green);
+  }
+  .toc-num { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--mid-green); font-weight: 600; width: 20px; flex-shrink: 0; }
+  .toc-text { color: var(--body); }
+  .toc-locked { color: var(--muted); }
+  .toc-badge { margin-left: auto; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
+  .toc-free { background: #E6F4EC; color: #2D7A4F; font-weight: 600; }
+  .toc-lock { background: var(--sage); color: var(--muted); }
+
+  /* Signal preview (visible part) */
+  .brief-signal-preview {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--sage);
+  }
+  .bsp-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--mid-green); font-weight: 700; margin-bottom: 12px; }
+  .bsp-signal {
+    border: 1px solid var(--border-green);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+  .bsp-signal-title { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--dark-green); font-weight: 600; margin-bottom: 6px; }
+  .bsp-signal-text { font-size: 13px; color: var(--body); line-height: 1.65; }
+
+  /* Lock overlay */
+  .brief-lock {
+    position: relative;
+    margin-top: 0;
+  }
+  .brief-lock-overlay {
+    background: linear-gradient(to bottom, transparent 0%, rgba(238,246,241,0.95) 40%, var(--light-green) 100%);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 32px;
+  }
+  .brief-lock-content { text-align: center; }
+  .brief-lock-icon { font-size: 28px; margin-bottom: 10px; }
+  .brief-lock-title { font-family: 'EB Garamond', serif; font-size: 22px; color: var(--dark-green); font-weight: 600; margin-bottom: 6px; }
+  .brief-lock-text { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+  .brief-lock-btn {
+    background: var(--dark-green); color: var(--white);
+    border: none; padding: 13px 28px; border-radius: 8px;
+    font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 600;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s ease;
     text-decoration: none;
-    transition: color 0.2s;
+  }
+  .brief-lock-btn:hover { background: #0f2219; }
+
+  .brief-locked-preview {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
   }
 
-  .footer-links a:hover {
-    color: var(--mid-green);
-  }
+  /* ===================== SOUTH ASIA CORNER ===================== */
+  .sa-corner { background: var(--dark-green); border-radius: 16px; padding: 48px; margin-top: 0; position: relative; overflow: hidden; }
+  .sa-corner::before { content: '✦'; position: absolute; right: 48px; top: 40px; font-size: 64px; color: rgba(212, 234, 217, 0.08); font-family: 'EB Garamond', serif; }
+  .sa-corner-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid-green); font-weight: 600; margin-bottom: 12px; }
+  .sa-corner-title { font-family: 'EB Garamond', serif; font-size: 30px; color: var(--white); margin-bottom: 8px; font-weight: 600; }
+  .sa-corner-sub { font-size: 14px; color: var(--sage); margin-bottom: 40px; font-weight: 300; max-width: 500px; line-height: 1.6; }
+  .sa-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .sa-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(178, 205, 185, 0.2); border-radius: 12px; padding: 24px; transition: background 0.2s ease; }
+  .sa-card:hover { background: rgba(255,255,255,0.1); }
+  .sa-flag { font-size: 28px; margin-bottom: 12px; }
+  .sa-country { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid-green); font-weight: 600; margin-bottom: 6px; }
+  .sa-headline { font-family: 'EB Garamond', serif; font-size: 17px; color: var(--white); font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
+  .sa-detail { font-size: 13px; color: var(--sage); line-height: 1.6; font-weight: 300; }
+  .sa-year { display: inline-block; margin-top: 12px; font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 1px; background: rgba(200, 130, 10, 0.18); padding: 3px 10px; border-radius: 100px; }
 
-  /* DIVIDERS */
-  .section-gap {
-    height: 48px;
+  /* ===================== CONTEXT FORM ===================== */
+  .context-section {
+    background: var(--dark-green);
+    border-radius: 16px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
   }
+  .context-section::after {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 250px; height: 250px; border-radius: 50%;
+    background: rgba(90,158,114,0.08); pointer-events: none;
+  }
+  .context-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+  .context-title { font-family: 'EB Garamond', serif; font-size: 30px; color: var(--white); font-weight: 600; margin-bottom: 8px; }
+  .context-sub { font-size: 14px; color: var(--sage); font-weight: 300; max-width: 560px; line-height: 1.6; margin-bottom: 32px; }
+
+  .context-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+
+  .context-form { display: flex; flex-direction: column; gap: 14px; }
+  .context-form-note { font-size: 12px; color: rgba(212,234,217,0.6); margin-bottom: 4px; font-style: italic; }
+
+  .cf-group { display: flex; flex-direction: column; gap: 6px; }
+  .cf-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--sage); font-weight: 600; }
+  .cf-label span { color: rgba(212,234,217,0.5); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; }
+  .cf-input, .cf-select, .cf-textarea {
+    padding: 11px 14px;
+    border: 1.5px solid rgba(178,205,185,0.25);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    background: rgba(255,255,255,0.07);
+    transition: border-color 0.2s ease;
+    outline: none;
+  }
+  .cf-input::placeholder, .cf-textarea::placeholder { color: rgba(212,234,217,0.35); }
+  .cf-input:focus, .cf-select:focus, .cf-textarea:focus { border-color: var(--mid-green); }
+  .cf-select { color: var(--sage); }
+  .cf-select option { background: var(--dark-green); color: var(--white); }
+  .cf-textarea { resize: vertical; min-height: 80px; }
+  .cf-checkrow { display: flex; gap: 8px; flex-wrap: wrap; }
+  .cf-check {
+    padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 500;
+    cursor: pointer; border: 1px solid rgba(178,205,185,0.25);
+    background: rgba(255,255,255,0.06); color: var(--sage);
+    transition: all 0.15s ease; user-select: none;
+  }
+  .cf-check.checked { background: var(--mid-green); color: var(--white); border-color: var(--mid-green); }
+
+  .context-submit {
+    background: var(--mid-green); color: var(--white);
+    border: none; padding: 13px 28px; border-radius: 8px;
+    font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 8px;
+    transition: background 0.2s ease; margin-top: 6px;
+  }
+  .context-submit:hover { background: #4a8a62; }
+
+  /* Snapshot result */
+  .context-snapshot {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(178,205,185,0.2);
+    border-radius: 12px;
+    padding: 28px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .snapshot-placeholder { text-align: center; }
+  .snapshot-icon { font-size: 36px; margin-bottom: 12px; opacity: 0.4; }
+  .snapshot-placeholder p { font-size: 14px; color: rgba(212,234,217,0.4); line-height: 1.6; }
+  .snapshot-result { display: none; }
+  .snapshot-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--mid-green); font-weight: 600; margin-bottom: 16px; }
+  .snapshot-signals { display: flex; flex-direction: column; gap: 12px; }
+  .snap-signal { background: rgba(255,255,255,0.06); border-left: 3px solid var(--mid-green); padding: 12px 14px; border-radius: 0 8px 8px 0; }
+  .snap-signal.urgent { border-color: var(--gold); }
+  .snap-signal-title { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--white); font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+  .snap-signal-text { font-size: 12px; color: var(--sage); line-height: 1.55; }
+  .snap-cta { margin-top: 16px; font-size: 13px; color: var(--sage); line-height: 1.55; }
+  .snap-cta strong { color: var(--mid-green); }
+
+  /* ===================== SIGNUP ===================== */
+  .signup-section { background: var(--white); border-radius: 16px; border: 1px solid var(--border-green); padding: 56px 48px; margin-top: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .signup-left h2 { font-family: 'EB Garamond', serif; font-size: 32px; color: var(--dark-green); font-weight: 600; line-height: 1.25; margin-bottom: 16px; }
+  .signup-left p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+  .tier-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .tier-pill { background: var(--light-green); border: 1px solid var(--border-green); padding: 6px 14px; border-radius: 100px; font-size: 12px; color: var(--dark-green); font-weight: 500; }
+  .signup-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--dark-green); text-transform: uppercase; letter-spacing: 1px; }
+  .form-group label span { color: var(--muted); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; }
+  .form-group input { padding: 12px 16px; border: 1.5px solid var(--border-green); border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--body); background: var(--white); transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
+  .form-group input:focus { border-color: var(--mid-green); box-shadow: 0 0 0 3px rgba(90, 158, 114, 0.12); }
+  .form-group input::placeholder { color: #B0C4B8; }
+  .submit-btn { background: var(--dark-green); color: var(--white); border: none; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; transition: background 0.2s ease; margin-top: 4px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .submit-btn:hover { background: #0f2219; }
+  .form-note { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+  .success-message { display: none; background: var(--light-green); border: 1px solid var(--border-green); border-left: 4px solid var(--mid-green); border-radius: 8px; padding: 20px; text-align: center; }
+  .success-message h3 { font-family: 'EB Garamond', serif; font-size: 22px; color: var(--dark-green); margin-bottom: 8px; }
+  .success-message p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* FOOTER */
+  footer { background: var(--dark-green); padding: 40px 48px; text-align: center; }
+  .footer-brand { font-family: 'EB Garamond', serif; font-size: 22px; color: var(--white); font-weight: 600; margin-bottom: 8px; }
+  .footer-tagline { font-size: 13px; color: var(--sage); margin-bottom: 20px; font-weight: 300; }
+  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: var(--border-green); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--mid-green); }
+
+  .section-gap { height: 48px; }
 
   /* ANIMATIONS */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; transform: translateY(24px); animation: fadeUp 0.6s ease forwards; }
   .fade-up:nth-child(1) { animation-delay: 0.1s; }
   .fade-up:nth-child(2) { animation-delay: 0.2s; }
   .fade-up:nth-child(3) { animation-delay: 0.3s; }
@@ -669,32 +507,21 @@
     nav, .hero, footer { padding-left: 20px; padding-right: 20px; }
     .main { padding: 0 20px 60px; }
     .hero { padding-top: 48px; padding-bottom: 40px; }
-    .sa-cards { grid-template-columns: 1fr; }
-    .signup-section { grid-template-columns: 1fr; gap: 40px; padding: 36px 28px; }
-    .sa-corner { padding: 36px 24px; }
+    .sa-cards, .context-grid, .signup-section { grid-template-columns: 1fr; gap: 28px; }
+    .sa-corner, .context-section, .budget-header { padding: 32px 24px; }
+    .budget-controls, .budget-grid, .budget-summary-row, .budget-source-note { padding-left: 20px; padding-right: 20px; }
+    .ministry-main { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ministry-expand-inner { grid-template-columns: 1fr 1fr; }
+    .signup-section { padding: 36px 28px; }
+    .brief-preview { padding: 24px; }
+    .brief-doc-body { padding: 20px; }
+    .budget-summary-row { grid-template-columns: 1fr 1fr; }
     .section-header { flex-wrap: wrap; }
     .section-line { display: none; }
-
-    /* Mobile signal card fix: allow content to expand naturally */
-    .signal-card.open {
-      overflow: visible;
-    }
-    .signal-card.open .signal-body {
-      max-height: none;
-      overflow: visible;
-      padding: 0 20px 24px;
-    }
-    .signal-header {
-      padding: 16px 20px;
-      gap: 12px;
-    }
-    .signal-title {
-      font-size: 16px;
-    }
-    .status-pill {
-      font-size: 10px;
-      padding: 4px 10px;
-    }
+    .signal-card.open .signal-body { max-height: none; overflow: visible; padding: 0 20px 24px; }
+    .signal-header { padding: 16px 20px; gap: 12px; }
+    .signal-title { font-size: 16px; }
+    .status-pill { font-size: 10px; padding: 4px 10px; }
   }
 </style>
 </head>
@@ -717,6 +544,7 @@
 
 <div class="main">
 
+  <!-- 01: SIGNALS -->
   <div class="section-header">
     <div class="section-number">01</div>
     <div class="section-title">Five Signals to Watch</div>
@@ -727,23 +555,15 @@
 
     <div class="signal-card fade-up" onclick="toggleSignal(this)">
       <div class="signal-header">
-        <div class="status-pill status-open">
-          <div class="pill-dot"></div>
-          Open Window
-        </div>
+        <div class="status-pill status-open"><div class="pill-dot"></div>Open Window</div>
         <div class="signal-title">Nirbhaya Fund civil society partnership: position before the formal call</div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="signal-body">
         <div class="signal-body-inner">
           <div class="signal-what">What moved</div>
           <p class="signal-detail">The Parliamentary Standing Committee's 377th Report (March 25, 2026) confirmed that Rs 1,631 crore of the Nirbhaya Fund's lifetime allocation remains unreleased, and named the specific bottleneck for the first time: non-compliance with SNA SPARSH documentation requirements. A dedicated Compliance Support Cell has been recommended. MoWCD has signalled interest in civil society implementation partners but has not yet issued a formal call.</p>
-          <div class="signal-action">
-            <div class="signal-action-label">What to do</div>
-            <p>Organisations doing GBV prevention, survivor support, or women's safety infrastructure should prepare a one-page government partnership brief now, before a formal process opens a crowded field.</p>
-          </div>
+          <div class="signal-action"><div class="signal-action-label">What to do</div><p>Organisations doing GBV prevention, survivor support, or women's safety infrastructure should prepare a one-page government partnership brief now, before a formal process opens a crowded field.</p></div>
           <div class="signal-source">Source: <span>Parliamentary Standing Committee on WCD, 377th Report, March 25, 2026</span></div>
         </div>
       </div>
@@ -751,23 +571,15 @@
 
     <div class="signal-card fade-up" onclick="toggleSignal(this)">
       <div class="signal-header">
-        <div class="status-pill status-open">
-          <div class="pill-dot"></div>
-          Open Window
-        </div>
+        <div class="status-pill status-open"><div class="pill-dot"></div>Open Window</div>
         <div class="signal-title">NSFI 2025-30: gender-sensitive inclusion named for the first time</div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="signal-body">
         <div class="signal-body-inner">
           <div class="signal-what">What moved</div>
           <p class="signal-detail">India's National Strategy for Financial Inclusion 2025-30, released in early 2026, explicitly names gender-sensitive financial inclusion as a priority for the first time in a major RBI-anchored policy document. The strategy calls for differentiated credit models for women, targeted digital literacy, and resilience-building measures. This is the policy alignment argument that organisations working on women's financial inclusion have been waiting for.</p>
-          <div class="signal-action">
-            <div class="signal-action-label">What to do</div>
-            <p>If your programme works on women's financial inclusion, digital access, or credit, cite the NSFI 2025-30 directly in your next donor proposal. The window to use this before the sector catches up is now.</p>
-          </div>
+          <div class="signal-action"><div class="signal-action-label">What to do</div><p>If your programme works on women's financial inclusion, digital access, or credit, cite the NSFI 2025-30 directly in your next donor proposal. The window to use this before the sector catches up is now.</p></div>
           <div class="signal-source">Source: <span>National Strategy for Financial Inclusion 2025-30, RBI, 2026</span></div>
         </div>
       </div>
@@ -775,23 +587,15 @@
 
     <div class="signal-card fade-up" onclick="toggleSignal(this)">
       <div class="signal-header">
-        <div class="status-pill status-watch">
-          <div class="pill-dot"></div>
-          Watch This
-        </div>
+        <div class="status-pill status-watch"><div class="pill-dot"></div>Watch This</div>
         <div class="signal-title">SHE Marts: state NRLM consultations happening before guidelines drop</div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="signal-body">
         <div class="signal-body-inner">
           <div class="signal-what">What moved</div>
           <p class="signal-detail">Budget 2026-27 announced SHE Marts as a significant SHG graduation mechanism, positioning federation women as retail operators. As of April 2026, financing mechanisms remain undefined, income protection is absent from implementation guidelines, and risk is concentrated back on SHG women. State NRLM teams in Rajasthan and UP have begun informal consultations with SHG federations ahead of formal rollout, which means the design is still live and contestable.</p>
-          <div class="signal-action">
-            <div class="signal-action-label">What to do</div>
-            <p>If your programme works with SHG federations, verify whether your state NRLM counterpart has received informal SHE Mart participation guidance. Document any informal guidance received: this is valuable evidence for the formal consultation process.</p>
-          </div>
+          <div class="signal-action"><div class="signal-action-label">What to do</div><p>If your programme works with SHG federations, verify whether your state NRLM counterpart has received informal SHE Mart participation guidance. Document any informal guidance received: this is valuable evidence for the formal consultation process.</p></div>
           <div class="signal-source">Source: <span>Union Budget 2026-27; NRLM civil society monitoring, March 2026</span></div>
         </div>
       </div>
@@ -799,23 +603,15 @@
 
     <div class="signal-card fade-up" onclick="toggleSignal(this)">
       <div class="signal-header">
-        <div class="status-pill status-watch">
-          <div class="pill-dot"></div>
-          Watch This
-        </div>
+        <div class="status-pill status-watch"><div class="pill-dot"></div>Watch This</div>
         <div class="signal-title">MGNREGS correction: most organisations still citing the wrong figure</div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="signal-body">
         <div class="signal-body-inner">
           <div class="signal-what">What moved</div>
           <p class="signal-detail">The 2025-26 Gender Budget Statement corrected women's MGNREGS allocation from 33.6% to 46.5%. This is a significant correction, one that changes the adequacy argument for rural women's employment. Three months after the correction, most organisations in the sector are still citing 33.6% in donor reports and advocacy documents. Using the old figure in any document produced after March 2026 is a data error that technical reviewers will flag.</p>
-          <div class="signal-action">
-            <div class="signal-action-label">What to do</div>
-            <p>Check every active donor report, proposal, and advocacy document produced in the last 90 days. Replace 33.6% with 46.5% wherever MGNREGS gender allocations are cited. This is a one-hour audit that protects your organisation's credibility.</p>
-          </div>
+          <div class="signal-action"><div class="signal-action-label">What to do</div><p>Check every active donor report, proposal, and advocacy document produced in the last 90 days. Replace 33.6% with 46.5% wherever MGNREGS gender allocations are cited. This is a one-hour audit that protects your organisation's credibility.</p></div>
           <div class="signal-source">Source: <span>Gender Budget Statement 2025-26, Ministry of Finance</span></div>
         </div>
       </div>
@@ -823,23 +619,15 @@
 
     <div class="signal-card fade-up" onclick="toggleSignal(this)">
       <div class="signal-header">
-        <div class="status-pill status-closing">
-          <div class="pill-dot"></div>
-          Closing Soon
-        </div>
+        <div class="status-pill status-closing"><div class="pill-dot"></div>Closing Soon</div>
         <div class="signal-title">UN Women India CSO grants: Rajasthan and UP focus, deadline April 30</div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="signal-body">
         <div class="signal-body-inner">
           <div class="signal-what">What moved</div>
           <p class="signal-detail">UN Women India has opened a CSO grants round for gender-responsive livelihoods research with Rajasthan and UP as priority states. The focus areas, women's economic empowerment and unpaid care work, align directly with the Economic Survey 2025-26's first-ever acknowledgment of unpaid care as a structural barrier. Organisations with existing field presence in these states and evidence-based programme documentation are well positioned.</p>
-          <div class="signal-action">
-            <div class="signal-action-label">What to do</div>
-            <p>Deadline is April 30, 2026. If your organisation works on women's economic empowerment or care economy in Rajasthan or UP, review the call criteria and align your proposal to the Economic Survey framing: it's now official government language.</p>
-          </div>
+          <div class="signal-action"><div class="signal-action-label">What to do</div><p>Deadline is April 30, 2026. If your organisation works on women's economic empowerment or care economy in Rajasthan or UP, review the call criteria and align your proposal to the Economic Survey framing: it's now official government language.</p></div>
           <div class="signal-source">Source: <span>UN Women India, April 2026. Deadline: April 30, 2026.</span></div>
         </div>
       </div>
@@ -849,8 +637,176 @@
 
   <div class="section-gap"></div>
 
+  <!-- 02: GENDER BUDGET TRACKER -->
   <div class="section-header">
     <div class="section-number">02</div>
+    <div class="section-title">Gender Budget Tracker</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="budget-tracker">
+    <div class="budget-header">
+      <div class="budget-eyebrow">Union Budget 2026-27</div>
+      <div class="budget-title">Where the money goes, and what it signals</div>
+      <div class="budget-sub">Six ministries. Allocation trends, gender budget share, and one policy signal per line. Data sourced from Union Budget 2026-27 documents and Gender Budget Statements.</div>
+      <div class="budget-year-toggle">
+        <button class="year-btn active" onclick="setYear('2026')">2026-27</button>
+        <button class="year-btn" onclick="setYear('2025')">2025-26</button>
+      </div>
+    </div>
+
+    <div class="budget-summary-row" id="summaryRow">
+      <div class="summary-card">
+        <div class="summary-card-label">Total Gender Budget</div>
+        <div class="summary-card-value">Rs 4.49 lakh cr</div>
+        <div class="summary-card-sub">6.8% of Union Budget 2026-27</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-label">MoWCD Allocation</div>
+        <div class="summary-card-value">Rs 26,193 cr</div>
+        <div class="summary-card-sub">Up 4.2% from 2025-26</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-label">MGNREGS Women Share</div>
+        <div class="summary-card-value">46.5%</div>
+        <div class="summary-card-sub">Corrected from 33.6%</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-label">Nirbhaya Fund Unreleased</div>
+        <div class="summary-card-value">Rs 1,631 cr</div>
+        <div class="summary-card-sub">Confirmed March 25, 2026</div>
+      </div>
+    </div>
+
+    <div class="budget-controls">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" onclick="filterMinistries('all', this)">All Ministries</button>
+      <button class="filter-btn" onclick="filterMinistries('women', this)">Women & Child</button>
+      <button class="filter-btn" onclick="filterMinistries('labour', this)">Labour & Rural</button>
+      <button class="filter-btn" onclick="filterMinistries('health', this)">Health</button>
+      <button class="filter-btn" onclick="filterMinistries('finance', this)">Finance</button>
+    </div>
+
+    <div class="budget-grid" id="budgetGrid">
+      <!-- Rows injected by JS -->
+    </div>
+
+    <div class="budget-source-note">
+      Data sourced from: Union Budget 2026-27 (Statement 13: Gender Budget), Gender Budget Statement 2025-26, Parliamentary Standing Committee on WCD 377th Report (March 2026), Ministry of Finance. All figures in Indian Rupees. | <a href="https://indiabudget.gov.in" target="_blank">indiabudget.gov.in</a>
+    </div>
+  </div>
+
+  <div class="section-gap"></div>
+
+  <!-- 03: SAMPLE BRIEF -->
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div class="section-title">The Policy Monitor: Sample Brief</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="brief-section">
+    <div class="brief-header">
+      <div class="brief-eyebrow">April 2026 Issue</div>
+      <div class="brief-title">Read the first page. Request the rest.</div>
+      <div class="brief-sub">The Policy Monitor is delivered the 1st of every month. This is what your team would be reading. The full brief includes five signals, donor landscape intelligence, a parliamentary committee digest, and a stress-test prompt for your programme context.</div>
+    </div>
+
+    <div class="brief-preview">
+      <!-- Actual brief document -->
+      <div class="brief-doc">
+        <div class="brief-doc-header">
+          <div>
+            <div class="brief-doc-brand">Southward Collective</div>
+            <div style="font-size:11px; color: var(--sage); margin-top:3px;">Policy Intelligence for India's Gender and Development Sector</div>
+          </div>
+          <div class="brief-doc-meta">
+            <div class="brief-doc-issue">Issue 01</div>
+            <div class="brief-doc-date">April 1, 2026</div>
+          </div>
+        </div>
+
+        <div class="brief-doc-body">
+          <div class="brief-doc-title">The Policy Monitor</div>
+          <div class="brief-doc-tagline">What moved in March 2026, and what it means for your work</div>
+
+          <p class="brief-doc-intro">This month's brief covers five policy signals across gender budgeting, GBV infrastructure, rural livelihoods, financial inclusion, and parliamentary committee activity. One correction that most of the sector has missed. One funding window that closes April 30. And one scheme whose design is still live and contestable if your team moves in the next four weeks.</p>
+
+          <div class="brief-toc-label">What's inside this issue</div>
+          <div class="brief-toc">
+            <div class="brief-toc-item" style="background: var(--light-green); border-radius:6px;">
+              <div class="toc-num">1</div>
+              <div class="toc-text">Five signals: what moved and what it means</div>
+              <div class="toc-badge toc-free">Preview below</div>
+            </div>
+            <div class="brief-toc-item" style="opacity:0.6;">
+              <div class="toc-num">2</div>
+              <div class="toc-text toc-locked">Parliamentary committee digest: Standing Committee on WCD, March 25</div>
+              <div class="toc-badge toc-lock">🔒 Full brief</div>
+            </div>
+            <div class="brief-toc-item" style="opacity:0.6;">
+              <div class="toc-num">3</div>
+              <div class="toc-text toc-locked">Donor landscape: who is funding what, and where the gaps are</div>
+              <div class="toc-badge toc-lock">🔒 Full brief</div>
+            </div>
+            <div class="brief-toc-item" style="opacity:0.6;">
+              <div class="toc-num">4</div>
+              <div class="toc-text toc-locked">Stress-test prompts for your programme context</div>
+              <div class="toc-badge toc-lock">🔒 Full brief</div>
+            </div>
+            <div class="brief-toc-item" style="opacity:0.6;">
+              <div class="toc-num">5</div>
+              <div class="toc-text toc-locked">South Asia comparative: what Bangladesh and Nepal did differently</div>
+              <div class="toc-badge toc-lock">🔒 Full brief</div>
+            </div>
+          </div>
+
+          <div class="brief-signal-preview">
+            <div class="bsp-label">Signal 1: Open Window (preview)</div>
+            <div class="bsp-signal">
+              <div class="bsp-signal-title">Nirbhaya Fund: Rs 1,631 crore unreleased, civil society window opening</div>
+              <div class="bsp-signal-text">The Parliamentary Standing Committee's 377th Report confirmed the bottleneck is documentation compliance with SNA SPARSH, not policy intent. A civil society partnership mechanism has been recommended before any formal call is issued. Organisations doing GBV prevention or survivor support should prepare a one-page positioning document now.</div>
+            </div>
+            <div class="bsp-signal">
+              <div class="bsp-signal-title">MGNREGS correction: 46.5%, not 33.6%</div>
+              <div class="bsp-signal-text">The Gender Budget Statement 2025-26 issued a significant data correction. Three months later, most donor reports and advocacy documents produced by sector organisations still carry the old figure. This is a credibility risk in any technical review.</div>
+            </div>
+          </div>
+
+          <!-- Locked continuation -->
+          <div class="brief-lock">
+            <div class="brief-locked-preview" style="margin-top:20px; opacity:0.3; pointer-events:none;">
+              <div style="padding:16px; border:1px solid var(--border-green); border-radius:8px; margin-bottom:10px;">
+                <div style="font-family:'EB Garamond',serif; font-size:15px; color:var(--dark-green); font-weight:600; margin-bottom:6px;">Signal 3: SHE Marts, the design window is still open</div>
+                <div style="font-size:13px; color:var(--body); line-height:1.65;">State NRLM teams have begun informal consultations with SHG federations in Rajasthan and UP ahead of formal guidelines...</div>
+              </div>
+              <div style="padding:16px; border:1px solid var(--border-green); border-radius:8px;">
+                <div style="font-family:'EB Garamond',serif; font-size:15px; color:var(--dark-green); font-weight:600; margin-bottom:6px;">Parliamentary Committee Digest: WCD Standing Committee</div>
+                <div style="font-size:13px; color:var(--body); line-height:1.65;">Three reports tabled in March 2026 with direct implications for OSC design, Nirbhaya Fund utilisation, and NCW budget adequacy...</div>
+              </div>
+            </div>
+            <div class="brief-lock-overlay">
+              <div class="brief-lock-content">
+                <div class="brief-lock-icon">🔒</div>
+                <div class="brief-lock-title">The full brief awaits.</div>
+                <div class="brief-lock-text">Three more signals, donor landscape intelligence, parliamentary digest, and stress-test prompts for your programme. Free pilot spots still open through June 2026.</div>
+                <a href="mailto:laavvanyadhankar8@gmail.com?subject=April Brief Request" class="brief-lock-btn">
+                  Request the full brief
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-gap"></div>
+
+  <!-- 04: SOUTH ASIA CORNER -->
+  <div class="section-header">
+    <div class="section-number">04</div>
     <div class="section-title">First in South Asia</div>
     <div class="section-line"></div>
   </div>
@@ -859,9 +815,7 @@
     <div class="sa-corner-eyebrow">Regional Firsts</div>
     <div class="sa-corner-title">Policies that changed the playbook</div>
     <div class="sa-corner-sub">South Asia has produced some of the world's most quietly radical gender policy innovations. These are the ones worth knowing, not just as history, but as arguments.</div>
-
     <div class="sa-cards">
-
       <div class="sa-card">
         <div class="sa-flag">🇧🇩</div>
         <div class="sa-country">Bangladesh</div>
@@ -869,7 +823,6 @@
         <div class="sa-detail">Bangladesh ranked 24th globally in the 2025 WEF Gender Gap Index, the highest in South Asia for the ninth consecutive year. Driven by sustained female leadership in governance and high workforce participation rates, it outpaced economies with significantly higher per capita income.</div>
         <div class="sa-year">WEF Global Gender Gap Index 2025</div>
       </div>
-
       <div class="sa-card">
         <div class="sa-flag">🇧🇹</div>
         <div class="sa-country">Bhutan</div>
@@ -877,7 +830,6 @@
         <div class="sa-detail">Bhutan's 2008 constitution embedded Gross National Happiness as the guiding principle of state policy, a direct challenge to GDP as the primary measure of progress. The framework explicitly includes gender equity, cultural preservation, and psychological wellbeing as development indicators that economic metrics miss.</div>
         <div class="sa-year">Constitution of Bhutan, 2008</div>
       </div>
-
       <div class="sa-card">
         <div class="sa-flag">🇮🇳</div>
         <div class="sa-country">Kerala, India</div>
@@ -885,14 +837,89 @@
         <div class="sa-detail">Launched in 1998, Kudumbashree became the world's largest women-run poverty eradication programme, now covering over 4.5 million women in self-help groups across Kerala. Its offline-first, community-trust model is the reference point for why digital financial inclusion requires community infrastructure, not just connectivity.</div>
         <div class="sa-year">Launched 1998, still operational</div>
       </div>
-
     </div>
   </div>
 
   <div class="section-gap"></div>
 
+  <!-- 05: CONTEXT FORM -->
   <div class="section-header">
-    <div class="section-number">03</div>
+    <div class="section-number">05</div>
+    <div class="section-title">Brief Us on Your Context</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="context-section">
+    <div class="context-eyebrow">Optional but useful</div>
+    <div class="context-title">Tell us your world. We'll show you what's relevant.</div>
+    <div class="context-sub">Share a little about your organisation's focus and geography, and we'll surface the signals from this month's tracker that are most relevant to your work. No account required. Takes two minutes.</div>
+
+    <div class="context-grid">
+      <div class="context-form">
+        <div class="context-form-note">All fields optional. Share as much or as little as you like.</div>
+
+        <div class="cf-group">
+          <label class="cf-label">Your state(s) of operation <span>(optional)</span></label>
+          <select class="cf-select" id="cf-state">
+            <option value="">Select a state</option>
+            <option value="north">UP / Bihar / Rajasthan</option>
+            <option value="south">Karnataka / Tamil Nadu / Andhra Pradesh / Telangana / Kerala</option>
+            <option value="east">Odisha / Jharkhand / West Bengal / Chhattisgarh</option>
+            <option value="northeast">Assam / Meghalaya / Manipur / Northeast</option>
+            <option value="west">Maharashtra / Gujarat / MP</option>
+            <option value="national">Pan-India / National</option>
+          </select>
+        </div>
+
+        <div class="cf-group">
+          <label class="cf-label">Primary thematic focus <span>(optional, pick all that apply)</span></label>
+          <div class="cf-checkrow" id="theme-checks">
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="gbv">GBV / Safety</span>
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="livelihood">Livelihoods</span>
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="health">Health</span>
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="finance">Financial Inclusion</span>
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="shg">SHG / Women's Collectives</span>
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="policy">Policy Advocacy</span>
+            <span class="cf-check" onclick="toggleCheck(this)" data-val="data">Research / M&E</span>
+          </div>
+        </div>
+
+        <div class="cf-group">
+          <label class="cf-label">Your current pressure point <span>(optional)</span></label>
+          <input type="text" class="cf-input" id="cf-pressure" placeholder="e.g. donor report due, grant proposal open, scheme compliance..." />
+        </div>
+
+        <div class="cf-group">
+          <label class="cf-label">Your name and email <span>(so we can follow up)</span></label>
+          <input type="text" class="cf-input" id="cf-name" placeholder="Your name" style="margin-bottom:8px;" />
+          <input type="email" class="cf-input" id="cf-email" placeholder="your@organisation.org" />
+        </div>
+
+        <button class="context-submit" onclick="generateSnapshot()">
+          Show me what's relevant
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+
+      <div class="context-snapshot" id="snapshotBox">
+        <div class="snapshot-placeholder" id="snapshotPlaceholder">
+          <div class="snapshot-icon">🗺</div>
+          <p>Your personalised signal snapshot will appear here once you submit the form. We'll show you which of this month's signals are most directly relevant to your organisation's context.</p>
+        </div>
+        <div class="snapshot-result" id="snapshotResult">
+          <div class="snapshot-label">Your signal snapshot</div>
+          <div class="snapshot-signals" id="snapshotSignals"></div>
+          <div class="snap-cta" id="snapCta"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-gap"></div>
+
+  <!-- 06: SIGNUP -->
+  <div class="section-header">
+    <div class="section-number">06</div>
     <div class="section-title">Get the Full Analysis</div>
     <div class="section-line"></div>
   </div>
@@ -907,7 +934,6 @@
         <div class="tier-pill">Free pilot spots available</div>
       </div>
     </div>
-
     <div class="signup-right">
       <div class="signup-form" id="signupForm">
         <div class="form-group">
@@ -924,14 +950,10 @@
         </div>
         <button class="submit-btn" onclick="handleSubmit()">
           Request the April Brief
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <p class="form-note">No commitment. Read it and tell us if it's useful. Free pilot spots are still open for April, May, and June.</p>
       </div>
-
       <div class="success-message" id="successMsg">
         <h3>You're on the list.</h3>
         <p>We'll send the April brief to your inbox shortly. If you have questions in the meantime, reach Laavvanya directly at laavvanyadhankar8@gmail.com</p>
@@ -952,63 +974,357 @@
 </footer>
 
 <script>
-  function toggleSignal(card) {
-    const isOpen = card.classList.contains('open');
-    document.querySelectorAll('.signal-card').forEach(c => c.classList.remove('open'));
-    if (!isOpen) {
-      card.classList.add('open');
-      // On mobile, scroll the card into view smoothly after expanding
-      if (window.innerWidth <= 768) {
-        setTimeout(() => {
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 50);
-      }
+// ===================== BUDGET DATA =====================
+const budgetData = {
+  '2026': [
+    {
+      id: 'mowcd', category: 'women',
+      name: 'Ministry of Women and Child Development', abbr: 'MoWCD',
+      alloc: 'Rs 26,193 cr', allocNum: 26193,
+      yoy: '+4.2%', yoyDir: 'up',
+      genderShare: '100%', shareNum: 100,
+      utilisation: '87%',
+      prevAlloc: 'Rs 25,135 cr',
+      keyScheme: 'Mission Shakti, Poshan 2.0, Beti Bachao Beti Padhao',
+      signal: 'NCW received Rs 36 crore, widely flagged as grossly inadequate for a national statutory body. One Stop Centres (OSCs) face design drift concerns despite increased Nirbhaya Fund allocation. Rs 1,631 crore of Nirbhaya Fund remains unreleased.',
+      note: 'Watch: Civil society partnership call for Nirbhaya Fund expected Q1 FY27'
+    },
+    {
+      id: 'mord', category: 'labour',
+      name: 'Ministry of Rural Development', abbr: 'MoRD',
+      alloc: 'Rs 2,65,808 cr', allocNum: 265808,
+      yoy: '+6.1%', yoyDir: 'up',
+      genderShare: '46.5%', shareNum: 46.5,
+      utilisation: '91%',
+      prevAlloc: 'Rs 2,50,520 cr',
+      keyScheme: 'MGNREGS, PMGSY, DAY-NRLM',
+      signal: 'Women\'s MGNREGS share corrected to 46.5% from the widely-cited 33.6% figure. DAY-NRLM SHG federation graduation through SHE Marts announced in Budget 2026-27 with undefined financing model.',
+      note: 'Action: Correct 33.6% to 46.5% in all active donor documents'
+    },
+    {
+      id: 'mohfw', category: 'health',
+      name: 'Ministry of Health and Family Welfare', abbr: 'MoHFW',
+      alloc: 'Rs 98,311 cr', allocNum: 98311,
+      yoy: '+8.3%', yoyDir: 'up',
+      genderShare: '29.4%', shareNum: 29.4,
+      utilisation: '83%',
+      prevAlloc: 'Rs 90,780 cr',
+      keyScheme: 'National Health Mission, PMSMA, LaQshya',
+      signal: 'Maternal health component of NHM shows sustained allocation. Gender-responsive procurement targets under LaQshya underutilised. OSC integration with health facilities cited in parliamentary review as incomplete.',
+      note: 'Watch: NHM state-level gender data to be released Q1 FY27'
+    },
+    {
+      id: 'molfw', category: 'labour',
+      name: 'Ministry of Labour and Employment', abbr: 'MoLE',
+      alloc: 'Rs 13,045 cr', allocNum: 13045,
+      yoy: '+2.8%', yoyDir: 'up',
+      genderShare: '18.2%', shareNum: 18.2,
+      utilisation: '79%',
+      prevAlloc: 'Rs 12,690 cr',
+      keyScheme: 'ESIC, EPFO, Pradhan Mantri Shram Yogi Maandhan',
+      signal: 'Informal women workers remain structurally excluded from EPFO and ESIC social protection floors. Platform workers protections, disproportionately relevant for women in gig economy, remain unlegislated. Code on Social Security implementation stalled.',
+      note: 'Gap: Migrant women workers\' portability of benefits still unresolved'
+    },
+    {
+      id: 'mof', category: 'finance',
+      name: 'Ministry of Finance (Gender Budget)', abbr: 'MoF / GB',
+      alloc: 'Rs 4,49,228 cr', allocNum: 449228,
+      yoy: '+11.4%', yoyDir: 'up',
+      genderShare: '6.8% of GE', shareNum: 6.8,
+      utilisation: 'N/A',
+      prevAlloc: 'Rs 4,03,246 cr',
+      keyScheme: 'Statement 13: Gender Budget across all ministries',
+      signal: 'Gender budget crossed 1% of GDP and 6.8% of total expenditure for the first time in 2024-25, sustained in 2026-27. Economic Survey 2025-26 acknowledged unpaid care work as a structural barrier for the first time in a major government document.',
+      note: 'Milestone: Highest gender budget share in two decades of gender budgeting'
+    },
+    {
+      id: 'rbi', category: 'finance',
+      name: 'Reserve Bank of India (NSFI)', abbr: 'RBI / NSFI',
+      alloc: 'Policy document', allocNum: 0,
+      yoy: 'New', yoyDir: 'up',
+      genderShare: 'First mention', shareNum: 100,
+      utilisation: 'Implementation phase',
+      prevAlloc: 'Not included',
+      keyScheme: 'National Strategy for Financial Inclusion 2025-30',
+      signal: 'NSFI 2025-30 names gender-sensitive financial inclusion as a formal priority for the first time in an RBI-anchored policy. Calls for differentiated credit models for women and targeted digital literacy. Strongest policy alignment tool for financial inclusion programmes currently available.',
+      note: 'Window: Cite NSFI 2025-30 in all financial inclusion donor proposals now'
+    }
+  ],
+  '2025': [
+    {
+      id: 'mowcd', category: 'women',
+      name: 'Ministry of Women and Child Development', abbr: 'MoWCD',
+      alloc: 'Rs 25,135 cr', allocNum: 25135,
+      yoy: '+3.1%', yoyDir: 'up',
+      genderShare: '100%', shareNum: 100,
+      utilisation: '84%',
+      prevAlloc: 'Rs 24,382 cr',
+      keyScheme: 'Mission Shakti, Poshan 2.0, BBBP',
+      signal: 'NCW allocated Rs 36 crore, flagged by Parliamentary Committee as grossly inadequate. Nirbhaya Fund utilisation under scrutiny following CAG observations on SNA SPARSH compliance gaps.',
+      note: 'Parliamentary Committee flagged NCW underfunding in 2025-26 review'
+    },
+    {
+      id: 'mord', category: 'labour',
+      name: 'Ministry of Rural Development', abbr: 'MoRD',
+      alloc: 'Rs 2,50,520 cr', allocNum: 250520,
+      yoy: '-2.3%', yoyDir: 'down',
+      genderShare: '33.6%', shareNum: 33.6,
+      utilisation: '89%',
+      prevAlloc: 'Rs 2,56,437 cr',
+      keyScheme: 'MGNREGS, PMGSY, DAY-NRLM',
+      signal: 'NOTE: The 33.6% women\'s share figure was subsequently corrected to 46.5% in the 2025-26 Gender Budget Statement. If your documents cite 33.6%, update immediately.',
+      note: 'Data correction: 33.6% was wrong. Correct figure is 46.5%'
+    },
+    {
+      id: 'mohfw', category: 'health',
+      name: 'Ministry of Health and Family Welfare', abbr: 'MoHFW',
+      alloc: 'Rs 90,780 cr', allocNum: 90780,
+      yoy: '+5.7%', yoyDir: 'up',
+      genderShare: '27.1%', shareNum: 27.1,
+      utilisation: '80%',
+      prevAlloc: 'Rs 85,886 cr',
+      keyScheme: 'NHM, PMSMA, LaQshya',
+      signal: 'Maternal health outcomes improving in southern states; north India lags. OSC-health facility integration cited as incomplete in MoWCD-MoHFW coordination review.',
+      note: 'OSC integration with health facilities flagged as incomplete'
+    },
+    {
+      id: 'molfw', category: 'labour',
+      name: 'Ministry of Labour and Employment', abbr: 'MoLE',
+      alloc: 'Rs 12,690 cr', allocNum: 12690,
+      yoy: '+1.2%', yoyDir: 'up',
+      genderShare: '16.8%', shareNum: 16.8,
+      utilisation: '75%',
+      prevAlloc: 'Rs 12,541 cr',
+      keyScheme: 'ESIC, EPFO, PM-SYM',
+      signal: 'Women\'s registration under PM-SYM (informal sector pension) remains low. ESIC coverage for platform workers proposed but not legislated. Gender pay gap data still not publicly reported at ministry level.',
+      note: 'Platform workers protection bill stalled in 2025-26'
+    },
+    {
+      id: 'mof', category: 'finance',
+      name: 'Ministry of Finance (Gender Budget)', abbr: 'MoF / GB',
+      alloc: 'Rs 4,03,246 cr', allocNum: 403246,
+      yoy: '+9.2%', yoyDir: 'up',
+      genderShare: '6.5% of GE', shareNum: 6.5,
+      utilisation: 'N/A',
+      prevAlloc: 'Rs 3,69,267 cr',
+      keyScheme: 'Statement 13: Gender Budget',
+      signal: 'Gender budget crossed 1% of GDP for the first time. However, implementation gaps in sex-disaggregated data across ministries mean the headline figure overstates actual gender-targeted spending.',
+      note: 'First year gender budget exceeded 1% of GDP'
+    },
+    {
+      id: 'rbi', category: 'finance',
+      name: 'Reserve Bank of India (NSFI)', abbr: 'RBI / NSFI',
+      alloc: 'Not included', allocNum: 0,
+      yoy: 'N/A', yoyDir: 'flat',
+      genderShare: 'Not mentioned', shareNum: 0,
+      utilisation: 'N/A',
+      prevAlloc: 'N/A',
+      keyScheme: 'NSFI 2020-25 (expiring)',
+      signal: 'Previous NSFI 2020-25 did not name gender as a standalone priority. The successor strategy (2025-30) represents a significant policy shift, naming gender-sensitive inclusion for the first time.',
+      note: 'Predecessor strategy did not name gender: contrast with NSFI 2025-30'
+    }
+  ]
+};
+
+let currentYear = '2026';
+let currentFilter = 'all';
+
+function setYear(year) {
+  currentYear = year;
+  document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderBudget();
+}
+
+function filterMinistries(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBudget();
+}
+
+function renderBudget() {
+  const grid = document.getElementById('budgetGrid');
+  const data = budgetData[currentYear];
+  const filtered = currentFilter === 'all' ? data : data.filter(m => m.category === currentFilter);
+
+  grid.innerHTML = filtered.map(m => {
+    const barWidth = Math.min(m.shareNum, 100);
+    const barClass = m.shareNum > 50 ? 'high' : m.shareNum > 25 ? 'mid' : 'low';
+    const changeClass = m.yoyDir === 'up' ? 'change-up' : m.yoyDir === 'down' ? 'change-down' : 'change-flat';
+    const changeSymbol = m.yoyDir === 'up' ? '▲' : m.yoyDir === 'down' ? '▼' : '—';
+
+    return `
+    <div class="ministry-row" id="row-${m.id}">
+      <div class="ministry-main" onclick="toggleMinistry('${m.id}')">
+        <div class="ministry-name-block">
+          <div class="ministry-name">${m.name}</div>
+          <div class="ministry-abbr">${m.abbr}</div>
+        </div>
+        <div class="budget-stat">
+          <div class="stat-value" style="font-size:16px;">${m.alloc}</div>
+          <div class="stat-label">Allocation</div>
+        </div>
+        <div class="budget-stat">
+          <div><span class="change-badge ${changeClass}">${changeSymbol} ${m.yoy}</span></div>
+          <div class="stat-label" style="margin-top:6px;">vs prior year</div>
+        </div>
+        <div class="bar-col" style="flex-direction:column; align-items:flex-end; gap:6px;">
+          <div style="font-family:'EB Garamond',serif; font-size:17px; color:var(--dark-green); font-weight:600;">${m.genderShare}</div>
+          <div class="bar-track" style="width:100%; min-width:80px;">
+            <div class="bar-fill ${barClass}" style="width:${barWidth}%"></div>
+          </div>
+          <div class="stat-label">Gender share</div>
+        </div>
+        <div style="text-align:right;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7B6E" stroke-width="2" style="transition:transform 0.25s ease;" class="row-chevron-${m.id}"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="ministry-expand" id="expand-${m.id}">
+        <div class="ministry-expand-inner">
+          <div class="expand-stat">
+            <div class="expand-stat-label">Prior year allocation</div>
+            <div class="expand-stat-value" style="font-size:16px;">${m.prevAlloc}</div>
+          </div>
+          <div class="expand-stat">
+            <div class="expand-stat-label">Utilisation rate</div>
+            <div class="expand-stat-value">${m.utilisation}</div>
+          </div>
+          <div class="expand-stat">
+            <div class="expand-stat-label">Key schemes</div>
+            <div style="font-size:13px; color:var(--dark-green); line-height:1.5; margin-top:4px;">${m.keyScheme}</div>
+          </div>
+          <div class="signal-note">
+            <div class="signal-note-label">Southward Signal</div>
+            ${m.signal}
+          </div>
+          <div style="font-size:12px; color:var(--gold); font-weight:600; grid-column:1/-1;">
+            ${m.note}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleMinistry(id) {
+  const row = document.getElementById('row-' + id);
+  const isOpen = row.classList.contains('open');
+  document.querySelectorAll('.ministry-row').forEach(r => r.classList.remove('open'));
+  if (!isOpen) row.classList.add('open');
+}
+
+// ===================== SIGNAL CARDS =====================
+function toggleSignal(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.signal-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) {
+    card.classList.add('open');
+    if (window.innerWidth <= 768) {
+      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
     }
   }
+}
 
-  function handleSubmit() {
-    const name = document.getElementById('nameInput').value.trim();
-    const email = document.getElementById('emailInput').value.trim();
+// ===================== CONTEXT SNAPSHOT =====================
+function toggleCheck(el) { el.classList.toggle('checked'); }
 
-    if (!name || !email) {
-      const inputs = document.querySelectorAll('input');
-      inputs.forEach(inp => {
-        if (!inp.value.trim() && inp.id !== 'orgInput') {
-          inp.style.borderColor = '#C0392B';
-          setTimeout(() => inp.style.borderColor = '', 2000);
-        }
-      });
-      return;
-    }
+const signalLibrary = [
+  { id: 'nirbhaya', relevantRegions: ['south','national'], relevantThemes: ['gbv','policy'], urgent: true,
+    title: 'Nirbhaya Fund: Rs 1,631 crore unreleased, civil society window opening',
+    text: 'MoWCD has signalled interest in civil society implementation partners before a formal call. Organisations doing GBV or survivor support should prepare positioning documents now.' },
+  { id: 'mgnregs', relevantRegions: ['north','east','national'], relevantThemes: ['livelihood','data','policy'], urgent: false,
+    title: 'MGNREGS correction: cite 46.5%, not 33.6%',
+    text: 'The Gender Budget Statement corrected women\'s MGNREGS share. Most sector documents still carry the wrong figure. Check all active donor reports.' },
+  { id: 'shemarts', relevantRegions: ['north','national'], relevantThemes: ['shg','livelihood','policy'], urgent: true,
+    title: 'SHE Marts: design still contestable, state consultations live',
+    text: 'NRLM teams in Rajasthan and UP are informally consulting SHG federations. Your field contacts\' documentation of this guidance is evidence that can shape final guidelines.' },
+  { id: 'nsfi', relevantRegions: ['north','east','west','south','national'], relevantThemes: ['finance','policy','data'], urgent: false,
+    title: 'NSFI 2025-30: first-ever gender-sensitive financial inclusion mandate',
+    text: 'Cite this directly in your next donor proposal if your programme touches women\'s credit, digital access, or SHG-linked finance.' },
+  { id: 'unwomen', relevantRegions: ['north'], relevantThemes: ['livelihood','data','shg'], urgent: true,
+    title: 'UN Women India CSO grants: UP and Rajasthan, deadline April 30',
+    text: 'Open grants round for gender-responsive livelihoods research. Focus on unpaid care work and women\'s economic empowerment. Deadline April 30, 2026.' },
+  { id: 'fcra', relevantRegions: ['national'], relevantThemes: ['policy','data'], urgent: false,
+    title: 'FCRA Amendment Bill 2026: asset seizure provision passed April 1',
+    text: 'The Amendment creates a designated authority to seize assets of organisations losing licences. Civil society compliance review recommended for all FCRA-registered organisations.' },
+  { id: 'itrules', relevantRegions: ['national'], relevantThemes: ['gbv','policy'], urgent: false,
+    title: 'IT Amendment Rules 2026: GBV-adjacent compliance from February 20',
+    text: 'The Rules explicitly reference POSH Act and Indecent Representation of Women Act in deepfake content obligations. Relevant for organisations documenting GBV cases digitally.' }
+];
 
-    if (!email.includes('@') || !email.includes('.')) {
-      document.getElementById('emailInput').style.borderColor = '#C0392B';
-      setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 2000);
-      return;
-    }
+function generateSnapshot() {
+  const state = document.getElementById('cf-state').value;
+  const themes = Array.from(document.querySelectorAll('.cf-check.checked')).map(c => c.dataset.val);
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const pressure = document.getElementById('cf-pressure').value.trim();
 
-    const org = document.getElementById('orgInput').value.trim();
-    const mailto = `mailto:laavvanyadhankar8@gmail.com?subject=April Brief Request — ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AOrganisation: ${encodeURIComponent(org || 'Not provided')}%0A%0AThis person has requested the April Policy Monitor via the Southward Collective policy tracker.`;
-    window.location.href = mailto;
-
-    document.getElementById('signupForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-  }
-
-  // Intersection observer for scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.signal-card, .sa-card, .signup-section, .sa-corner').forEach(el => {
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+  let matched = signalLibrary.filter(s => {
+    const regionMatch = !state || s.relevantRegions.includes(state) || s.relevantRegions.includes('national');
+    const themeMatch = themes.length === 0 || themes.some(t => s.relevantThemes.includes(t));
+    return regionMatch && themeMatch;
   });
+
+  if (matched.length === 0) matched = signalLibrary.slice(0, 3);
+  matched = matched.slice(0, 4);
+
+  const signalsHtml = matched.map(s => `
+    <div class="snap-signal ${s.urgent ? 'urgent' : ''}">
+      <div class="snap-signal-title">${s.title}</div>
+      <div class="snap-signal-text">${s.text}</div>
+    </div>
+  `).join('');
+
+  const ctaHtml = `<div class="snap-cta">These signals are explored in depth in <strong>The Policy Monitor</strong>. ${email ? 'We\'ll follow up at ' + email + ' with the full April brief.' : 'Request the full brief to see the complete analysis, parliamentary digest, and donor landscape.'}</div>`;
+
+  document.getElementById('snapshotPlaceholder').style.display = 'none';
+  document.getElementById('snapshotResult').style.display = 'block';
+  document.getElementById('snapshotSignals').innerHTML = signalsHtml;
+  document.getElementById('snapCta').innerHTML = ctaHtml;
+
+  if (email && name) {
+    const mailto = `mailto:laavvanyadhankar8@gmail.com?subject=Context Snapshot Request — ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AState: ${encodeURIComponent(state)}%0AThemes: ${encodeURIComponent(themes.join(', '))}%0APressure point: ${encodeURIComponent(pressure)}%0A%0AThis person submitted the context form on the Southward Collective tracker.`;
+    setTimeout(() => { window.location.href = mailto; }, 800);
+  }
+}
+
+// ===================== SIGNUP =====================
+function handleSubmit() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  if (!name || !email) {
+    document.querySelectorAll('#signupForm input').forEach(inp => {
+      if (!inp.value.trim() && inp.id !== 'orgInput') { inp.style.borderColor = '#C0392B'; setTimeout(() => inp.style.borderColor = '', 2000); }
+    });
+    return;
+  }
+  if (!email.includes('@') || !email.includes('.')) {
+    document.getElementById('emailInput').style.borderColor = '#C0392B';
+    setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 2000);
+    return;
+  }
+  const org = document.getElementById('orgInput').value.trim();
+  const mailto = `mailto:laavvanyadhankar8@gmail.com?subject=April Brief Request — ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AOrganisation: ${encodeURIComponent(org || 'Not provided')}%0A%0AThis person has requested the April Policy Monitor via the Southward Collective policy tracker.`;
+  window.location.href = mailto;
+  document.getElementById('signupForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+
+// ===================== INIT =====================
+renderBudget();
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.signal-card, .sa-card, .signup-section, .sa-corner, .budget-tracker, .brief-section, .context-section').forEach(el => {
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
 </script>
 
 </body>
