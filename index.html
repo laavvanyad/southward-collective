@@ -512,7 +512,103 @@
   .fade-up:nth-child(4) { animation-delay: 0.4s; }
   .fade-up:nth-child(5) { animation-delay: 0.5s; }
 
-  /* RESPONSIVE */
+  /* ===== FUNDING WINDOWS ===== */
+  .fw-grid { display: flex; flex-direction: column; gap: 20px; }
+
+  .fw-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border-green);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+  .fw-card:hover { box-shadow: 0 6px 28px rgba(26,58,42,0.09); }
+
+  .fw-card-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 20px;
+    padding: 22px 28px;
+  }
+
+  .fw-funder-block {}
+  .fw-funder-logo {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--white);
+    background: var(--dark-green);
+    padding: 5px 12px; border-radius: 6px; display: inline-block;
+    margin-bottom: 6px;
+  }
+  .fw-funder-logo.un { background: #009EDB; }
+  .fw-funder-logo.sbi { background: #22408C; }
+  .fw-funder-logo.unfpa { background: #008DC9; }
+
+  .fw-funder-sub { font-size: 12px; color: var(--muted); }
+
+  .fw-meta { flex: 1; }
+  .fw-title { font-family: 'EB Garamond', serif; font-size: 19px; color: var(--dark-green); font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+  .fw-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .fw-tag {
+    font-size: 11px; font-weight: 600; padding: 3px 10px;
+    border-radius: 100px; border: 1px solid;
+  }
+  .fw-tag.deadline-urgent { background: #FFF0F0; color: #C0392B; border-color: #F5B7B1; }
+  .fw-tag.deadline-soon { background: #FFF8E6; color: #8B6914; border-color: #F0C080; }
+  .fw-tag.deadline-open { background: #E6F4EC; color: #2D7A4F; border-color: #A9DFBF; }
+  .fw-tag.geo { background: var(--light-green); color: var(--dark-green); border-color: var(--border-green); }
+  .fw-tag.value { background: var(--gold-light); color: var(--gold); border-color: rgba(200,130,10,0.3); }
+
+  .fw-deadline-block { text-align: right; flex-shrink: 0; }
+  .fw-deadline-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .fw-deadline-val { font-family: 'EB Garamond', serif; font-size: 20px; color: var(--dark-green); font-weight: 600; line-height: 1.1; }
+  .fw-deadline-days { font-size: 11px; color: var(--red-signal, #C0392B); font-weight: 600; margin-top: 2px; }
+
+  .fw-card-body {
+    border-top: 1px solid var(--sage);
+    padding: 18px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: var(--light-green);
+  }
+
+  .fw-what {}
+  .fw-what-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--mid-green); font-weight: 700; margin-bottom: 6px; }
+  .fw-what-text { font-size: 13px; color: var(--body); line-height: 1.65; }
+
+  .fw-insight {}
+  .fw-insight-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); font-weight: 700; margin-bottom: 6px; }
+  .fw-insight-text { font-size: 13px; color: var(--body); line-height: 1.65; font-style: italic; }
+
+  .fw-card-footer {
+    padding: 14px 28px;
+    border-top: 1px solid var(--border-green);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+
+  .fw-language { font-size: 12px; color: var(--muted); line-height: 1.5; max-width: 520px; }
+  .fw-language strong { color: var(--dark-green); }
+
+  .fw-action-links { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+  .fw-link {
+    font-size: 12px; font-weight: 600; color: var(--dark-green);
+    text-decoration: none; padding: 6px 14px;
+    border: 1.5px solid var(--border-green);
+    border-radius: 6px; transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .fw-link:hover { background: var(--dark-green); color: var(--white); border-color: var(--dark-green); }
+  .fw-link.primary { background: var(--dark-green); color: var(--white); border-color: var(--dark-green); }
+  .fw-link.primary:hover { background: #0f2219; }
+
+  .fw-verified { font-size: 11px; color: var(--muted); margin-top: 16px; }
+  .fw-verified span { color: var(--mid-green); font-weight: 600; }
+
+  /* ===== END FUNDING WINDOWS ===== */
+
+
   @media (max-width: 768px) {
     nav, .hero, footer { padding-left: 20px; padding-right: 20px; }
     .main { padding: 0 20px 60px; }
@@ -542,7 +638,15 @@
     .budget-summary-row { grid-template-columns: 1fr 1fr; }
     .section-header { flex-wrap: wrap; }
     .section-line { display: none; }
-    .signal-card.open .signal-body { max-height: none; overflow: visible; padding: 0 20px 24px; }
+    .fw-card-top { grid-template-columns: 1fr; gap: 12px; padding: 18px 20px; }
+    .fw-deadline-block { text-align: left; }
+    .fw-card-body { grid-template-columns: 1fr; padding: 16px 20px; }
+    .fw-card-footer { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
+    .fw-action-links { width: 100%; }
+    .fw-link { flex: 1; text-align: center; }
+    .fw-tags { gap: 6px; }
+    .fw-tag { font-size: 10px; }
+
     .signal-header { padding: 16px 20px; gap: 12px; }
     .signal-title { font-size: 16px; }
     .status-pill { font-size: 10px; padding: 4px 10px; }
@@ -562,7 +666,7 @@
   <p class="hero-sub">Five signals worth watching this month. Updated alongside every issue of The Policy Monitor. You bring the ground reality. We bring the policy architecture.</p>
   <div class="update-badge">
     <div class="dot"></div>
-    Last updated: April 12th, 2026
+    Last updated: April 10th, 2026
   </div>
 </div>
 
@@ -941,9 +1045,148 @@
 
   <div class="section-gap"></div>
 
-  <!-- 06: SIGNUP -->
+  <!-- 06: FUNDING WINDOWS -->
   <div class="section-header">
     <div class="section-number">06</div>
+    <div class="section-title">Open Funding Windows</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="margin-bottom:24px;">
+    <p style="font-size:15px; color:var(--muted); line-height:1.7; max-width:720px;">A curated set of verified, active funding calls relevant to India's gender and development sector. Not everything that's open — only what's worth your time, with the language you need to respond. <span style="color:var(--dark-green); font-weight:600;">Verified April 12, 2026.</span> Sources: india.unfpa.org, fundsforngos.org, sbifoundation.in.</p>
+  </div>
+
+  <div class="fw-grid">
+
+    <!-- CARD 1: UNFPA India GBV -->
+    <div class="fw-card">
+      <div class="fw-card-top">
+        <div class="fw-funder-block">
+          <div class="fw-funder-logo unfpa">UNFPA</div>
+          <div class="fw-funder-sub">UN Population Fund, India</div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-title">Strengthening Multi-Sectoral GBV Response Systems: Model OSCs and Shelter Homes</div>
+          <div class="fw-tags">
+            <span class="fw-tag deadline-urgent">Closes April 17</span>
+            <span class="fw-tag geo">MP, Odisha, Rajasthan, Karnataka, Punjab, AP</span>
+            <span class="fw-tag value">8-month TA package</span>
+          </div>
+        </div>
+        <div class="fw-deadline-block">
+          <div class="fw-deadline-label">Deadline</div>
+          <div class="fw-deadline-val">17 Apr</div>
+          <div class="fw-deadline-days">5 days left</div>
+        </div>
+      </div>
+      <div class="fw-card-body">
+        <div class="fw-what">
+          <div class="fw-what-label">What they're funding</div>
+          <div class="fw-what-text">An 8-month technical assistance package for NGOs or academic institutions to strengthen GBV response at 12 sites across six states. Focus areas: survivor-centered case management, infrastructure audits of One Stop Centres (OSCs) and Shakti Sadan shelter homes, staff mentoring, economic empowerment pathways for shelter residents, and district-level service mapping. Organisations must demonstrate proven GBV case management experience and multi-sectoral coordination capacity.</div>
+        </div>
+        <div class="fw-insight">
+          <div class="fw-insight-label">Southward Insight</div>
+          <div class="fw-insight-text">This call is precisely at the intersection of OSC design drift and Nirbhaya Fund utilisation — two signals we've been tracking since March. UNFPA's language on "survivor-centered care" and "multi-sectoral coordination" maps directly onto the Parliamentary Standing Committee's March 25 recommendations. Organisations applying should cite both the 377th Committee Report and the UNFPA Essential Services Package framework in their methodology sections. Karnataka is explicitly included — directly relevant for GBV organisations in that state.</div>
+        </div>
+      </div>
+      <div class="fw-card-footer">
+        <div class="fw-language"><strong>Language to use:</strong> "Multi-sectoral coordination," "survivor-centered case management," "disability-inclusive care," "economic empowerment pathways," "model OSC." Align to UNFPA's Essential Services Package for Women and Girls Subject to Violence. Cite state-level NHM and MoWCD partnership experience if available.</div>
+        <div class="fw-action-links">
+          <a href="https://india.unfpa.org/en/submission/invitation-proposals-strengthening-systems-multi-sectoral-response-gender-based-violence" target="_blank" class="fw-link primary">View call →</a>
+          <a href="mailto:laavvanyadhankar8@gmail.com?subject=UNFPA GBV Call — Donor Language Help" class="fw-link">Get help with language</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: SBI Foundation Sashakti -->
+    <div class="fw-card">
+      <div class="fw-card-top">
+        <div class="fw-funder-block">
+          <div class="fw-funder-logo sbi">SBI Foundation</div>
+          <div class="fw-funder-sub">CSR — State Bank of India</div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-title">SBIF Sashakti: Women's Empowerment and Non-Traditional Livelihoods</div>
+          <div class="fw-tags">
+            <span class="fw-tag deadline-soon">Closes April 20</span>
+            <span class="fw-tag geo">Pan-India</span>
+            <span class="fw-tag value">Rs 1–4 crore, 1–3 years</span>
+          </div>
+        </div>
+        <div class="fw-deadline-block">
+          <div class="fw-deadline-label">Deadline</div>
+          <div class="fw-deadline-val">20 Apr</div>
+          <div class="fw-deadline-days">8 days left</div>
+        </div>
+      </div>
+      <div class="fw-card-body">
+        <div class="fw-what">
+          <div class="fw-what-label">What they're funding</div>
+          <div class="fw-what-text">CSR grants of Rs 1 crore to Rs 4 crore for 1–3 year projects focused on women's economic empowerment in non-traditional livelihoods, including women in transport, and support for women involved in commercial sex work. Emphasis on SDGs 3, 5, 8, 10, and 17. Phased funding based on performance. Eligible applicants: Indian registered non-profits. FCRA not mandatory for CSR funding.</div>
+        </div>
+        <div class="fw-insight">
+          <div class="fw-insight-label">Southward Insight</div>
+          <div class="fw-insight-text">SBI Foundation's Sashakti programme is one of the few CSR windows explicitly including women in non-traditional and informal livelihoods — categories that USAID previously funded and that Indian foundations have been reluctant to touch. The transport sector focus aligns with GIZ India's ongoing gender-inclusive mobility work, which could provide a policy hook. Proposals that link to NSFI 2025-30 language on women's financial inclusion will read as policy-current to the review committee.</div>
+        </div>
+      </div>
+      <div class="fw-card-footer">
+        <div class="fw-language"><strong>Language to use:</strong> "Non-traditional livelihoods," "economic independence," "SDG 5 and 8 alignment," "sustainable livelihood ecosystem," "phased outcome-based implementation." Cite NSFI 2025-30 for financial inclusion framing. Reference Economic Survey 2025-26 unpaid care acknowledgment for care economy programmes.</div>
+        <div class="fw-action-links">
+          <a href="https://www.sbifoundation.in/sbif-sashakti" target="_blank" class="fw-link primary">View call →</a>
+          <a href="mailto:laavvanyadhankar8@gmail.com?subject=SBI Sashakti — Donor Language Help" class="fw-link">Get help with language</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: UNFPA India Research — Elder Care Economy + Gender & Climate -->
+    <div class="fw-card">
+      <div class="fw-card-top">
+        <div class="fw-funder-block">
+          <div class="fw-funder-logo unfpa">UNFPA</div>
+          <div class="fw-funder-sub">UN Population Fund, India</div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-title">Research Proposals: Elder Care Economy and Gender and Climate Change (India)</div>
+          <div class="fw-tags">
+            <span class="fw-tag deadline-open">Rolling — confirm on portal</span>
+            <span class="fw-tag geo">India-wide</span>
+            <span class="fw-tag value">Research partnership</span>
+          </div>
+        </div>
+        <div class="fw-deadline-block">
+          <div class="fw-deadline-label">Deadline</div>
+          <div class="fw-deadline-val">Rolling</div>
+          <div class="fw-deadline-days">Verify on portal</div>
+        </div>
+      </div>
+      <div class="fw-card-body">
+        <div class="fw-what">
+          <div class="fw-what-label">What they're funding</div>
+          <div class="fw-what-text">UNFPA India Country Office is inviting proposals from NGOs and academic institutions for two linked research projects: (1) Reimagining the Elder Care Economy in India, and (2) Gender and Climate Change. Both must generate actionable, evidence-based recommendations for policy and practice. Organisations may apply for one or both. Contingent on successful agreement with the partner.</div>
+        </div>
+        <div class="fw-insight">
+          <div class="fw-insight-label">Southward Insight</div>
+          <div class="fw-insight-text">The elder care economy brief connects directly to the Economic Survey 2025-26's unpaid care work acknowledgment — the first time a major government document named this as a structural barrier. Research proposals that anchor to this acknowledgment are immediately policy-relevant. The gender-climate intersection also maps to GIZ India's GSDP green skills work and the NSFI 2025-30 resilience framework. Organisations with existing care economy or climate-gender data are best positioned.</div>
+        </div>
+      </div>
+      <div class="fw-card-footer">
+        <div class="fw-language"><strong>Language to use:</strong> "Care economy," "unpaid care work," "gender-climate nexus," "actionable policy recommendations," "evidence-based practice." Anchor to Economic Survey 2025-26 Section on unpaid care (Chapter on Gender). For climate brief, cite NSFI 2025-30 resilience framing and NFHS-5 data.</div>
+        <div class="fw-action-links">
+          <a href="https://india.unfpa.org/en/call-for-submissions" target="_blank" class="fw-link primary">View all calls →</a>
+          <a href="mailto:laavvanyadhankar8@gmail.com?subject=UNFPA Research Call — Donor Language Help" class="fw-link">Get help with language</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="fw-verified">Calls verified April 12, 2026. Sources: <span>india.unfpa.org</span>, <span>fundsforngos.org</span>, <span>sbifoundation.in</span>. Deadlines change — always verify directly with the funder before submitting. Need help framing your proposal? Write to us — donor language is what we do.</div>
+
+  <div class="section-gap"></div>
+
+  <!-- 07: SIGNUP -->
+  <div class="section-header">
+    <div class="section-number">07</div>
     <div class="section-title">Get the Full Analysis</div>
     <div class="section-line"></div>
   </div>
