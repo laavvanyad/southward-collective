@@ -606,7 +606,87 @@
   .fw-verified { font-size: 11px; color: var(--muted); margin-top: 16px; }
   .fw-verified span { color: var(--mid-green); font-weight: 600; }
 
-  /* ===== END FUNDING WINDOWS ===== */
+  /* ===== PAGE GUIDE & SERVICES ===== */
+  .page-guide {
+    background: var(--white);
+    border: 1px solid var(--border-green);
+    border-radius: 12px;
+    padding: 20px 28px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .pg-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--muted); font-weight: 700; font-family: "Calibri", sans-serif;
+    white-space: nowrap; margin-right: 4px;
+  }
+  .pg-items { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .pg-item {
+    font-size: 12px; font-weight: 600; color: var(--dark-green);
+    background: var(--light-green);
+    border: 1px solid var(--border-green);
+    padding: 5px 14px; border-radius: 100px;
+    text-decoration: none; transition: background 0.15s ease;
+    cursor: pointer;
+  }
+  .pg-item:hover { background: var(--sage); }
+
+  .services-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .svc-card {
+    background: var(--white);
+    border: 1px solid var(--border-green);
+    border-radius: 12px;
+    padding: 22px 22px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .svc-card.tier-1::before { background: var(--mid-green); }
+  .svc-card.tier-2::before { background: var(--gold); }
+  .svc-card.tier-3::before { background: var(--dark-green); }
+
+  .svc-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .svc-card.tier-1 .svc-label { color: var(--mid-green); }
+  .svc-card.tier-2 .svc-label { color: var(--gold); }
+  .svc-card.tier-3 .svc-label { color: var(--dark-green); }
+
+  .svc-title {
+    font-family: 'EB Garamond', serif; font-size: 18px;
+    color: var(--dark-green); font-weight: 600; margin-bottom: 10px; line-height: 1.25;
+  }
+  .svc-items {
+    list-style: none; padding: 0; margin: 0 0 14px;
+    border-top: 1px solid var(--sage); padding-top: 10px;
+  }
+  .svc-items li {
+    font-size: 12px; color: var(--muted);
+    padding: 3px 0; display: flex; align-items: center; gap: 7px;
+  }
+  .svc-items li::before {
+    content: '–'; color: var(--mid-green); font-weight: 700; flex-shrink: 0;
+  }
+  .svc-pilot {
+    font-size: 11px; font-weight: 600; color: var(--mid-green);
+    background: #E6F4EC; border: 1px solid #A9DFBF;
+    padding: 4px 10px; border-radius: 100px; display: inline-block;
+  }
+  /* ===== END PAGE GUIDE & SERVICES ===== */
+
+
 
 
   @media (max-width: 768px) {
@@ -647,6 +727,10 @@
     .fw-tags { gap: 6px; }
     .fw-tag { font-size: 10px; }
 
+    .services-strip { grid-template-columns: 1fr; }
+    .page-guide { padding: 16px 18px; gap: 10px; }
+    .pg-items { gap: 6px; }
+    .pg-item { font-size: 11px; padding: 4px 10px; }
     .signal-header { padding: 16px 20px; gap: 12px; }
     .signal-title { font-size: 16px; }
     .status-pill { font-size: 10px; padding: 4px 10px; }
@@ -666,14 +750,66 @@
   <p class="hero-sub">Five signals worth watching this month. Updated alongside every issue of The Policy Monitor. You bring the ground reality. We bring the policy architecture.</p>
   <div class="update-badge">
     <div class="dot"></div>
-    Last updated: April 12th, 2026
+    Last updated: April 15th, 2026
   </div>
 </div>
 
 <div class="main">
 
+  <!-- PAGE GUIDE -->
+  <div class="page-guide">
+    <span class="pg-label">On this page</span>
+    <div class="pg-items">
+      <a class="pg-item" href="#signals">Policy Signals</a>
+      <a class="pg-item" href="#budget">Gender Budget Tracker</a>
+      <a class="pg-item" href="#brief">Sample Brief</a>
+      <a class="pg-item" href="#context">Brief Us on Your Context</a>
+      <a class="pg-item" href="#funding">Open Funding Windows</a>
+      <a class="pg-item" href="#southasia">South Asia Corner</a>
+      <a class="pg-item" href="#signup">Get the Full Brief</a>
+    </div>
+  </div>
+
+  <!-- SERVICES STRIP -->
+  <div class="services-strip">
+    <div class="svc-card tier-1">
+      <div class="svc-label">Monthly Subscription</div>
+      <div class="svc-title">The Policy Monitor</div>
+      <ul class="svc-items">
+        <li>Monthly policy signals brief</li>
+        <li>Donor landscape intelligence</li>
+        <li>Parliamentary digest</li>
+        <li>Funding window alerts</li>
+        <li>Positioning notes</li>
+      </ul>
+      <span class="svc-pilot">Free pilot: April–June 2026</span>
+    </div>
+    <div class="svc-card tier-2">
+      <div class="svc-label">Embedded Analyst</div>
+      <div class="svc-title">Custom Intelligence, Monthly</div>
+      <ul class="svc-items">
+        <li>Policy tracking tailored to your programme</li>
+        <li>Proposal inputs and donor framing</li>
+        <li>Ongoing strategic support</li>
+        <li>Sector-specific signal monitoring</li>
+      </ul>
+      <span class="svc-pilot">Inquire for availability</span>
+    </div>
+    <div class="svc-card tier-3">
+      <div class="svc-label">One-Off Deliverables</div>
+      <div class="svc-title">When You Need It Now</div>
+      <ul class="svc-items">
+        <li>Funding scans and opportunity notes</li>
+        <li>Donor language and framing documents</li>
+        <li>Policy alignment audits</li>
+        <li>Targeted policy briefs</li>
+      </ul>
+      <span class="svc-pilot">Write to us with your need</span>
+    </div>
+  </div>
+
   <!-- 01: SIGNALS -->
-  <div class="section-header">
+  <div id="signals" class="section-header">
     <div class="section-number">01</div>
     <div class="section-title">Five Signals to Watch</div>
     <div class="section-line"></div>
@@ -766,7 +902,7 @@
   <div class="section-gap"></div>
 
   <!-- 02: GENDER BUDGET TRACKER -->
-  <div class="section-header">
+  <div id="budget" class="section-header">
     <div class="section-number">02</div>
     <div class="section-title">Gender Budget Tracker</div>
     <div class="section-line"></div>
@@ -827,7 +963,7 @@
   <div class="section-gap"></div>
 
   <!-- 03: SAMPLE BRIEF -->
-  <div class="section-header">
+  <div id="brief" class="section-header">
     <div class="section-number">03</div>
     <div class="section-title">The Policy Monitor: Sample Brief</div>
     <div class="section-line"></div>
@@ -932,47 +1068,9 @@
 
   <div class="section-gap"></div>
 
-  <!-- 04: SOUTH ASIA CORNER -->
-  <div class="section-header">
+  <!-- 04: CONTEXT FORM -->
+  <div id="context" class="section-header">
     <div class="section-number">04</div>
-    <div class="section-title">First in South Asia</div>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="sa-corner">
-    <div class="sa-corner-eyebrow">Regional Firsts</div>
-    <div class="sa-corner-title">Policies that changed the playbook</div>
-    <div class="sa-corner-sub">South Asia has produced some of the world's most quietly radical gender policy innovations. These are the ones worth knowing, not just as history, but as arguments.</div>
-    <div class="sa-cards">
-      <div class="sa-card">
-        <div class="sa-flag">🇧🇩</div>
-        <div class="sa-country">Bangladesh</div>
-        <div class="sa-headline">First country in the Global South to achieve gender parity at head-of-state level</div>
-        <div class="sa-detail">Bangladesh ranked 24th globally in the 2025 WEF Gender Gap Index, the highest in South Asia for the ninth consecutive year. Driven by sustained female leadership in governance and high workforce participation rates, it outpaced economies with significantly higher per capita income.</div>
-        <div class="sa-year">WEF Global Gender Gap Index 2025</div>
-      </div>
-      <div class="sa-card">
-        <div class="sa-flag">🇧🇹</div>
-        <div class="sa-country">Bhutan</div>
-        <div class="sa-headline">First nation to make Gross National Happiness the constitutional measure of development</div>
-        <div class="sa-detail">Bhutan's 2008 constitution embedded Gross National Happiness as the guiding principle of state policy, a direct challenge to GDP as the primary measure of progress. The framework explicitly includes gender equity, cultural preservation, and psychological wellbeing as development indicators that economic metrics miss.</div>
-        <div class="sa-year">Constitution of Bhutan, 2008</div>
-      </div>
-      <div class="sa-card">
-        <div class="sa-flag">🇮🇳</div>
-        <div class="sa-country">Kerala, India</div>
-        <div class="sa-headline">World's largest women-led community enterprise network: Kudumbashree</div>
-        <div class="sa-detail">Launched in 1998, Kudumbashree became the world's largest women-run poverty eradication programme, now covering over 4.5 million women in self-help groups across Kerala. Its offline-first, community-trust model is the reference point for why digital financial inclusion requires community infrastructure, not just connectivity.</div>
-        <div class="sa-year">Launched 1998, still operational</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-gap"></div>
-
-  <!-- 05: CONTEXT FORM -->
-  <div class="section-header">
-    <div class="section-number">05</div>
     <div class="section-title">Brief Us on Your Context</div>
     <div class="section-line"></div>
   </div>
@@ -1045,9 +1143,9 @@
 
   <div class="section-gap"></div>
 
-  <!-- 06: FUNDING WINDOWS -->
-  <div class="section-header">
-    <div class="section-number">06</div>
+  <!-- 05: FUNDING WINDOWS -->
+  <div id="funding" class="section-header">
+    <div class="section-number">05</div>
     <div class="section-title">Open Funding Windows</div>
     <div class="section-line"></div>
   </div>
@@ -1138,54 +1236,132 @@
       </div>
     </div>
 
-    <!-- CARD 3: UNFPA India Research — Elder Care Economy + Gender & Climate -->
+    <!-- CARD 3: Kamla Bhasin Award -->
     <div class="fw-card">
       <div class="fw-card-top">
         <div class="fw-funder-block">
-          <div class="fw-funder-logo unfpa">UNFPA</div>
-          <div class="fw-funder-sub">UN Population Fund, India</div>
+          <div class="fw-funder-logo" style="background:#7B3F8C;">NFI / iPartner</div>
+          <div class="fw-funder-sub">National Foundation for India &amp; iPartner India</div>
         </div>
         <div class="fw-meta">
-          <div class="fw-title">Research Proposals: Elder Care Economy and Gender and Climate Change (India)</div>
+          <div class="fw-title">Kamla Bhasin Award for Driving Gender Equality (South Asia)</div>
           <div class="fw-tags">
-            <span class="fw-tag deadline-open">Rolling — confirm on portal</span>
-            <span class="fw-tag geo">India-wide</span>
-            <span class="fw-tag value">Research partnership</span>
+            <span class="fw-tag deadline-open">Closes June 7, 2026</span>
+            <span class="fw-tag geo">South Asia — India, Pakistan, Bangladesh, Nepal, Sri Lanka</span>
+            <span class="fw-tag value">Recognition + visibility award</span>
           </div>
         </div>
         <div class="fw-deadline-block">
           <div class="fw-deadline-label">Deadline</div>
-          <div class="fw-deadline-val">Rolling</div>
-          <div class="fw-deadline-days">Verify on portal</div>
+          <div class="fw-deadline-val">7 Jun</div>
+          <div class="fw-deadline-days" style="color:var(--mid-green);">7 weeks</div>
         </div>
       </div>
       <div class="fw-card-body">
         <div class="fw-what">
-          <div class="fw-what-label">What they're funding</div>
-          <div class="fw-what-text">UNFPA India Country Office is inviting proposals from NGOs and academic institutions for two linked research projects: (1) Reimagining the Elder Care Economy in India, and (2) Gender and Climate Change. Both must generate actionable, evidence-based recommendations for policy and practice. Organisations may apply for one or both. Contingent on successful agreement with the partner.</div>
+          <div class="fw-what-label">What they're recognising</div>
+          <div class="fw-what-text">Established in memory of feminist activist Kamla Bhasin, this award honours individuals across South Asia driving meaningful change in gender equality and social justice — with specific focus on women in non-traditional livelihoods and men promoting gender-just ecosystems. Nominations are open from Azad Foundation, the National Foundation for India, and iPartner India. Both individuals and organisations are eligible.</div>
         </div>
         <div class="fw-insight">
           <div class="fw-insight-label">Southward Insight</div>
-          <div class="fw-insight-text">The elder care economy brief connects directly to the Economic Survey 2025-26's unpaid care work acknowledgment — the first time a major government document named this as a structural barrier. Research proposals that anchor to this acknowledgment are immediately policy-relevant. The gender-climate intersection also maps to GIZ India's GSDP green skills work and the NSFI 2025-30 resilience framework. Organisations with existing care economy or climate-gender data are best positioned.</div>
+          <div class="fw-insight-text">This is a visibility and positioning opportunity, not a grant — but in a sector where credibility is the primary currency, awards like this carry significant weight with donors and bilateral partners. Organisations whose field staff or leadership work on non-traditional livelihoods or gender-just workplace practices (logistics, transport, informal sector) are well-positioned. Nominating a colleague or partner organisation is also a way to build sector relationships meaningfully.</div>
         </div>
       </div>
       <div class="fw-card-footer">
-        <div class="fw-language"><strong>Language to use:</strong> "Care economy," "unpaid care work," "gender-climate nexus," "actionable policy recommendations," "evidence-based practice." Anchor to Economic Survey 2025-26 Section on unpaid care (Chapter on Gender). For climate brief, cite NSFI 2025-30 resilience framing and NFHS-5 data.</div>
+        <div class="fw-language"><strong>Who fits:</strong> Individuals working on women's non-traditional livelihoods, workplace gender equity, or feminist movement-building across South Asia. Organisational nominations also accepted. No FCRA implications — this is recognition, not funding.</div>
         <div class="fw-action-links">
-          <a href="https://india.unfpa.org/en/call-for-submissions" target="_blank" class="fw-link primary">View all calls →</a>
-          <a href="mailto:laavvanyadhankar8@gmail.com?subject=UNFPA Research Call — Donor Language Help" class="fw-link">Get help with language</a>
+          <a href="https://www2.fundsforngos.org/women-gender/call-for-applications-kamla-bhasin-award-for-driving-gender-equality/" target="_blank" class="fw-link primary">View call →</a>
+          <a href="mailto:laavvanyadhankar8@gmail.com?subject=Kamla Bhasin Award — Nomination Help" class="fw-link">Get help with language</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: TIAW World of Difference -->
+    <div class="fw-card">
+      <div class="fw-card-top">
+        <div class="fw-funder-block">
+          <div class="fw-funder-logo un">TIAW</div>
+          <div class="fw-funder-sub">International Alliance for Women</div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-title">TIAW World of Difference Awards — Women's Economic Empowerment (Global)</div>
+          <div class="fw-tags">
+            <span class="fw-tag deadline-soon">Closes May 22, 2026</span>
+            <span class="fw-tag geo">Global — India eligible</span>
+            <span class="fw-tag value">Recognition + international network</span>
+          </div>
+        </div>
+        <div class="fw-deadline-block">
+          <div class="fw-deadline-label">Deadline</div>
+          <div class="fw-deadline-val">22 May</div>
+          <div class="fw-deadline-days" style="color:var(--gold);">5 weeks</div>
+        </div>
+      </div>
+      <div class="fw-card-body">
+        <div class="fw-what">
+          <div class="fw-what-label">What they're recognising</div>
+          <div class="fw-what-text">The TIAW World of Difference 100 Awards annually honour 100 individuals and organisations worldwide who are making measurable contributions to women's economic empowerment. Indian organisations and individuals are eligible. The award carries international peer recognition and access to TIAW's global network of women's economic empowerment practitioners and funders — useful for organisations seeking bilateral or international donor connections.</div>
+        </div>
+        <div class="fw-insight">
+          <div class="fw-insight-label">Southward Insight</div>
+          <div class="fw-insight-text">For organisations in the GLOW/livelihoods/financial inclusion space, this award's international visibility is the value — it positions Indian organisations working on women's workforce participation as globally connected, which matters when engaging bilateral donors like GIZ, FCDO, or foundations with global portfolios post-USAID. The nomination itself is low-effort relative to the network access it provides if selected.</div>
+        </div>
+      </div>
+      <div class="fw-card-footer">
+        <div class="fw-language"><strong>Who fits:</strong> Organisations or individuals in India with documented, measurable impact on women's economic participation — particularly livelihoods, financial inclusion, skills training, or workplace policy change. Self-nominations accepted.</div>
+        <div class="fw-action-links">
+          <a href="https://www2.fundsforngos.org/women-gender/tiaw-world-of-difference-awards-for-womens-economic-empowerment/" target="_blank" class="fw-link primary">View call →</a>
+          <a href="mailto:laavvanyadhankar8@gmail.com?subject=TIAW Award — Nomination Help" class="fw-link">Get help with language</a>
         </div>
       </div>
     </div>
 
   </div>
 
-  <div class="fw-verified">Calls verified April 12, 2026. Sources: <span>india.unfpa.org</span>, <span>fundsforngos.org</span>, <span>sbifoundation.in</span>. Deadlines change — always verify directly with the funder before submitting. Need help framing your proposal? Write to us — donor language is what we do.</div>
+  <div class="fw-verified">Calls verified April 14, 2026. Sources: <span>india.unfpa.org</span>, <span>fundsforngos.org</span>, <span>sbifoundation.in</span>. Deadlines change — always verify directly with the funder before submitting. Need help framing your proposal or nomination? Write to us — donor language is what we do.</div>
+
+  <div class="section-gap"></div>
+
+  <!-- 06: SOUTH ASIA CORNER -->
+  <div id="southasia" class="section-header">
+    <div class="section-number">06</div>
+    <div class="section-title">First in South Asia</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="sa-corner">
+    <div class="sa-corner-eyebrow">Regional Firsts</div>
+    <div class="sa-corner-title">Policies that changed the playbook</div>
+    <div class="sa-corner-sub">South Asia has produced some of the world's most quietly radical gender policy innovations. These are the ones worth knowing, not just as history, but as arguments.</div>
+    <div class="sa-cards">
+      <div class="sa-card">
+        <div class="sa-flag">🇧🇩</div>
+        <div class="sa-country">Bangladesh</div>
+        <div class="sa-headline">First country in the Global South to achieve gender parity at head-of-state level</div>
+        <div class="sa-detail">Bangladesh ranked 24th globally in the 2025 WEF Gender Gap Index, the highest in South Asia for the ninth consecutive year. Driven by sustained female leadership in governance and high workforce participation rates, it outpaced economies with significantly higher per capita income.</div>
+        <div class="sa-year">WEF Global Gender Gap Index 2025</div>
+      </div>
+      <div class="sa-card">
+        <div class="sa-flag">🇧🇹</div>
+        <div class="sa-country">Bhutan</div>
+        <div class="sa-headline">First nation to make Gross National Happiness the constitutional measure of development</div>
+        <div class="sa-detail">Bhutan's 2008 constitution embedded Gross National Happiness as the guiding principle of state policy, a direct challenge to GDP as the primary measure of progress. The framework explicitly includes gender equity, cultural preservation, and psychological wellbeing as development indicators that economic metrics miss.</div>
+        <div class="sa-year">Constitution of Bhutan, 2008</div>
+      </div>
+      <div class="sa-card">
+        <div class="sa-flag">🇮🇳</div>
+        <div class="sa-country">Kerala, India</div>
+        <div class="sa-headline">World's largest women-led community enterprise network: Kudumbashree</div>
+        <div class="sa-detail">Launched in 1998, Kudumbashree became the world's largest women-run poverty eradication programme, now covering over 4.5 million women in self-help groups across Kerala. Its offline-first, community-trust model is the reference point for why digital financial inclusion requires community infrastructure, not just connectivity.</div>
+        <div class="sa-year">Launched 1998, still operational</div>
+      </div>
+    </div>
+  </div>
 
   <div class="section-gap"></div>
 
   <!-- 07: SIGNUP -->
-  <div class="section-header">
+  <div id="signup" class="section-header">
     <div class="section-number">07</div>
     <div class="section-title">Get the Full Analysis</div>
     <div class="section-line"></div>
