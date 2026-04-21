@@ -684,7 +684,140 @@
     background: #E6F4EC; border: 1px solid #A9DFBF;
     padding: 4px 10px; border-radius: 100px; display: inline-block;
   }
-  /* ===== END PAGE GUIDE & SERVICES ===== */
+  /* ===== STATE INTELLIGENCE STUDIO ===== */
+  .sis-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: start; margin-bottom: 36px;
+  }
+  .sis-left {}
+  .sis-headline {
+    font-family: 'EB Garamond', serif; font-size: 28px;
+    color: var(--dark-green); font-weight: 600; line-height: 1.3; margin-bottom: 16px;
+  }
+  .sis-body { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .sis-pillars {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sis-pillar {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--body);
+    background: var(--white); border: 1px solid var(--border-green);
+    border-radius: 8px; padding: 10px 16px;
+  }
+  .sis-pillar-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--mid-green); flex-shrink: 0;
+  }
+
+  .sis-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+
+  .sis-card {
+    background: var(--white);
+    border: 1px solid var(--border-green);
+    border-radius: 14px; overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    text-decoration: none; display: block;
+  }
+  .sis-card:hover { box-shadow: 0 8px 32px rgba(26,58,42,0.10); transform: translateY(-2px); }
+
+  .sis-card-header {
+    padding: 22px 22px 16px;
+    border-bottom: 1px solid var(--sage);
+  }
+  .sis-card-icon {
+    font-size: 22px; margin-bottom: 10px; display: block;
+  }
+  .sis-card-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .sis-card.election .sis-card-label { color: var(--gold); }
+  .sis-card.entry .sis-card-label { color: var(--mid-green); }
+  .sis-card.opportunity .sis-card-label { color: var(--dark-green); }
+
+  .sis-card-title {
+    font-family: 'EB Garamond', serif; font-size: 19px;
+    color: var(--dark-green); font-weight: 600; line-height: 1.25;
+  }
+  .sis-card-body { padding: 16px 22px 20px; }
+  .sis-card-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+  .sis-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .sis-card-tag {
+    font-size: 11px; font-weight: 600; color: var(--dark-green);
+    background: var(--light-green); border: 1px solid var(--border-green);
+    padding: 3px 9px; border-radius: 100px;
+  }
+  .sis-card-cta {
+    font-size: 12px; font-weight: 700; color: var(--mid-green);
+    display: flex; align-items: center; gap: 6px;
+    transition: gap 0.2s ease;
+  }
+  .sis-card:hover .sis-card-cta { gap: 10px; }
+
+  .sis-audience {
+    background: var(--dark-green); border-radius: 12px;
+    padding: 20px 28px; display: flex; align-items: center;
+    gap: 24px; flex-wrap: wrap; justify-content: space-between;
+  }
+  .sis-audience-text {
+    font-size: 14px; color: var(--sage); line-height: 1.6;
+  }
+  .sis-audience-text strong { color: var(--white); }
+  .sis-audience-cta {
+    font-size: 13px; font-weight: 700; color: var(--dark-green);
+    background: var(--sage); padding: 10px 22px; border-radius: 8px;
+    text-decoration: none; white-space: nowrap;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+  }
+  .sis-audience-cta:hover { background: var(--white); }
+
+  /* ===== SOCIAL PROOF STRIP ===== */
+  .proof-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-bottom: 40px;
+  }
+  .proof-card {
+    background: var(--white); border: 1px solid var(--border-green);
+    border-radius: 10px; padding: 18px 18px 16px;
+    text-align: center;
+  }
+  .proof-icon { font-size: 20px; margin-bottom: 8px; }
+  .proof-stat {
+    font-family: 'EB Garamond', serif; font-size: 22px;
+    color: var(--dark-green); font-weight: 600; margin-bottom: 4px;
+  }
+  .proof-label { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* ===== URGENT CTA BANNER ===== */
+  .urgent-cta {
+    background: linear-gradient(135deg, var(--dark-green) 0%, #0f2219 100%);
+    border-radius: 14px; padding: 28px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; margin-bottom: 40px; flex-wrap: wrap;
+  }
+  .urgent-cta-left {}
+  .urgent-cta-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px;
+    color: var(--gold); font-weight: 700; margin-bottom: 8px;
+  }
+  .urgent-cta-title {
+    font-family: 'EB Garamond', serif; font-size: 24px;
+    color: var(--white); font-weight: 600; margin-bottom: 6px; line-height: 1.2;
+  }
+  .urgent-cta-sub { font-size: 13px; color: var(--sage); line-height: 1.5; }
+  .urgent-cta-btn {
+    background: var(--mid-green); color: var(--white);
+    font-size: 14px; font-weight: 700; padding: 14px 28px;
+    border-radius: 8px; text-decoration: none; white-space: nowrap;
+    transition: background 0.2s ease; flex-shrink: 0;
+  }
+  .urgent-cta-btn:hover { background: #4a8e62; }
+
+  /* ===== END NEW SECTIONS ===== */
+
+
 
 
 
@@ -727,6 +860,11 @@
     .fw-tags { gap: 6px; }
     .fw-tag { font-size: 10px; }
 
+    .sis-intro { grid-template-columns: 1fr; gap: 24px; }
+    .sis-cards { grid-template-columns: 1fr; }
+    .proof-strip { grid-template-columns: repeat(2, 1fr); }
+    .urgent-cta { flex-direction: column; padding: 24px 20px; }
+    .sis-audience { flex-direction: column; gap: 16px; }
     .services-strip { grid-template-columns: 1fr; }
     .page-guide { padding: 16px 18px; gap: 10px; }
     .pg-items { gap: 6px; }
@@ -745,12 +883,12 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-eyebrow">Live Policy Signal Tracker</div>
-  <h1>What's moving in India's gender policy landscape, <em>right now.</em></h1>
-  <p class="hero-sub">Five signals worth watching this month. Updated alongside every issue of The Policy Monitor. You bring the ground reality. We bring the policy architecture.</p>
+  <div class="hero-eyebrow">Southward Collective — Boutique Policy Intelligence</div>
+  <h1>We help organisations act faster in India's <em>changing policy environment.</em></h1>
+  <p class="hero-sub">State-level insight. Gender expertise. Decision-useful briefs. We identify what matters now — and what to do next.</p>
   <div class="update-badge">
     <div class="dot"></div>
-    Last updated: April 17th, 2026
+    Last updated: April 21st, 2026
   </div>
 </div>
 
@@ -765,8 +903,9 @@
       <a class="pg-item" href="#brief">Sample Brief</a>
       <a class="pg-item" href="#context">Brief Us on Your Context</a>
       <a class="pg-item" href="#funding">Open Funding Windows</a>
+      <a class="pg-item" href="#stateintel">State Intelligence Studio</a>
       <a class="pg-item" href="#southasia">South Asia Corner</a>
-      <a class="pg-item" href="#signup">Get the Full Brief</a>
+      <a class="pg-item" href="#signup">Work With Us</a>
     </div>
   </div>
 
@@ -776,36 +915,70 @@
       <div class="svc-label">Monthly Subscription</div>
       <div class="svc-title">The Policy Monitor</div>
       <ul class="svc-items">
-        <li>Monthly policy signals brief</li>
+        <li>Five curated signals, monthly</li>
         <li>Donor landscape intelligence</li>
         <li>Parliamentary digest</li>
         <li>Funding window alerts</li>
-        <li>Positioning notes</li>
+        <li>Positioning notes for your sector</li>
       </ul>
       <span class="svc-pilot">Free pilot: April–June 2026</span>
     </div>
     <div class="svc-card tier-2">
       <div class="svc-label">Embedded Analyst</div>
-      <div class="svc-title">Custom Intelligence, Monthly</div>
+      <div class="svc-title">Your Intelligence Partner</div>
       <ul class="svc-items">
-        <li>Policy tracking tailored to your programme</li>
+        <li>Custom tracking for your programme</li>
         <li>Proposal inputs and donor framing</li>
+        <li>State-level intelligence on demand</li>
         <li>Ongoing strategic support</li>
-        <li>Sector-specific signal monitoring</li>
       </ul>
-      <span class="svc-pilot">Inquire for availability</span>
+      <span class="svc-pilot">Limited availability — inquire now</span>
     </div>
     <div class="svc-card tier-3">
       <div class="svc-label">One-Off Deliverables</div>
-      <div class="svc-title">When You Need It Now</div>
+      <div class="svc-title">Decision-Useful, Fast</div>
       <ul class="svc-items">
         <li>Funding scans and opportunity notes</li>
-        <li>Donor language and framing documents</li>
+        <li>Donor language and proposal framing</li>
         <li>Policy alignment audits</li>
-        <li>Targeted policy briefs</li>
+        <li>State entry and transition briefs</li>
       </ul>
-      <span class="svc-pilot">Write to us with your need</span>
+      <span class="svc-pilot">48-hour turnaround available</span>
     </div>
+  </div>
+
+  <!-- SOCIAL PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-card">
+      <div class="proof-icon">🏛️</div>
+      <div class="proof-stat">Sector leaders</div>
+      <div class="proof-label">Trusted by programme officers at bilateral and civil society organisations</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-icon">📋</div>
+      <div class="proof-stat">Advisory firms</div>
+      <div class="proof-label">Shared with consultancies navigating India's policy environment</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-icon">🎯</div>
+      <div class="proof-stat">Decision-useful</div>
+      <div class="proof-label">Built for real-world decisions — not academic reading lists</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-icon">⚡</div>
+      <div class="proof-stat">48-hour</div>
+      <div class="proof-label">Turnaround on urgent intelligence requests and one-off briefs</div>
+    </div>
+  </div>
+
+  <!-- URGENT CTA BANNER -->
+  <div class="urgent-cta">
+    <div class="urgent-cta-left">
+      <div class="urgent-cta-label">Available this month</div>
+      <div class="urgent-cta-title">Need a custom brief urgently?</div>
+      <div class="urgent-cta-sub">Funding scan. Donor framing note. State entry brief. Policy alignment audit.<br>48-hour turnaround for organisations with an active deadline.</div>
+    </div>
+    <a href="#" onclick="navigator.clipboard && navigator.clipboard.writeText('laavvanyadhankar8@gmail.com'); alert('Email copied: laavvanyadhankar8@gmail.com'); return false;" class="urgent-cta-btn">Write to us now →</a>
   </div>
 
   <!-- 01: SIGNALS -->
@@ -1151,7 +1324,7 @@
   </div>
 
   <div style="margin-bottom:24px;">
-    <p style="font-size:15px; color:var(--muted); line-height:1.7; max-width:720px;">A curated set of verified, active funding calls relevant to India's gender and development sector. Not everything that's open — only what's worth your time, with the language you need to respond. <span style="color:var(--dark-green); font-weight:600;">Verified April 17, 2026.</span> </p>
+    <p style="font-size:15px; color:var(--muted); line-height:1.7; max-width:720px;">A curated set of verified, active funding calls relevant to India's gender and development sector. Not everything that's open — only what's worth your time, with the language you need to respond. <span style="color:var(--dark-green); font-weight:600;">Verified April 12, 2026.</span> Sources: india.unfpa.org, fundsforngos.org, sbifoundation.in.</p>
   </div>
 
   <div class="fw-grid">
@@ -1322,9 +1495,98 @@
 
   <div class="section-gap"></div>
 
-  <!-- 06: SOUTH ASIA CORNER -->
+  <!-- 08: STATE INTELLIGENCE STUDIO -->
+  <div id="stateintel" class="section-header">
+    <div class="section-number">08</div>
+    <div class="section-title">State Intelligence Studio</div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="sis-intro">
+    <div class="sis-left">
+      <div class="sis-headline">Strategic intelligence for organisations operating across India's states.</div>
+      <div class="sis-body">National reports miss what states are actually doing. We decode the ground reality — political transitions, implementation risks, funding movements, partnership ecosystems — so your organisation can move with confidence, not guesswork.</div>
+    </div>
+    <div class="sis-pillars">
+      <div class="sis-pillar"><div class="sis-pillar-dot"></div>Policy shifts and legislative transitions</div>
+      <div class="sis-pillar"><div class="sis-pillar-dot"></div>Political transitions and electoral dynamics</div>
+      <div class="sis-pillar"><div class="sis-pillar-dot"></div>Women's economic participation trends, state-level</div>
+      <div class="sis-pillar"><div class="sis-pillar-dot"></div>Funding opportunities and CSR windows</div>
+      <div class="sis-pillar"><div class="sis-pillar-dot"></div>Implementation risks before they become crises</div>
+      <div class="sis-pillar"><div class="sis-pillar-dot"></div>Partnership ecosystems and org mapping</div>
+    </div>
+  </div>
+
+  <div class="sis-cards">
+
+    <a href="#" onclick="navigator.clipboard && navigator.clipboard.writeText('laavvanyadhankar8@gmail.com'); alert('Email copied — write to us with your state and timeline'); return false;" class="sis-card election">
+      <div class="sis-card-header">
+        <span class="sis-card-icon">🗳️</span>
+        <div class="sis-card-label">Election Intelligence</div>
+        <div class="sis-card-title">Election Transition Watch</div>
+      </div>
+      <div class="sis-card-body">
+        <div class="sis-card-desc">State elections reshape programme landscapes — funding priorities shift, bureaucratic relationships change, scheme implementation stalls or accelerates. We track what transitions mean for your work on the ground.</div>
+        <div class="sis-card-tags">
+          <span class="sis-card-tag">Tamil Nadu</span>
+          <span class="sis-card-tag">Kerala</span>
+          <span class="sis-card-tag">Bihar</span>
+          <span class="sis-card-tag">West Bengal</span>
+        </div>
+        <div class="sis-card-cta">Commission a brief <span>→</span></div>
+      </div>
+    </a>
+
+    <a href="#" onclick="navigator.clipboard && navigator.clipboard.writeText('laavvanyadhankar8@gmail.com'); alert('Email copied — write to us with your state and timeline'); return false;" class="sis-card entry">
+      <div class="sis-card-header">
+        <span class="sis-card-icon">🗺️</span>
+        <div class="sis-card-label">State Entry Intelligence</div>
+        <div class="sis-card-title">State Entry Brief</div>
+      </div>
+      <div class="sis-card-body">
+        <div class="sis-card-desc">Entering a new state? Before the first stakeholder meeting, know the political landscape, key implementing actors, existing programme architecture, FCRA dynamics, and where your work fits the funding environment.</div>
+        <div class="sis-card-tags">
+          <span class="sis-card-tag">Uttarakhand</span>
+          <span class="sis-card-tag">Rajasthan</span>
+          <span class="sis-card-tag">UP</span>
+          <span class="sis-card-tag">Odisha</span>
+        </div>
+        <div class="sis-card-cta">Commission a brief <span>→</span></div>
+      </div>
+    </a>
+
+    <a href="#" onclick="navigator.clipboard && navigator.clipboard.writeText('laavvanyadhankar8@gmail.com'); alert('Email copied — write to us with your state and timeline'); return false;" class="sis-card opportunity">
+      <div class="sis-card-header">
+        <span class="sis-card-icon">📡</span>
+        <div class="sis-card-label">Opportunity Mapping</div>
+        <div class="sis-card-title">Opportunity Intelligence</div>
+      </div>
+      <div class="sis-card-body">
+        <div class="sis-card-desc">Where are funding, policy, and partnerships moving in your state — right now? We scan the landscape so you can position your organisation before the window closes, not after the deadline passes.</div>
+        <div class="sis-card-tags">
+          <span class="sis-card-tag">Funding windows</span>
+          <span class="sis-card-tag">Policy alignment</span>
+          <span class="sis-card-tag">Partner mapping</span>
+        </div>
+        <div class="sis-card-cta">Commission a brief <span>→</span></div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="sis-audience">
+    <div class="sis-audience-text">
+      <strong>Available as bespoke briefs</strong> for NGOs, foundations, consultancies, and mission-driven teams.<br>
+      Each brief is researched and written for your specific state, timeline, and programme context.
+    </div>
+    <a href="#" onclick="navigator.clipboard && navigator.clipboard.writeText('laavvanyadhankar8@gmail.com'); alert('Email copied: laavvanyadhankar8@gmail.com'); return false;" class="sis-audience-cta">Discuss your brief →</a>
+  </div>
+
+  <div class="section-gap"></div>
+
+  <!-- 07: SOUTH ASIA CORNER -->
   <div id="southasia" class="section-header">
-    <div class="section-number">06</div>
+    <div class="section-number">07</div>
     <div class="section-title">First in South Asia</div>
     <div class="section-line"></div>
   </div>
@@ -1360,21 +1622,21 @@
 
   <div class="section-gap"></div>
 
-  <!-- 07: SIGNUP -->
+  <!-- 09: SIGNUP -->
   <div id="signup" class="section-header">
-    <div class="section-number">07</div>
-    <div class="section-title">Get the Full Analysis</div>
+    <div class="section-number">09</div>
+    <div class="section-title">Work With Us</div>
     <div class="section-line"></div>
   </div>
 
   <div class="signup-section">
     <div class="signup-left">
-      <h2>The Policy Monitor, delivered the 1st of every month.</h2>
-      <p>This tracker shows the signals. The brief shows you what to do about them, with original analysis, donor landscape intelligence, and stress-test prompts specific to your programme context.</p>
+      <h2>The Policy Monitor — delivered the 1st of every month.</h2>
+      <p>This tracker shows the signals. The brief shows you what to do about them — original analysis, donor landscape intelligence, and stress-test prompts calibrated to your programme context. Sharp organisations use it to stay ahead of the policy curve.</p>
       <div class="tier-pills">
-        <div class="tier-pill">Rs 10,000/month — The Policy Monitor</div>
-        <div class="tier-pill">Rs 50,000/month — The Embedded Analyst: monthly policy and donor intelligence tailored to your programme</div>
-        <div class="tier-pill">Free pilot spots available</div>
+        <div class="tier-pill">The Policy Monitor — Monthly subscription</div>
+        <div class="tier-pill">The Embedded Analyst — Your intelligence partner, monthly</div>
+        <div class="tier-pill">Free pilot spots open through June 2026</div>
       </div>
     </div>
     <div class="signup-right">
@@ -1408,7 +1670,7 @@
 
 <footer>
   <div class="footer-brand">Southward Collective</div>
-  <div class="footer-tagline">Policy intelligence for South Asia's gender and development sector</div>
+  <div class="footer-tagline">Boutique policy intelligence for organisations navigating India's policy reality</div>
   <div class="footer-links">
     <span style="font-size:13px; color:var(--border-green);">laavvanyadhankar8 [at] gmail [dot] com</span>
     <a href="https://linkedin.com/in/laavvanya-d-b05532144" target="_blank">LinkedIn</a>
