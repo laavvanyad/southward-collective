@@ -753,7 +753,91 @@ footer {
 .footer-links a:hover { color: var(--sage); }
 .footer-links span { font-size: 12px; color: rgba(212,234,217,0.5); }
 
-/* ── FADE-UP ANIMATION ── */
+/* ── IMAGE PANELS ── */
+.img-panel {
+  width: 100%; border-radius: 12px; overflow: hidden;
+  position: relative; margin-bottom: 0;
+}
+.img-panel img {
+  width: 100%; display: block;
+  filter: sepia(20%) contrast(1.05) brightness(0.92);
+  transition: transform 6s ease;
+}
+.img-panel:hover img { transform: scale(1.02); }
+.img-panel-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 12px 20px;
+  background: linear-gradient(transparent, rgba(26,58,42,0.85));
+  font-size: 11px; color: rgba(212,234,217,0.8);
+  font-style: italic; letter-spacing: 0.3px;
+}
+
+.img-strip {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px; margin: 40px 0;
+}
+.img-strip-card {
+  border-radius: 10px; overflow: hidden; position: relative;
+  height: 180px;
+}
+.img-strip-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(30%) sepia(15%) contrast(1.08) brightness(0.88);
+  transition: transform 5s ease, filter 0.4s ease;
+}
+.img-strip-card:hover img { transform: scale(1.05); filter: grayscale(10%) sepia(10%) contrast(1.05) brightness(0.95); }
+.img-strip-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(26,58,42,0.3) 0%, rgba(26,58,42,0.0) 60%);
+  pointer-events: none;
+}
+.img-strip-label {
+  position: absolute; top: 14px; left: 14px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--white);
+  background: rgba(26,58,42,0.7); padding: 4px 10px; border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+/* ── COLOURFUL BUDGET TRACKER ── */
+.ministry-row-header { cursor: pointer; transition: background 0.15s; }
+.cat-pill {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 3px; margin-left: 6px;
+  vertical-align: middle;
+}
+.cat-women { background: #FDEEF8; color: #8B1A6B; }
+.cat-labour { background: #EEF4FE; color: #1A4F8B; }
+.cat-health { background: #FDEEE8; color: #8B3A1A; }
+.cat-finance { background: #EEF8EE; color: #2D5A2D; }
+
+.ministry-row { border-left: 4px solid transparent; transition: border-color 0.2s; }
+.ministry-row[data-cat="women"] { border-left-color: #D98AC0; }
+.ministry-row[data-cat="labour"] { border-left-color: #7AAAD4; }
+.ministry-row[data-cat="health"] { border-left-color: #D4916A; }
+.ministry-row[data-cat="finance"] { border-left-color: var(--mid-green); }
+.ministry-row.open { background: var(--light-green); }
+
+.alloc-bar {
+  height: 4px; border-radius: 2px; margin-top: 4px; max-width: 120px;
+}
+
+/* ── SIGNAL CARD ACCENT ── */
+.signal-card { border-left: 4px solid transparent; }
+.signal-card:nth-child(1) { border-left-color: #4040C0; }
+.signal-card:nth-child(2) { border-left-color: var(--mid-green); }
+.signal-card:nth-child(3) { border-left-color: var(--gold); }
+.signal-card:nth-child(4) { border-left-color: #C04040; }
+.signal-card:nth-child(5) { border-left-color: var(--mid-green); }
+
+/* ── SECTION COLOUR BANDS ── */
+.section-band {
+  margin: 0 -48px; padding: 4px 0;
+}
+@media (max-width: 900px) { .section-band { margin: 0 -20px; } }
+
+
 .fade-up {
   opacity: 0; transform: translateY(16px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -831,7 +915,7 @@ footer {
     <div class="hero-meta">
       <div class="update-badge">
         <div class="update-dot"></div>
-        Updated April 24, 2026
+        Updated April 23, 2026
       </div>
       <div class="hero-stat"><strong>11 states</strong> profiled · <strong>48h</strong> turnaround · Free pilot through June 2026</div>
     </div>
@@ -882,6 +966,27 @@ footer {
   <a href="#" onclick="navigator.clipboard&&navigator.clipboard.writeText('laavvanyadhankar8@gmail.com');alert('Email copied: laavvanyadhankar8@gmail.com');return false;" class="urgent-banner-btn">Write to us →</a>
 </div>
 
+<!-- IMAGE STRIP -->
+<div style="max-width:1180px;margin:0 auto;padding:24px 48px 0;">
+  <div class="img-strip">
+    <div class="img-strip-card">
+      <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?w=600&q=80" alt="Women in rural India" loading="lazy">
+      <div class="img-strip-overlay"></div>
+      <div class="img-strip-label">Field reality</div>
+    </div>
+    <div class="img-strip-card">
+      <img src="https://images.unsplash.com/photo-1585159812596-fac104686981?w=600&q=80" alt="Indian village women" loading="lazy">
+      <div class="img-strip-overlay"></div>
+      <div class="img-strip-label">Community</div>
+    </div>
+    <div class="img-strip-card">
+      <img src="https://images.unsplash.com/photo-1619468034157-fd6e56113b29?w=600&q=80" alt="Rural India landscape" loading="lazy">
+      <div class="img-strip-overlay"></div>
+      <div class="img-strip-label">State intelligence</div>
+    </div>
+  </div>
+</div>
+
 <div class="main">
 
 <!-- 01: POLICY SIGNALS -->
@@ -897,13 +1002,13 @@ footer {
   <div class="signal-card fade-up" onclick="toggleSignal(this)">
     <div class="signal-header">
       <div class="status-pill status-alert"><div class="pill-dot"></div>Breaking</div>
-      <div class="signal-title">Women's Reservation Bill, tied with The Delimitation Bill defeated </div>
+      <div class="signal-title">Women's Reservation Bill defeated in Lok Sabha — implementation of 33% quota further delayed</div>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </div>
     <div class="signal-body">
       <div class="signal-body-inner">
         <div class="signal-what">What moved</div>
-        <p class="signal-detail">On April 17, 2026, the Constitution (131st Amendment) Bill — which would have fast-tracked 33% reservation for women in Parliament and state assemblies — was defeated in the Lok Sabha with 298 votes in favour and 230 against, falling short of the required two-thirds majority.</p>
+        <p class="signal-detail">On April 17, 2026, the Constitution (131st Amendment) Bill — which would have fast-tracked 33% reservation for women in Parliament and state assemblies — was defeated in the Lok Sabha with 298 votes in favour and 230 against, falling short of the required two-thirds majority. The bill had linked implementation of the 2023 Nari Shakti Vandan Act to a simultaneous expansion of the Lok Sabha from 550 to 850 seats and a delimitation of constituencies. This linkage was rejected on the floor of the House, making it the first time a constitutional amendment has been blocked in recent parliamentary history. The 2023 Nari Shakti Vandan Act remains in force — implementation is now contingent on delimitation, the timeline for which remains undefined.</p>
         <div class="signal-action"><div class="signal-action-label">What to do</div><p>The defeat does not end women's reservation — the 2023 Nari Shakti Vandan Act remains law, with implementation pending delimitation. For organisations doing governance or political participation work, this is a live advocacy moment: the distinction between the Act and its implementation is exactly the kind of gap that civil society can document and pressure. For donors assessing women's political participation programming in India, the political salience of this issue has sharply increased.</p></div>
         <div class="signal-source">Source: <span>Lok Sabha records, April 17, 2026; NUS Institute of South Asian Studies analysis, April 21, 2026; AP, April 16, 2026</span></div>
       </div>
@@ -1144,6 +1249,12 @@ footer {
   <a href="#" onclick="navigator.clipboard&&navigator.clipboard.writeText('laavvanyadhankar8@gmail.com');alert('Email copied: laavvanyadhankar8@gmail.com');return false;" class="sis-footer-btn">Discuss your brief →</a>
 </div>
 
+<!-- MID-PAGE IMAGE PANEL -->
+<div style="margin:0 0 0;" class="img-panel fade-up">
+  <img src="https://images.unsplash.com/photo-1559163499-413811fb2344?w=1200&q=80" alt="Women at work in India" loading="lazy" style="height:220px;object-fit:cover;width:100%;border-radius:12px;">
+  <div class="img-panel-caption">Intelligence that reflects ground reality — not just what government documents say.</div>
+</div>
+
 <div class="section-gap"></div>
 
 <!-- 05: FUNDING WINDOWS -->
@@ -1338,8 +1449,8 @@ footer {
     <div class="brief-signal-row">
       <div class="brief-signal-num">01</div>
       <div>
-        <div class="brief-signal-title">Women's Reservation Bill defeated — first constitutional loss for Modi government</div>
-        <div class="brief-signal-sub">April 17 Lok Sabha vote · 298 for, 230 against · opposition rare unity · BJP takes issue to voters · what it means for political participation programmes</div>
+        <div class="brief-signal-title">Women's Reservation Bill defeated in Lok Sabha — 33% quota implementation further delayed</div>
+        <div class="brief-signal-sub">April 17 Lok Sabha vote · 298 for, 230 against · Nari Shakti Vandan Act remains law · implementation tied to delimitation · what it means for political participation programmes</div>
       </div>
       <div class="brief-signal-tag alert" style="background:rgba(64,64,192,0.2);color:#4040C0;">Breaking</div>
     </div>
@@ -1382,6 +1493,27 @@ footer {
   </div>
   <div class="brief-reveal" id="briefReveal">
     <p>Write to us at <strong>laavvanyadhankar8 [at] gmail [dot] com</strong> — subject: April Brief Request. Free pilot spots open through June 2026.</p>
+  </div>
+</div>
+
+<div class="section-gap"></div>
+
+<!-- BOTTOM IMAGE PANEL -->
+<div class="img-strip fade-up">
+  <div class="img-strip-card">
+    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Indian women workers" loading="lazy">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-label">Livelihoods</div>
+  </div>
+  <div class="img-strip-card">
+    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80" alt="Community health workers India" loading="lazy">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-label">Health workers</div>
+  </div>
+  <div class="img-strip-card">
+    <img src="https://images.unsplash.com/photo-1569396116180-210c182bedb8?w=600&q=80" alt="India rural development" loading="lazy">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-label">Policy context</div>
   </div>
 </div>
 
@@ -1547,17 +1679,33 @@ let currentYear = '2026';
 
 function renderBudget() {
   const data = budgetData[currentYear];
-  document.getElementById('ministryList').innerHTML = data.map(m => `
-    <div class="ministry-row" id="row-${m.id}">
+  const catColors = {
+    women: { bar: '#D98AC0', bg: '#FDEEF8', text: '#8B1A6B', label: 'Gender' },
+    labour: { bar: '#7AAAD4', bg: '#EEF4FE', text: '#1A4F8B', label: 'Labour' },
+    health: { bar: '#D4916A', bg: '#FDEEE8', text: '#8B3A1A', label: 'Health' },
+    finance: { bar: '#5A9E72', bg: '#EEF8EE', text: '#2D5A2D', label: 'Finance' }
+  };
+  document.getElementById('ministryList').innerHTML = data.map(m => {
+    const cat = m.id === 'mowcd' ? 'women' : m.id === 'mohfw' ? 'health' : m.id === 'molfw' ? 'labour' : m.id === 'mord' ? 'labour' : 'finance';
+    const c = catColors[cat];
+    const barWidth = Math.min(Math.round((m.allocNum / 449228) * 100), 100);
+    return `
+    <div class="ministry-row" id="row-${m.id}" data-cat="${cat}">
       <div class="ministry-row-header" onclick="toggleMinistry('${m.id}')">
         <div>
-          <div class="ministry-name">${m.name}</div>
+          <div class="ministry-name">
+            ${m.name}
+            <span class="cat-pill cat-${cat}" style="background:${c.bg};color:${c.text};">${c.label}</span>
+          </div>
           <div class="ministry-abbr">${m.abbr}</div>
+          <div class="alloc-bar" style="background:${c.bar};width:${barWidth}%;opacity:0.5;"></div>
         </div>
         <div class="alloc-val">${m.alloc}</div>
         <div><span class="yoy-badge yoy-${m.yoyDir}">${m.yoy}</span></div>
         <div class="gender-bar-wrap">
-          <div class="gender-bar-track"><div class="gender-bar-fill" style="width:${Math.min(m.shareNum,100)}%"></div></div>
+          <div class="gender-bar-track">
+            <div class="gender-bar-fill" style="width:${Math.min(m.shareNum,100)}%;background:${c.bar};"></div>
+          </div>
           <div class="gender-pct">${m.genderShare}</div>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s;flex-shrink:0;"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1567,13 +1715,14 @@ function renderBudget() {
         <div><div class="expand-stat-label">Utilisation</div><div class="expand-stat-value">${m.utilisation}</div></div>
         <div><div class="expand-stat-label">Key schemes</div><div style="font-size:13px;color:var(--dark-green);margin-top:4px;line-height:1.5;">${m.keyScheme}</div></div>
         <div></div>
-        <div class="southward-signal" style="grid-column:1/-1">
+        <div class="southward-signal" style="grid-column:1/-1;border-left-color:${c.bar};">
           <div class="southward-signal-label">Southward Signal</div>
           <p>${m.signal}</p>
           <div class="southward-signal-note">${m.note}</div>
         </div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function switchYear(year, btn) {
@@ -1598,7 +1747,7 @@ function toggleCheck(el) { el.classList.toggle('checked'); }
 const signalLibrary = [
   { id:'reservation', relevantRegions:['national'], relevantThemes:['policy','gbv'], urgent:true,
     title:'Women\'s Reservation Bill defeated — April 17, 2026',
-    text:'First constitutional amendment blocked under Modi. 33% reservation for Parliament and state assemblies delayed. The 2023 Nari Shakti Vandan Act remains law — implementation pending delimitation.' },
+    text:'The Constitution (131st Amendment) Bill was defeated on April 17 — 298 for, 230 against. The 2023 Nari Shakti Vandan Act remains law but implementation is now tied to delimitation, with no defined timeline.' },
   { id:'nirbhaya', relevantRegions:['south','national'], relevantThemes:['gbv','policy'], urgent:true,
     title:'Nirbhaya Fund: Rs 1,631 cr unreleased — civil society window opening',
     text:'Position before the formal call drops. Organisations doing GBV or survivor support should prepare government partnership briefs now.' },
