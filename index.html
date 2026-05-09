@@ -57,6 +57,17 @@ nav{background:var(--dark-green);padding:14px 48px;display:flex;justify-content:
 .section-line{flex:1;height:1px;background:var(--border-green)}
 .section-gap{height:52px}
 
+.who-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:16px;margin-bottom:20px}
+.who-card{background:var(--white);border:1px solid var(--border-green);border-radius:10px;padding:22px 24px}
+.who-card.use-cases{background:var(--light-green)}
+.who-label{font-size:9px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--mid-green);margin-bottom:14px}
+.who-list{display:flex;flex-direction:column;gap:7px}
+.who-item{font-size:13px;color:var(--body);padding:7px 12px;background:var(--light-green);border:1px solid var(--border-green);border-radius:6px;display:flex;align-items:center;gap:9px;line-height:1.4}
+.who-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--mid-green);flex-shrink:0}
+.use-case-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.use-case-item{background:var(--white);border:1px solid var(--border-green);border-radius:7px;padding:12px 14px}
+.use-case-title{font-family:'EB Garamond',serif;font-size:14px;color:var(--dark-green);font-weight:600;margin-bottom:4px}
+.use-case-desc{font-size:11px;color:var(--muted);line-height:1.55}
 .svc-arch{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .svc-card{background:var(--white);border:1px solid var(--border-green);border-radius:10px;padding:20px 22px;position:relative;overflow:hidden}
 .svc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px}
@@ -325,6 +336,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
   .hero{padding:44px 20px 32px}
   .main{padding:32px 20px 0}
   .explore-bar,.urgent-strip{padding-left:20px;padding-right:20px}
+  .who-grid,.use-case-grid{grid-template-columns:1fr}
   .svc-arch,.workflows-grid,.sis-intro,.sis-cards,.sa-cards,.context-grid,.signup-section,.budget-summary-row{grid-template-columns:1fr}
   .fw-card-top{grid-template-columns:1fr}
   .fw-card-body{grid-template-columns:1fr}
@@ -463,7 +475,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
 <nav>
   <div class="nav-brand">Southward Collective</div>
   <div class="nav-right">
-    <a href="usaid.html" class="nav-pill">Budget Tracker →</a>
+    <a href="usaid.html" class="nav-pill">Intelligence Tracker →</a>
     <a href="#signup" class="nav-pill gold">Work With Us</a>
   </div>
 </nav>
@@ -471,12 +483,12 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Southward Collective - Boutique Policy Intelligence</div>
+    <div class="hero-eyebrow">Southward Collective — Boutique Policy Intelligence</div>
     <h1>We help organisations act faster<br>in India's <em>changing policy environment.</em></h1>
-    <p class="hero-sub">State-grounded. Gender-focused. Built for decisions.</p>
+    <p class="hero-sub">State-level insight. Gender expertise. Decision-useful briefs. We identify what matters now — and what to do next.</p>
     <div class="hero-meta">
-      <div class="update-badge"><div class="dot"></div>Updated May 4, 2026</div>
-      <div class="hero-tagline">Focused engagements. Rapid turnaround. Limited intake through June 2026.</div>
+      <div class="update-badge"><div class="dot"></div>Updated May 8, 2026</div>
+      <div class="hero-tagline">All states tracked · 48h turnaround · Limited pilot cohort until June 2026</div>
     </div>
   </div>
   <div class="hero-credit">Source: Vallari Sanzgiri via SabrangIndia.in</div>
@@ -485,24 +497,18 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
 <div class="explore-bar">
   <button class="explore-toggle" onclick="toggleExplore(this)" aria-expanded="false">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-    Explore
+    What's on this page
   </button>
   <div class="explore-chips" id="exploreChips">
-    <a class="explore-chip" href="#services">Service Architecture</a>
-    <a class="explore-chip" href="#brief">Brief Us on Your Context</a>
-    <a class="explore-chip" href="#workflows">Workflows &amp; Tools</a>
-    <a class="explore-chip" href="#signals">Policy Signals</a>
-    <a class="explore-chip" href="#funding">Open Funding Windows</a>
-    <a class="explore-chip" href="#budget">State Intelligence Labs</a>
-    <a class="explore-chip" href="#stateintel">Gender Budget Tracker</a>
-    <a class="explore-chip" href="#southasia">Sample Issue</a>
-    <a class="explore-chip" href="#context">South Asia Corner</a>
+    <a class="explore-chip" href="#services">Who We Work With &amp; How</a>
+    <a class="explore-chip" href="#signals">Intelligence &amp; Signals</a>
+    <a class="explore-chip" href="#stateintel">State Intelligence Labs</a>
     <a class="explore-chip" href="#signup">Work With Us</a>
   </div>
 </div>
 
 <div class="urgent-strip">
-  <div class="urgent-strip-text">Need a custom brief this month?<span>Funding scan. Donor framing. Programme based policy monitoring. State entry briefs.</span></div>
+  <div class="urgent-strip-text">Need a custom brief this month?<span>Funding scan. Donor framing. State entry briefs.</span></div>
   <a href="#" onclick="navigator.clipboard&&navigator.clipboard.writeText('laavvanyadhankar8@gmail.com');alert('Email copied: laavvanyadhankar8@gmail.com');return false;" class="urgent-strip-btn">Write to us →</a>
 </div>
 
@@ -515,6 +521,52 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
   <div class="section-line"></div>
 </div>
 
+<!-- WHO WE WORK WITH + USE CASES -->
+<div class="who-grid">
+  <div class="who-card">
+    <div class="who-label">Southward works with</div>
+    <div class="who-list">
+      <div class="who-item">Nonprofits and civil society organisations</div>
+      <div class="who-item">Research and policy institutions</div>
+      <div class="who-item">Donor-funded programmes and bilateral teams</div>
+      <div class="who-item">Implementation partners and consultancies</div>
+      <div class="who-item">Social impact advisory firms</div>
+      <div class="who-item">Communications and advocacy teams</div>
+      <div class="who-item">Organisations entering new states or thematic areas</div>
+    </div>
+  </div>
+  <div class="who-card use-cases">
+    <div class="who-label">How organisations use Southward</div>
+    <div class="use-case-grid">
+      <div class="use-case-item">
+        <div class="use-case-title">Donor scans</div>
+        <div class="use-case-desc">Understanding who is funding what — and where gaps are opening up</div>
+      </div>
+      <div class="use-case-item">
+        <div class="use-case-title">Programme intelligence</div>
+        <div class="use-case-desc">Staying current on policy shifts that affect live implementation</div>
+      </div>
+      <div class="use-case-item">
+        <div class="use-case-title">Rapid policy interpretation</div>
+        <div class="use-case-desc">Translating new legislation, budgets, and committee reports into programme implications</div>
+      </div>
+      <div class="use-case-item">
+        <div class="use-case-title">Proposal support</div>
+        <div class="use-case-desc">Grounding applications in current policy language and verified data before submission</div>
+      </div>
+      <div class="use-case-item">
+        <div class="use-case-title">State entry mapping</div>
+        <div class="use-case-desc">Knowing the political landscape, ecosystem, and risks before the first field visit</div>
+      </div>
+      <div class="use-case-item">
+        <div class="use-case-title">Briefing support</div>
+        <div class="use-case-desc">Preparing leadership for funder meetings, government engagement, or board presentations</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE CARDS -->
 <div class="svc-arch">
   <div class="svc-card ongoing">
     <div class="svc-group-label">Ongoing Intelligence</div>
@@ -546,7 +598,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
     <ul class="svc-bullets">
       <li>Structured deep dive into state policy landscape</li>
       <li>Implementation gaps and ecosystem mapping</li>
-      <li>All major states and UTs covered · 48h delivery*</li>
+      <li>All major states and UTs covered · 48h delivery</li>
     </ul>
     <div class="svc-for">For: <span>organisations entering a new state or resetting strategy</span></div>
   </div>
@@ -587,7 +639,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
 <div class="section-gap"></div>
 <div id="signals" class="section-header">
   <div class="section-number">02</div>
-  <div class="section-title">Five Signals to Watch — May, 2026</div>
+  <div class="section-title">Five Signals to Watch — May 8, 2026</div>
   <div class="section-line"></div>
 </div>
 
@@ -750,11 +802,11 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
 <div class="workflows-grid">
   <a href="#signals" class="wf-card">
     <div class="wf-marker" style="background:var(--mid-green);"></div>
-    <div><div class="wf-label" style="color:var(--mid-green);">Monthly · Updated May 3</div><div class="wf-title">Policy Signals</div><div class="wf-desc">Five verified signals from this month's monitoring — what moved, what it means, and what to do about it.</div><div class="wf-cta" style="color:var(--mid-green);">Go to signals <span>→</span></div></div>
+    <div><div class="wf-label" style="color:var(--mid-green);">Monthly · Updated May 8</div><div class="wf-title">Policy Signals</div><div class="wf-desc">Five verified signals from this month's monitoring — what moved, what it means, and what to do about it.</div><div class="wf-cta" style="color:var(--mid-green);">Go to signals <span>→</span></div></div>
   </a>
   <a href="#funding" class="wf-card">
     <div class="wf-marker" style="background:var(--gold);"></div>
-    <div><div class="wf-label" style="color:var(--gold);">Verified · May 3, 2026</div><div class="wf-title">Open Funding Windows</div><div class="wf-desc">Curated active calls for India's gender sector — with the language you need to respond.</div><div class="wf-cta" style="color:var(--gold);">Go to funding windows <span>→</span></div></div>
+    <div><div class="wf-label" style="color:var(--gold);">Verified · May 8, 2026</div><div class="wf-title">Open Funding Windows</div><div class="wf-desc">Curated active calls for India's gender sector — with the language you need to respond.</div><div class="wf-cta" style="color:var(--gold);">Go to funding windows <span>→</span></div></div>
   </a>
   <a href="#budget" class="wf-card">
     <div class="wf-marker" style="background:var(--dark-green);"></div>
@@ -773,7 +825,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
   <div class="section-line"></div>
 </div>
 
-<p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.65;max-width:660px;">Verified active calls for India's gender and development sector. Not everything open — only what's worth your time, with the language you need to respond. <strong style="color:var(--dark-green);">Verified May 3, 2026.</strong></p>
+<p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.65;max-width:660px;">Verified active calls for India's gender and development sector. Not everything open — only what's worth your time, with the language you need to respond. <strong style="color:var(--dark-green);">Verified May 8, 2026.</strong></p>
 
 <div class="fw-grid">
 
@@ -805,25 +857,25 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
 
   <div class="fw-card">
     <div class="fw-card-top">
-      <div><div class="fw-funder-logo" style="background:#0072B1;">ISOC</div><div class="fw-funder-sub">Internet Society Foundation</div></div>
+      <div><div class="fw-funder-logo" style="background:#009EDB;">UN Women</div><div class="fw-funder-sub">UN Women India &amp; UNDP India</div></div>
       <div>
-        <div class="fw-title">Community-Centered Connectivity Grant Program — Digital Inclusion</div>
+        <div class="fw-title">Urban Childcare Innovation Challenge 2026 — Women-Led Enterprises, India</div>
         <div class="fw-tags">
-          <span class="fw-tag deadline-soon">Closes May 7, 2026</span>
-          <span class="fw-tag geo">Asia Pacific — India eligible</span>
-          <span class="fw-tag value">USD 50,000–200,000+</span>
+          <span class="fw-tag deadline-open">Rolling — verify on portal</span>
+          <span class="fw-tag geo">India — urban focus</span>
+          <span class="fw-tag value">Grants + incubation + mentorship</span>
         </div>
       </div>
-      <div class="fw-deadline-block"><div class="fw-deadline-label">Deadline</div><div class="fw-deadline-val">7 May</div><div class="fw-deadline-days" style="color:var(--gold);">Closing soon</div></div>
+      <div class="fw-deadline-block"><div class="fw-deadline-label">Type</div><div class="fw-deadline-val">Challenge</div><div class="fw-deadline-days" style="color:var(--mid-green);">Verify dates</div></div>
     </div>
     <div class="fw-card-body">
-      <div class="fw-what"><div class="fw-what-label">What they're funding</div><div class="fw-what-text">USD 50,000 to over USD 200,000 for locally designed connectivity solutions with community agency at their centre. India-based organisations working on last-mile digital inclusion, rural connectivity, or gender gaps in digital access are directly eligible.</div></div>
-      <div class="fw-insight"><div class="fw-insight-label">Southward Insight</div><div class="fw-insight-text">Directly relevant at the intersection of DPI and women's exclusion. The gender gap in rural smartphone ownership (35% women vs 51% men) is citable. Organisations building SHG-Business Correspondent models or community digital literacy infrastructure are best positioned. NSFI 2025-30 is a strong policy hook.</div></div>
+      <div class="fw-what"><div class="fw-what-label">What they're funding</div><div class="fw-what-text">Led by UN Women India with UNDP and implemented by Primus Partners, this challenge seeks to identify, support, and scale innovative childcare solutions that empower women and strengthen urban care systems. Offers grants, incubation support, and mentorship to women-led enterprises working on urban childcare innovation. Directly addresses the care economy gap — the Economic Survey 2025-26 acknowledged unpaid care work as a structural economic barrier for the first time.</div></div>
+      <div class="fw-insight"><div class="fw-insight-label">Southward Insight</div><div class="fw-insight-text">This is the first UN Women India initiative explicitly linking urban childcare to women's economic empowerment at the enterprise level — a significant shift from welfare framing to economic infrastructure framing. Directly relevant to organisations working on care economy, women's livelihoods, or urban informal workers. Cite NSFI 2025-30 and the Economic Survey 2025-26 care economy acknowledgment in any application.</div></div>
     </div>
     <div class="fw-card-footer">
-      <div class="fw-language"><strong>Language to use:</strong> "Community-centered connectivity," "locally designed solutions," "digital exclusion," "last-mile access." Cite GSMA Mobile Gender Gap Report 2024. Frame around community agency.</div>
+      <div class="fw-language"><strong>Language to use:</strong> "Care economy," "urban care infrastructure," "women's economic agency," "scalable childcare solutions," "gender-responsive urban systems." Anchor to Economic Survey 2025-26 unpaid care acknowledgment and NSFI 2025-30 for financial inclusion framing.</div>
       <div class="fw-action-links">
-        <a href="https://www.isocfoundation.org/grant-programmes/community-centered-connectivity-grant-program/" target="_blank" class="fw-link primary">View call →</a>
+        <a href="https://www.unwomen.org/en/about-us/where-we-are/south-asia/india" target="_blank" class="fw-link primary">View on UN Women India →</a>
         <a href="#" onclick="navigator.clipboard&&navigator.clipboard.writeText('laavvanyadhankar8@gmail.com');alert('Email copied');return false;" class="fw-link">Get help</a>
       </div>
     </div>
@@ -856,7 +908,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
   </div>
 
 </div>
-<div class="fw-verified">Verified May 3, 2026. Sources: <span>togetherwomenrise.org</span>, <span>isocfoundation.org</span>, <span>fundsforngos.org</span>. Always verify directly with the funder before submitting. Need help framing your proposal? Write to us.</div>
+<div class="fw-verified">Verified May 8, 2026. Sources: <span>togetherwomenrise.org</span>, <span>unwomen.org/india</span>, <span>fundsforngos.org</span>. Always verify directly with the funder before submitting. Need help framing your proposal? Write to us.</div>
 
 <div class="section-gap"></div>
 <div id="stateintel" class="section-header">
@@ -1087,11 +1139,11 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
     <h2>Start with a brief. Continue with what you need.</h2>
     <p>This is where most teams begin. We send a short, decision-useful brief, grounded in current policy signals and shaped to your programme context. From there, we build ongoing support around what you actually need.</p>
     <div class="tier-pills">
-      <div class="tier-pill">The Policy Monitor — monthly intelligence</div>
+      <div class="tier-pill">The Policy Monitor — monthly intelligence brief</div>
       <div class="tier-pill">Field Signals — programme-linked tracking</div>
       <div class="tier-pill">State Intelligence Labs — deep dives for strategy</div>
       <div class="tier-pill">Embedded Analyst — ongoing, integrated support</div>
-   </div>
+    </div>
   </div>
   <div>
     <div class="signup-form" id="signupForm">
@@ -1099,11 +1151,11 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
       <div class="form-group"><label>Work email</label><input type="email" id="emailInput" placeholder="priya@organisation.org" /></div>
       <div class="form-group"><label>Organisation <span>(optional)</span></label><input type="text" id="orgInput" placeholder="e.g. Tata Trusts, IWWAGE, GIZ India" /></div>
       <button class="submit-btn" onclick="handleSubmit()">Request the May Brief <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-      <p class="form-note">No commitment. If it’s useful, we build from there. Limited intake through June 2026.</p>
+      <p class="form-note">No commitment. If it's useful, we build from there. Limited intake through June 2026.</p>
     </div>
     <div class="success-message" id="successMsg">
       <h3>You're on the list.</h3>
-      <p>We'll send the May brief to your inbox shortly. Write to us: laavvanyadhankar8 [at] gmail [dot] com</p>
+      <p>We'll send the May brief to your inbox shortly. Write to us directly: laavvanyadhankar8 [at] gmail [dot] com</p>
     </div>
   </div>
 </div>
@@ -1119,7 +1171,7 @@ footer{background:var(--dark-green);padding:26px 64px;display:flex;align-items:c
   <div class="footer-links">
     <span>laavvanyadhankar8 [at] gmail [dot] com</span>
     <a href="https://linkedin.com/in/laavvanya-d-b05532144" target="_blank">LinkedIn</a>
-    <a href="usaid.html">Donor Tracker</a>
+    <a href="usaid.html">Intelligence Tracker</a>
     <a href="#signup">Work With Us</a>
   </div>
 </footer>
