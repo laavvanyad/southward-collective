@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Policy Intersections — Southward Collective</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--dark-green:#1A3A2A;--mid-green:#5A9E72;--sage:#D4EAD9;--light-green:#EEF6F1;--gold:#C8820A;--gold-light:#FDF0D5;--ink:#0D1F16;--white:#FFFFFF;--muted:#6B8C74;--border:rgba(90,158,114,0.2)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--white);min-height:100vh;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,31,22,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-brand{font-family:'EB Garamond',serif;font-size:17px;font-weight:700;color:var(--white);text-decoration:none}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-link{font-size:12px;color:rgba(212,234,217,0.6);text-decoration:none;font-weight:500;transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--sage)}
+.nav-pill{font-size:11px;font-weight:600;color:var(--mid-green);border:1px solid rgba(90,158,114,0.35);padding:6px 14px;border-radius:100px;text-decoration:none;transition:all 0.2s}
+.nav-pill:hover{background:rgba(90,158,114,0.15)}
+.hero{padding:130px 48px 72px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(90,158,114,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(90,158,114,0.04) 1px,transparent 1px);background-size:48px 48px}
+.hero-content{position:relative;z-index:2;max-width:720px}
+.hero-eyebrow{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--mid-green);font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--mid-green)}
+.hero h1{font-family:'EB Garamond',serif;font-size:clamp(38px,6vw,68px);line-height:1.1;font-weight:600;color:var(--white);margin-bottom:22px;letter-spacing:-1px}
+.hero h1 em{color:var(--sage);font-style:italic}
+.hero-sub{font-size:15px;color:rgba(212,234,217,0.7);line-height:1.72;max-width:560px;font-weight:300;margin-bottom:32px}
+.hero-meta{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.hero-stat{font-size:12px;color:var(--muted)}
+.hero-stat strong{color:var(--sage);font-weight:600}
+.intro-strip{padding:18px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(90,158,114,0.04);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.intro-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--mid-green);font-weight:700;white-space:nowrap}
+.intro-div{width:1px;height:16px;background:var(--border)}
+.intro-text{font-size:13px;color:rgba(212,234,217,0.6);line-height:1.55}
+.intro-text strong{color:var(--white)}
+.main{max-width:1160px;margin:0 auto;padding:72px 48px 0}
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+.sh-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid-green);border:1px solid var(--border);padding:3px 10px;border-radius:4px}
+.sh-title{font-family:'EB Garamond',serif;font-size:21px;color:var(--white);font-weight:600}
+.sh-line{flex:1;height:1px;background:var(--border)}
+.gap{height:72px}
+.constellation-intro{font-size:13px;color:var(--muted);margin-bottom:36px;max-width:520px;line-height:1.65}
+.cvwrap{position:relative;width:100%;padding-bottom:58%}
+.csvg{position:absolute;inset:0;width:100%;height:100%}
+.node-g{cursor:pointer}
+.node-g circle{transition:all 0.25s ease}
+.node-g:hover circle:first-child{stroke-width:2.5px;filter:brightness(1.35)}
+.panels{margin-top:8px}
+.panel{display:none;animation:pin 0.4s ease}
+.panel.active{display:block}
+@keyframes pin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.ph{padding:28px 36px 22px;border-radius:12px 12px 0 0;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ph.gold{background:linear-gradient(135deg,#2A1810,#1A2A0A);border:1px solid rgba(200,130,10,0.25);border-bottom:none}
+.ph.green{background:linear-gradient(135deg,#0A1A2A,#1A2A2A);border:1px solid rgba(90,158,114,0.25);border-bottom:none}
+.ph.sage{background:linear-gradient(135deg,#1A2A1A,#0A2A1A);border:1px solid rgba(90,158,114,0.3);border-bottom:none}
+.ptag{font-size:10px;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:7px}
+.gold .ptag{color:var(--gold)}.green .ptag,.sage .ptag{color:var(--mid-green)}
+.ptitle{font-family:'EB Garamond',serif;font-size:26px;font-weight:600;color:var(--white);margin-bottom:7px;line-height:1.2}
+.psub{font-size:13px;color:rgba(212,234,217,0.65);line-height:1.55;max-width:520px}
+.pclose{background:none;border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s;flex-shrink:0;font-family:'DM Sans',sans-serif}
+.pclose:hover{border-color:var(--mid-green);color:var(--white)}
+.pb{border-radius:0 0 12px 12px;border:1px solid;border-top:none;padding:28px 36px 32px;background:rgba(13,31,22,0.85)}
+.gold .pb{border-color:rgba(200,130,10,0.25)}.green .pb{border-color:rgba(90,158,114,0.25)}.sage .pb{border-color:rgba(90,158,114,0.3)}
+.quotes{margin-bottom:24px;display:flex;flex-direction:column;gap:12px}
+.quote{padding:14px 18px;border-left:2px solid;border-radius:0 7px 7px 0;font-family:'EB Garamond',serif;font-size:16px;color:var(--sage);line-height:1.6;font-style:italic;background:rgba(212,234,217,0.03)}
+.gold .quote{border-color:var(--gold)}.green .quote,.sage .quote{border-color:var(--mid-green)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:11px;margin-bottom:20px}
+.card{background:rgba(90,158,114,0.05);border:1px solid var(--border);border-radius:9px;padding:16px 18px;text-decoration:none;display:block;transition:all 0.2s}
+.card:hover{background:rgba(90,158,114,0.11);border-color:rgba(90,158,114,0.4);transform:translateY(-2px)}
+.ctype{font-size:9px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--mid-green);margin-bottom:5px}
+.ctype.pub{color:var(--gold)}.ctype.li{color:#70B5E0}.ctype.prop{color:var(--sage)}
+.ctitle{font-family:'EB Garamond',serif;font-size:16px;color:var(--white);font-weight:600;margin-bottom:4px;line-height:1.3}
+.cdesc{font-size:11px;color:var(--muted);line-height:1.55}
+.carrow{font-size:11px;color:var(--mid-green);margin-top:9px;display:flex;align-items:center;gap:4px;transition:gap 0.2s}
+.card:hover .carrow{gap:8px}
+.connected{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px;border-top:1px solid var(--border);padding-top:16px;align-items:center}
+.clabel{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin-right:4px}
+.ctag{font-size:11px;font-weight:600;color:var(--sage);border:1px solid rgba(212,234,217,0.22);padding:4px 10px;border-radius:100px;cursor:pointer;transition:all 0.18s;background:rgba(212,234,217,0.03)}
+.ctag:hover{border-color:var(--mid-green);color:var(--white);background:rgba(90,158,114,0.1)}
+.state-labs{background:rgba(90,158,114,0.04);border:1px solid var(--border);border-radius:12px;padding:36px;margin-bottom:72px}
+.sl-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.sl-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:var(--mid-green);font-weight:700;margin-bottom:7px}
+.sl-title{font-family:'EB Garamond',serif;font-size:26px;color:var(--white);font-weight:600;margin-bottom:7px}
+.sl-sub{font-size:13px;color:var(--muted);line-height:1.65;max-width:460px}
+.sl-count{font-family:'EB Garamond',serif;font-size:48px;color:var(--mid-green);font-weight:600;line-height:1}
+.sl-clabel{font-size:11px;color:var(--muted);margin-top:4px}
+.dim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:24px}
+.dim{background:rgba(13,31,22,0.8);border:1px solid var(--border);border-radius:7px;padding:13px 15px}
+.dim-l{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid-green);font-weight:600;margin-bottom:4px}
+.dim-n{font-size:12px;color:var(--white);font-weight:600;margin-bottom:2px}
+.dim-d{font-size:11px;color:var(--muted);line-height:1.4}
+.states{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.sp{font-size:11px;font-weight:600;color:var(--sage);border:1px solid rgba(212,234,217,0.18);padding:4px 11px;border-radius:100px;background:rgba(212,234,217,0.03);font-family:'DM Mono',monospace}
+.sl-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;background:rgba(90,158,114,0.08);border:1px solid rgba(90,158,114,0.2);border-radius:9px}
+.sl-cta-text{font-size:13px;color:var(--sage);line-height:1.5;flex:1}
+.sl-cta-text strong{color:var(--white);display:block;margin-bottom:2px}
+.btn{display:inline-flex;align-items:center;gap:7px;background:var(--mid-green);color:var(--white);font-size:12px;font-weight:700;padding:9px 18px;border-radius:7px;text-decoration:none;transition:background 0.2s;white-space:nowrap}
+.btn:hover{background:#4a8e62}
+.mission{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px;margin-bottom:72px;text-align:center;position:relative;overflow:hidden}
+.mission::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(90,158,114,0.07) 0%,transparent 70%)}
+.m-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--mid-green);font-weight:700;margin-bottom:18px;position:relative}
+.m-text{font-family:'EB Garamond',serif;font-size:clamp(20px,3vw,34px);color:var(--white);line-height:1.4;max-width:660px;margin:0 auto 22px;position:relative}
+.m-text em{color:var(--sage);font-style:italic}
+.m-sub{font-size:13px;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.65;position:relative}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:72px}
+.wcard{background:rgba(90,158,114,0.04);border:1px solid var(--border);border-radius:9px;padding:20px 22px;position:relative;overflow:hidden}
+.wcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.wcard.live::before{background:var(--mid-green)}.wcard.pub::before{background:var(--gold)}.wcard.ongoing::before{background:var(--sage)}
+.ws{font-size:9px;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:7px}
+.live .ws{color:var(--mid-green)}.pub .ws{color:var(--gold)}.ongoing .ws{color:var(--sage)}
+.wt{font-family:'EB Garamond',serif;font-size:17px;color:var(--white);font-weight:600;margin-bottom:5px}
+.wd{font-size:12px;color:var(--muted);line-height:1.55}
+.connect-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0}
+.ccard{background:rgba(90,158,114,0.04);border:1px solid var(--border);border-radius:10px;padding:24px 28px;text-decoration:none;display:block;transition:all 0.2s}
+.ccard:hover{background:rgba(90,158,114,0.09);border-color:rgba(90,158,114,0.4);transform:translateY(-2px)}
+.cc-label{font-size:9px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--mid-green);margin-bottom:7px}
+.cc-title{font-family:'EB Garamond',serif;font-size:20px;color:var(--white);font-weight:600;margin-bottom:5px}
+.cc-desc{font-size:12px;color:var(--muted);line-height:1.55}
+.threads{background:rgba(90,158,114,0.04);border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.t-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--mid-green);font-weight:700;white-space:nowrap}
+.t-div{width:1px;height:14px;background:var(--border)}
+.ttag{font-size:11px;color:rgba(212,234,217,0.6);text-decoration:none;padding:5px 11px;border:1px solid rgba(90,158,114,0.18);border-radius:100px;cursor:pointer;transition:all 0.18s;background:none}
+.ttag:hover{border-color:var(--mid-green);color:var(--white)}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:rgba(13,31,22,0.6)}
+.fb{font-family:'EB Garamond',serif;font-size:16px;color:var(--white);font-weight:600}
+.ft{font-size:11px;color:var(--muted);margin-top:2px}
+.flinks{display:flex;gap:16px;align-items:center}
+.flinks a{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.flinks a:hover{color:var(--sage)}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){nav,footer,.threads{padding-left:20px;padding-right:20px}.hero,.main{padding-left:20px;padding-right:20px}.intro-strip{padding:14px 20px}.dim-grid{grid-template-columns:1fr 1fr}.work-grid,.connect-grid{grid-template-columns:1fr}.ph,.pb,.state-labs,.mission{padding:20px}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Southward Collective</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Policy Monitor</a>
+    <a href="usaid.html" class="nav-link">Intelligence Tracker</a>
+    <a href="intersections.html" class="nav-link active">Policy Intersections</a>
+    <a href="mailto:laavvanyadhankar8@gmail.com" class="nav-pill">Write to us</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Southward Collective — Policy Intersections</div>
+    <h1>Where systems <em>collide</em><br>is where policy fails.</h1>
+    <p class="hero-sub">Southward maps how governance, labour, gender, climate, technology, and implementation systems shape one another across South Asia. Not isolated sectors — the intersections between them.</p>
+    <div class="hero-meta">
+      <div class="hero-stat"><strong>7</strong> intersections mapped</div>
+      <div class="hero-stat"><strong>All states</strong> &amp; UTs profiled</div>
+      <div class="hero-stat"><strong>Updated</strong> May 21, 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="intro-strip">
+  <div class="intro-label">Our premise</div>
+  <div class="intro-div"></div>
+  <div class="intro-text"><strong>Systems are designed to see some people.</strong> Southward studies who they miss — and where the most consequential policy failures happen at the edges of sectors that rarely speak to each other.</div>
+</div>
+
+<div class="main">
+
+<div class="gap"></div>
+<div class="sh fade-up">
+  <div class="sh-num">01</div>
+  <div class="sh-title">The Policy Intersection Map</div>
+  <div class="sh-line"></div>
+</div>
+<p class="constellation-intro fade-up">Each node is a collision point where policy domains intersect with measurable consequences for specific populations. Click any node to open the analysis Southward has produced at that intersection.</p>
+
+<div class="cvwrap fade-up">
+<svg class="csvg" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="rg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#C8820A" stop-opacity="0.28"/><stop offset="100%" stop-color="#C8820A" stop-opacity="0"/></radialGradient>
+    <radialGradient id="rg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5A9E72" stop-opacity="0.22"/><stop offset="100%" stop-color="#5A9E72" stop-opacity="0"/></radialGradient>
+  </defs>
+  <!-- connection lines -->
+  <line x1="500" y1="130" x2="270" y2="190" stroke="rgba(90,158,114,0.14)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="500" y1="130" x2="730" y2="190" stroke="rgba(90,158,114,0.14)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="270" y1="190" x2="160" y2="390" stroke="rgba(90,158,114,0.1)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="730" y1="190" x2="840" y2="390" stroke="rgba(90,158,114,0.1)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="160" y1="390" x2="500" y2="475" stroke="rgba(90,158,114,0.14)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="840" y1="390" x2="500" y2="475" stroke="rgba(90,158,114,0.14)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="500" y1="130" x2="500" y2="475" stroke="rgba(200,130,10,0.08)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="110" y1="280" x2="270" y2="190" stroke="rgba(90,158,114,0.09)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="110" y1="280" x2="160" y2="390" stroke="rgba(90,158,114,0.09)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="890" y1="280" x2="730" y2="190" stroke="rgba(90,158,114,0.09)" stroke-width="1" stroke-dasharray="4,7"/>
+  <line x1="890" y1="280" x2="840" y2="390" stroke="rgba(90,158,114,0.09)" stroke-width="1" stroke-dasharray="4,7"/>
+  <!-- glow -->
+  <circle cx="500" cy="130" r="75" fill="url(#rg1)" opacity="0.8"/>
+  <circle cx="270" cy="190" r="62" fill="url(#rg2)" opacity="0.7"/>
+  <circle cx="730" cy="190" r="62" fill="url(#rg2)" opacity="0.7"/>
+  <circle cx="160" cy="390" r="55" fill="url(#rg2)" opacity="0.6"/>
+  <circle cx="840" cy="390" r="55" fill="url(#rg2)" opacity="0.6"/>
+  <circle cx="500" cy="475" r="58" fill="url(#rg2)" opacity="0.55"/>
+  <circle cx="110" cy="280" r="48" fill="url(#rg2)" opacity="0.5"/>
+  <circle cx="890" cy="280" r="48" fill="url(#rg2)" opacity="0.5"/>
+
+  <!-- NODE 1: Heat × Invisible Labour -->
+  <g class="node-g" onclick="openPanel('heat')">
+    <circle cx="500" cy="130" r="54" fill="#0D1F16" stroke="rgba(200,130,10,0.55)" stroke-width="1.5"/>
+    <circle cx="500" cy="130" r="44" fill="rgba(200,130,10,0.07)"/>
+    <circle cx="500" cy="130" r="4.5" fill="#C8820A"><animate attributeName="opacity" values="1;0.35;1" dur="2.5s" repeatCount="indefinite"/></circle>
+    <text x="500" y="118" text-anchor="middle" font-family="'EB Garamond',serif" font-size="13" font-weight="600" fill="#C8820A">Heat ×</text>
+    <text x="500" y="134" text-anchor="middle" font-family="'EB Garamond',serif" font-size="13" font-weight="600" fill="#C8820A">Invisible Labour</text>
+  </g>
+
+  <!-- NODE 2: Digital × Exclusion -->
+  <g class="node-g" onclick="openPanel('digital')">
+    <circle cx="270" cy="190" r="48" fill="#0D1F16" stroke="rgba(90,158,114,0.42)" stroke-width="1.5"/>
+    <circle cx="270" cy="190" r="39" fill="rgba(90,158,114,0.06)"/>
+    <circle cx="270" cy="190" r="3.5" fill="#5A9E72"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="3s" repeatCount="indefinite"/></circle>
+    <text x="270" y="184" text-anchor="middle" font-family="'EB Garamond',serif" font-size="11.5" font-weight="600" fill="#D4EAD9">Digital ×</text>
+    <text x="270" y="200" text-anchor="middle" font-family="'EB Garamond',serif" font-size="11.5" font-weight="600" fill="#D4EAD9">Exclusion</text>
+  </g>
+
+  <!-- NODE 3: Enterprise × Risk -->
+  <g class="node-g" onclick="openPanel('enterprise')">
+    <circle cx="730" cy="190" r="48" fill="#0D1F16" stroke="rgba(90,158,114,0.42)" stroke-width="1.5"/>
+    <circle cx="730" cy="190" r="39" fill="rgba(90,158,114,0.06)"/>
+    <circle cx="730" cy="190" r="3.5" fill="#5A9E72"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="3.5s" repeatCount="indefinite"/></circle>
+    <text x="730" y="184" text-anchor="middle" font-family="'EB Garamond',serif" font-size="11.5" font-weight="600" fill="#D4EAD9">Enterprise ×</text>
+    <text x="730" y="200" text-anchor="middle" font-family="'EB Garamond',serif" font-size="11.5" font-weight="600" fill="#D4EAD9">Risk Architecture</text>
+  </g>
+
+  <!-- NODE 4: Mobility × Public Life -->
+  <g class="node-g" onclick="openPanel('mobility')">
+    <circle cx="160" cy="390" r="44" fill="#0D1F16" stroke="rgba(90,158,114,0.38)" stroke-width="1.5"/>
+    <circle cx="160" cy="390" r="36" fill="rgba(90,158,114,0.05)"/>
+    <circle cx="160" cy="390" r="3.5" fill="#5A9E72"><animate attributeName="opacity" values="0.75;0.22;0.75" dur="4s" repeatCount="indefinite"/></circle>
+    <text x="160" y="384" text-anchor="middle" font-family="'EB Garamond',serif" font-size="11" font-weight="600" fill="#D4EAD9">Mobility ×</text>
+    <text x="160" y="399" text-anchor="middle" font-family="'EB Garamond',serif" font-size="11" font-weight="600" fill="#D4EAD9">Public Life</text>
+  </g>
+
+  <!-- NODE 5: State Capacity × Invisibility -->
+  <g class="node-g" onclick="openPanel('state')">
+    <circle cx="840" cy="390" r="44" fill="#0D1F16" stroke="rgba(90,158,114,0.38)" stroke-width="1.5"/>
+    <circle cx="840" cy="390" r="36" fill="rgba(90,158,114,0.05)"/>
+    <circle cx="840" cy="390" r="3.5" fill="#5A9E72"><animate attributeName="opacity" values="0.75;0.22;0.75" dur="4.5s" repeatCount="indefinite"/></circle>
+    <text x="840" y="382" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10.5" font-weight="600" fill="#D4EAD9">State Capacity</text>
+    <text x="840" y="397" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10.5" font-weight="600" fill="#D4EAD9">× Invisibility</text>
+  </g>
+
+  <!-- NODE 6: Gender × Health -->
+  <g class="node-g" onclick="openPanel('gender')">
+    <circle cx="110" cy="280" r="40" fill="#0D1F16" stroke="rgba(90,158,114,0.36)" stroke-width="1.5"/>
+    <circle cx="110" cy="280" r="32" fill="rgba(90,158,114,0.05)"/>
+    <circle cx="110" cy="280" r="3" fill="#5A9E72"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.8s" repeatCount="indefinite"/></circle>
+    <text x="110" y="274" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10" font-weight="600" fill="#D4EAD9">Gender ×</text>
+    <text x="110" y="288" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10" font-weight="600" fill="#D4EAD9">Health</text>
+  </g>
+
+  <!-- NODE 7: Climate × Governance -->
+  <g class="node-g" onclick="openPanel('climate')">
+    <circle cx="890" cy="280" r="40" fill="#0D1F16" stroke="rgba(90,158,114,0.36)" stroke-width="1.5"/>
+    <circle cx="890" cy="280" r="32" fill="rgba(90,158,114,0.05)"/>
+    <circle cx="890" cy="280" r="3" fill="#5A9E72"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="4.2s" repeatCount="indefinite"/></circle>
+    <text x="890" y="274" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10" font-weight="600" fill="#D4EAD9">Climate ×</text>
+    <text x="890" y="288" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10" font-weight="600" fill="#D4EAD9">Governance</text>
+  </g>
+
+  <!-- NODE 8: Informality × Welfare (bottom) -->
+  <g class="node-g" onclick="openPanel('state')">
+    <circle cx="500" cy="475" r="42" fill="#0D1F16" stroke="rgba(90,158,114,0.32)" stroke-width="1.5"/>
+    <circle cx="500" cy="475" r="34" fill="rgba(90,158,114,0.05)"/>
+    <circle cx="500" cy="475" r="3" fill="#5A9E72"><animate attributeName="opacity" values="0.65;0.18;0.65" dur="5s" repeatCount="indefinite"/></circle>
+    <text x="500" y="469" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10.5" font-weight="600" fill="#D4EAD9">Informality ×</text>
+    <text x="500" y="483" text-anchor="middle" font-family="'EB Garamond',serif" font-size="10.5" font-weight="600" fill="#D4EAD9">Welfare</text>
+  </g>
+
+  <text x="500" y="74" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="rgba(200,130,10,0.55)" letter-spacing="1.5" font-weight="600">CLICK TO EXPLORE</text>
+</svg>
+</div>
+
+<!-- PANELS -->
+<div class="panels" id="panels">
+
+  <div class="panel gold" id="panel-heat">
+    <div class="ph gold">
+      <div><div class="ptag">Intersection 01</div><div class="ptitle">Heat × Invisible Labour</div><div class="psub">India's welfare and climate systems depend on labour they refuse to formally recognise.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb gold">
+      <div class="quotes">
+        <div class="quote">"A system that relies on women's willingness to work for less than minimum wage is not a welfare programme. It is an extraction model with a development vocabulary."</div>
+        <div class="quote">"India's climate adaptation conversation treats heat as an environmental variable rather than a labour variable. That framing determines who the policy protects."</div>
+        <div class="quote">"The system she helped build cannot account for her departure because it never formally accounted for her presence."</div>
+      </div>
+      <div class="cards">
+        <a href="https://www.newslaundry.com/2026/05/18/extreme-heat-is-quietly-pushing-women-out-of-work" target="_blank" class="card">
+          <div class="ctype pub">Published — Newslaundry, May 2026</div>
+          <div class="ctitle">Extreme Heat Is Quietly Pushing Women Out of Work</div>
+          <div class="cdesc">India celebrates rising female LFPR while the foundation it rests on — outdoor, informal, unprotected labour — is eroded by heat. The policy architecture hasn't noticed.</div>
+          <div class="carrow">Read the piece <span>→</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/laavvanya-d-b05532144/" target="_blank" class="card">
+          <div class="ctype li">Policy Brief — LinkedIn</div>
+          <div class="ctitle">Paid in Goodwill: ASHA Workers and India's Health Data Infrastructure</div>
+          <div class="cdesc">One million ASHA workers generate India's community health data. When heat forces them to reduce visits, the gaps flow upstream into national dashboards — attributed to administrative failure, not structural exposure.</div>
+          <div class="carrow">Read the brief <span>→</span></div>
+        </a>
+        <a href="mailto:laavvanyadhankar8@gmail.com?subject=Heat Paper" class="card">
+          <div class="ctype prop">Flagship Paper</div>
+          <div class="ctitle">When Heat Changes Work: Gender, Labour, and the Limits of India's Adaptation</div>
+          <div class="cdesc">15 pages. Five worker categories, six-state comparison, 27 primary sources. The full case for treating heat as an economic policy problem.</div>
+          <div class="carrow">Write to us <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('state')">State Capacity</span><span class="ctag" onclick="openPanel('gender')">Gender × Health</span><span class="ctag" onclick="openPanel('climate')">Climate × Governance</span><span class="ctag" onclick="openPanel('mobility')">Mobility</span></div>
+    </div>
+  </div>
+
+  <div class="panel green" id="panel-digital">
+    <div class="ph green">
+      <div><div class="ptag">Intersection 02</div><div class="ptitle">Digital Infrastructure × Exclusion</div><div class="psub">Infrastructure is not access. Access is not equity.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb green">
+      <div class="quotes">
+        <div class="quote">"India built a more sophisticated stack. Kenya built a more accessible one. Sophistication and accessibility are not the same thing."</div>
+        <div class="quote">"Design for the user with the least access, and you will build a system that works for everyone. Design for the most connected user, and you will build a system that works only for them."</div>
+        <div class="quote">"The infrastructure exists. The last mile doesn't."</div>
+      </div>
+      <div class="cards">
+        <a href="https://www.linkedin.com/in/laavvanya-d-b05532144/" target="_blank" class="card">
+          <div class="ctype li">Policy Brief — LinkedIn</div>
+          <div class="ctitle">Offline by Design: Why India's Digital Public Infrastructure Is Leaving Women Behind</div>
+          <div class="cdesc">India's JAM trinity versus Kenya's M-Pesa. Not a technology comparison — a design philosophy comparison. One asks who is most likely to be missed.</div>
+          <div class="carrow">Read the brief <span>→</span></div>
+        </a>
+        <a href="mailto:laavvanyadhankar8@gmail.com?subject=Digital Welfare Intelligence" class="card">
+          <div class="ctype prop">Signal Note</div>
+          <div class="ctitle">The Administrative Labour of Digital Welfare</div>
+          <div class="cdesc">The hidden work of navigating India's welfare digitisation — queues, re-registrations, Aadhaar failures, translation, follow-up. Who performs this work, and who has decided it doesn't count.</div>
+          <div class="carrow">Write to us <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('heat')">Heat × Labour</span><span class="ctag" onclick="openPanel('state')">State Capacity</span><span class="ctag" onclick="openPanel('gender')">Gender × Health</span></div>
+    </div>
+  </div>
+
+  <div class="panel green" id="panel-enterprise">
+    <div class="ph green">
+      <div><div class="ptag">Intersection 03</div><div class="ptitle">Enterprise × Risk Architecture</div><div class="psub">It is not enterprise ownership. It is enterprise exposure.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb green">
+      <div class="quotes">
+        <div class="quote">"What does a person with no capital cushion need in order to absorb the genuine risks of enterprise ownership without that risk destroying them?"</div>
+        <div class="quote">"SHE Marts have the enterprise. They do not yet have the infrastructure. The window to build it into the design is measured in months, not years."</div>
+      </div>
+      <div class="cards">
+        <a href="https://www.linkedin.com/in/laavvanya-d-b05532144/" target="_blank" class="card">
+          <div class="ctype li">Policy Brief — LinkedIn</div>
+          <div class="ctitle">Enterprise Without Infrastructure: What SHE Marts Get Right — and the Risk Architecture They're Missing</div>
+          <div class="cdesc">Budget 2026 announced SHE Marts. Three months later, financing is undefined, income protection is absent, risk is concentrated on SHG women. The Mondragon comparison shows what's structurally missing.</div>
+          <div class="carrow">Read the brief <span>→</span></div>
+        </a>
+        <a href="mailto:laavvanyadhankar8@gmail.com?subject=SHE Marts State Intelligence" class="card">
+          <div class="ctype prop">State Intelligence</div>
+          <div class="ctitle">SHE Marts Across States: Rajasthan, UP, Maharashtra</div>
+          <div class="cdesc">What informal NRLM consultations are telling SHG federations. What risk exposure looks like state by state. From our State Intelligence Labs series.</div>
+          <div class="carrow">Write to us <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('state')">State Capacity</span><span class="ctag" onclick="openPanel('heat')">Heat × Labour</span></div>
+    </div>
+  </div>
+
+  <div class="panel sage" id="panel-mobility">
+    <div class="ph sage">
+      <div><div class="ptag">Intersection 04</div><div class="ptitle">Mobility × Public Life</div><div class="psub">Urban mobility systems determine who can access the opportunities cities provide.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb sage">
+      <div class="quotes">
+        <div class="quote">"Transport systems are often designed around a default commuter — typically a male worker travelling between home and workplace during peak hours."</div>
+        <div class="quote">"The women taking RTVs across Delhi are not outside the scope of urban mobility policy because their needs are too complex. They are outside its scope because policy has not yet been designed to see them."</div>
+      </div>
+      <div class="cards">
+        <a href="https://www.linkedin.com/in/laavvanya-d-b05532144/" target="_blank" class="card">
+          <div class="ctype li">Policy Brief — LinkedIn</div>
+          <div class="ctitle">Delhi Transport and the Gendered City</div>
+          <div class="cdesc">Who the Delhi transport network serves, who it doesn't, and what a mobility policy designed around the full range of urban movement would look like.</div>
+          <div class="carrow">Read the brief <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('digital')">Digital Exclusion</span><span class="ctag" onclick="openPanel('state')">State Capacity</span><span class="ctag" onclick="openPanel('heat')">Heat × Labour</span></div>
+    </div>
+  </div>
+
+  <div class="panel sage" id="panel-state">
+    <div class="ph sage">
+      <div><div class="ptag">Intersection 05</div><div class="ptitle">State Capacity × Invisibility</div><div class="psub">Systems are designed to see some people. Southward studies who they miss.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb sage">
+      <div class="quotes">
+        <div class="quote">"The same rise in ambient temperature produces a fundamentally different economic outcome for women depending on what the state has built around their participation."</div>
+        <div class="quote">"The states where women's economic participation is most precarious are frequently the states with the least adaptation infrastructure."</div>
+      </div>
+      <div class="cards">
+        <a href="mailto:laavvanyadhankar8@gmail.com?subject=State Intelligence Lab" class="card">
+          <div class="ctype prop">State Intelligence Labs</div>
+          <div class="ctitle">All States &amp; UTs Profiled: Political Landscape, Ecosystem, Gaps, Opportunities</div>
+          <div class="cdesc">Eight dimensions per state. Decision-ready briefings for organisations entering new geographies, writing proposals, or reviewing portfolios. 48-hour turnaround.</div>
+          <div class="carrow">Commission a brief <span>→</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/laavvanya-d-b05532144/" target="_blank" class="card">
+          <div class="ctype li">Published series — LinkedIn</div>
+          <div class="ctitle">State Intelligence Labs: Kerala, Tamil Nadu, Rajasthan, Bihar, Karnataka, Odisha</div>
+          <div class="cdesc">Published state-level analyses examining what national reports miss — the tension inside the apparent success story.</div>
+          <div class="carrow">Read the series <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('heat')">Heat × Labour</span><span class="ctag" onclick="openPanel('enterprise')">Enterprise × Risk</span><span class="ctag" onclick="openPanel('digital')">Digital Exclusion</span><span class="ctag" onclick="openPanel('mobility')">Mobility</span></div>
+    </div>
+  </div>
+
+  <div class="panel green" id="panel-gender">
+    <div class="ph green">
+      <div><div class="ptag">Intersection 06</div><div class="ptitle">Gender × Health Systems</div><div class="psub">India's public health infrastructure runs on gendered labour it does not formally count.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb green">
+      <div class="quotes">
+        <div class="quote">"When ASHA workers reduce home visits during a heatwave, the gaps flow upstream into district health dashboards — attributed to administrative failure, not structural heat exposure."</div>
+        <div class="quote">"Budget 2026 trained 1.5 lakh caregivers. It did not address the gendered architecture of care that makes caregiving women's work by default."</div>
+      </div>
+      <div class="cards">
+        <a href="https://www.newslaundry.com/2026/05/18/extreme-heat-is-quietly-pushing-women-out-of-work" target="_blank" class="card">
+          <div class="ctype pub">Published — Newslaundry, May 2026</div>
+          <div class="ctitle">She Is Not a Government Employee. She Just Does the Government's Work.</div>
+          <div class="cdesc">India's welfare and health infrastructure depends on labour it refuses to recognise. The consequences extend beyond the workers to the data systems built on their output.</div>
+          <div class="carrow">Read the piece <span>→</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/laavvanya-d-b05532144/" target="_blank" class="card">
+          <div class="ctype li">Policy Brief — LinkedIn</div>
+          <div class="ctitle">Paid in Goodwill: ASHA Workers and the Health Data Problem</div>
+          <div class="cdesc">One million women classified as volunteers. No occupational protection, no employment record, and no recognition in the Labour Codes that covered gig workers.</div>
+          <div class="carrow">Read the brief <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('heat')">Heat × Labour</span><span class="ctag" onclick="openPanel('state')">State Capacity</span><span class="ctag" onclick="openPanel('digital')">Digital Exclusion</span></div>
+    </div>
+  </div>
+
+  <div class="panel sage" id="panel-climate">
+    <div class="ph sage">
+      <div><div class="ptag">Intersection 07</div><div class="ptitle">Climate × Governance Failure</div><div class="psub">Heat Action Plans were designed to count bodies. Nobody asked what heat costs the living.</div></div>
+      <button class="pclose" onclick="closePanel()">✕</button>
+    </div>
+    <div class="pb sage">
+      <div class="quotes">
+        <div class="quote">"India's climate adaptation conversation treats heat as an environmental variable rather than a labour variable."</div>
+        <div class="quote">"The MGNREGS work-hour adjustment requires no new legislation — just a Ministry notification. Its absence is a coordination failure, not a resource problem."</div>
+        <div class="quote">"The Women and Men in India 2025 report contains fifty gender indicators. Not one connects heat to female economic participation. That absence is a policy choice."</div>
+      </div>
+      <div class="cards">
+        <a href="https://www.newslaundry.com/2026/05/18/extreme-heat-is-quietly-pushing-women-out-of-work" target="_blank" class="card">
+          <div class="ctype pub">Published — Newslaundry, May 2026</div>
+          <div class="ctitle">Extreme Heat Is Quietly Pushing Women Out of Work</div>
+          <div class="cdesc">HAPs reduce mortality. They don't protect livelihoods. The frameworks that should cover informal women workers don't see them.</div>
+          <div class="carrow">Read the piece <span>→</span></div>
+        </a>
+        <a href="mailto:laavvanyadhankar8@gmail.com?subject=Heat Governance Paper" class="card">
+          <div class="ctype prop">Flagship Paper</div>
+          <div class="ctitle">When Heat Changes Work: The Full Research Paper</div>
+          <div class="cdesc">Six-state comparison. Five worker categories. Seven specific policy asks, none requiring new legislation. 27 primary sources.</div>
+          <div class="carrow">Write to us <span>→</span></div>
+        </a>
+      </div>
+      <div class="connected"><span class="clabel">Connected threads</span><span class="ctag" onclick="openPanel('heat')">Heat × Labour</span><span class="ctag" onclick="openPanel('state')">State Capacity</span><span class="ctag" onclick="openPanel('gender')">Gender × Health</span></div>
+    </div>
+  </div>
+
+</div><!-- /panels -->
+
+<!-- STATE LABS -->
+<div class="gap"></div>
+<div class="sh fade-up"><div class="sh-num">02</div><div class="sh-title">State Intelligence Labs</div><div class="sh-line"></div></div>
+<div class="state-labs fade-up">
+  <div class="sl-head">
+    <div>
+      <div class="sl-eyebrow">Proprietary Research</div>
+      <div class="sl-title">Every state. Every dimension.</div>
+      <div class="sl-sub">Southward has profiled all major states and Union Territories across eight structured dimensions. Decision-ready intelligence for organisations entering new geographies, writing proposals, or reviewing portfolios.</div>
+    </div>
+    <div><div class="sl-count">All</div><div class="sl-clabel">states &amp; UTs covered</div></div>
+  </div>
+  <div class="dim-grid">
+    <div class="dim"><div class="dim-l">A</div><div class="dim-n">Political landscape</div><div class="dim-d">Current government priorities, coalition dynamics, electoral context</div></div>
+    <div class="dim"><div class="dim-l">B</div><div class="dim-n">Gender &amp; labour data</div><div class="dim-d">LFPR, WPR, sectoral breakdown, verified to PLFS and NFHS-5</div></div>
+    <div class="dim"><div class="dim-l">C</div><div class="dim-n">Flagship schemes</div><div class="dim-d">Implementation status, state modifications, utilisation gaps</div></div>
+    <div class="dim"><div class="dim-l">D</div><div class="dim-n">Policy shifts &amp; risks</div><div class="dim-d">What's changing, what's stalling, what the implementation risks are</div></div>
+    <div class="dim"><div class="dim-l">E</div><div class="dim-n">Organisation ecosystem</div><div class="dim-d">Active NGOs, bilaterals, CSR funders, SHG networks by district</div></div>
+    <div class="dim"><div class="dim-l">F</div><div class="dim-n">Gaps — original analysis</div><div class="dim-d">What national reports miss. Our analytical layer.</div></div>
+    <div class="dim"><div class="dim-l">G</div><div class="dim-n">Funding windows</div><div class="dim-d">Active calls, donor relevance, language guidance</div></div>
+    <div class="dim"><div class="dim-l">H</div><div class="dim-n">Opportunities — original</div><div class="dim-d">Where to position, who to call, what the timing looks like</div></div>
+  </div>
+  <div class="states">
+    <span class="sp">Uttar Pradesh</span><span class="sp">Rajasthan</span><span class="sp">Karnataka</span><span class="sp">Maharashtra</span><span class="sp">Bihar</span><span class="sp">Jharkhand</span><span class="sp">Tamil Nadu</span><span class="sp">Kerala</span><span class="sp">Andhra Pradesh</span><span class="sp">Telangana</span><span class="sp">Odisha</span><span class="sp">Punjab</span><span class="sp">Haryana</span><span class="sp">Delhi NCT</span><span class="sp">Himachal Pradesh</span><span class="sp">Uttarakhand</span><span class="sp">West Bengal</span><span class="sp">Gujarat</span><span class="sp">Madhya Pradesh</span><span class="sp">Chhattisgarh</span><span class="sp">Assam</span><span class="sp">Manipur</span><span class="sp">Goa</span><span class="sp">+ all UTs</span>
+  </div>
+  <div class="sl-cta">
+    <div class="sl-cta-text"><strong>Entering a new state? Preparing a proposal? Reviewing a portfolio?</strong>State Intelligence Labs are available as bespoke briefs — tailored to your sector focus and use case. 48-hour turnaround.</div>
+    <a href="mailto:laavvanyadhankar8@gmail.com?subject=State Intelligence Lab Request" class="btn">Commission a brief →</a>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="mission fade-up">
+  <div class="m-eyebrow">Our working premise</div>
+  <div class="m-text">The most consequential policy failures happen at the <em>edges of sectors</em> that rarely speak to each other.</div>
+  <div class="m-sub">Southward tracks the collision points — where climate meets labour, where welfare meets digital exclusion, where state capacity meets the people it was built to serve.</div>
+</div>
+
+<!-- CURRENT WORK -->
+<div class="sh fade-up"><div class="sh-num">03</div><div class="sh-title">What Southward Is Producing</div><div class="sh-line"></div></div>
+<div class="work-grid fade-up">
+  <div class="wcard live"><div class="ws">Live — May 2026</div><div class="wt">The Policy Monitor</div><div class="wd">Five signals: Women's Reservation Bill defeat, Gender Budget gaps, SHE Marts design risks, MGNREGS dual correction, ASHA workers and Budget silence. Updated monthly.</div></div>
+  <div class="wcard live"><div class="ws">Live series</div><div class="wt">State Intelligence Labs on LinkedIn</div><div class="wd">Published state analyses on Kerala, Tamil Nadu, Rajasthan, Bihar, Karnataka, Odisha — examining what national reports miss at the state level.</div></div>
+  <div class="wcard pub"><div class="ws">Published — Newslaundry</div><div class="wt">When Heat Changes Work</div><div class="wd">The full 15-page research paper — five worker categories, six-state comparison, 27 primary sources — available on request. Published in Newslaundry May 2026.</div></div>
+  <div class="wcard ongoing"><div class="ws">Building</div><div class="wt">South Asia footprint</div><div class="wd">Expanding intelligence tracking across South Asia — the regional signals, funding shifts, and policy movements that India-only monitoring misses.</div></div>
+</div>
+
+<div class="gap"></div>
+
+<!-- WORK WITH SOUTHWARD -->
+<div class="sh fade-up"><div class="sh-num">04</div><div class="sh-title">Work With Southward</div><div class="sh-line"></div></div>
+<div class="connect-grid fade-up">
+  <a href="mailto:laavvanyadhankar8@gmail.com?subject=State Intelligence Brief" class="ccard">
+    <div class="cc-label">State Intelligence Labs</div>
+    <div class="cc-title">Decision-ready state briefs</div>
+    <div class="cc-desc">Entering a new state, preparing a proposal, reviewing a portfolio? Bespoke briefs across all major states and UTs — political landscape, gender data, ecosystem mapping, gaps, and opportunities.</div>
+  </a>
+  <a href="mailto:laavvanyadhankar8@gmail.com?subject=Proposal Intelligence" class="ccard">
+    <div class="cc-label">Proposal Intelligence</div>
+    <div class="cc-title">Funding call positioning</div>
+    <div class="cc-desc">Before submitting to any open call — what the funder is prioritising this cycle, the language that resonates, and how to position your work. One page. Fast turnaround.</div>
+  </a>
+  <a href="index.html" class="ccard">
+    <div class="cc-label">Monthly Intelligence</div>
+    <div class="cc-title">The Policy Monitor</div>
+    <div class="cc-desc">Monthly signals brief, parliamentary digest, donor landscape, and open funding windows. For teams that need to stay current without spending the hours to do it themselves.</div>
+  </a>
+  <a href="usaid.html" class="ccard">
+    <div class="cc-label">Donor Landscape</div>
+    <div class="cc-title">Post-USAID: Who Is Filling the Gap</div>
+    <div class="cc-desc">Verified analysis of the USAID withdrawal's impact — and which bilateral and foundation funders are stepping in, where gaps remain, and what organisations should do now.</div>
+  </a>
+  <a href="mailto:laavvanyadhankar8@gmail.com?subject=Custom Analysis" class="ccard">
+    <div class="cc-label">Embedded &amp; Custom</div>
+    <div class="cc-title">Ongoing strategic support</div>
+    <div class="cc-desc">For teams that need continuous policy intelligence across proposals, programmes, and strategy. We act as an external policy desk — also available for one-off thematic analysis and institutional landscape briefs.</div>
+  </a>
+  <a href="https://linkedin.com/in/laavvanya-d-b05532144" target="_blank" class="ccard">
+    <div class="cc-label">Follow the work</div>
+    <div class="cc-title">Laavvanya Dhankar on LinkedIn</div>
+    <div class="cc-desc">State Intelligence Labs series, published policy briefs, and the signal observations that don't fit neatly into a product format.</div>
+  </a>
+</div>
+
+<div class="gap"></div>
+</div><!-- /main -->
+
+<div class="threads">
+  <div class="t-label">All intersections</div>
+  <div class="t-div"></div>
+  <span class="ttag" onclick="openPanel('heat')">Heat × Invisible Labour</span>
+  <span class="ttag" onclick="openPanel('gender')">Gender × Health Systems</span>
+  <span class="ttag" onclick="openPanel('climate')">Climate × Governance</span>
+  <span class="ttag" onclick="openPanel('digital')">Digital × Exclusion</span>
+  <span class="ttag" onclick="openPanel('enterprise')">Enterprise × Risk</span>
+  <span class="ttag" onclick="openPanel('state')">State Capacity × Invisibility</span>
+  <span class="ttag" onclick="openPanel('mobility')">Mobility × Public Life</span>
+</div>
+
+<footer>
+  <div>
+    <div class="fb">Southward Collective</div>
+    <div class="ft">Boutique policy intelligence · India · Building a South Asia footprint</div>
+  </div>
+  <div class="flinks">
+    <a href="index.html">Policy Monitor</a>
+    <a href="intersections.html">Policy Intersections</a>
+    <a href="usaid.html">Intelligence Tracker</a>
+    <a href="https://linkedin.com/in/laavvanya-d-b05532144" target="_blank">LinkedIn</a>
+    <a href="mailto:laavvanyadhankar8@gmail.com">laavvanyadhankar8 [at] gmail [dot] com</a>
+  </div>
+</footer>
+
+<script>
+function openPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  var p=document.getElementById('panel-'+id);
+  if(p){
+    p.classList.add('active');
+    setTimeout(function(){
+      var top=p.getBoundingClientRect().top+window.pageYOffset-80;
+      window.scrollTo({top:top,behavior:'smooth'});
+    },60);
+  }
+}
+function closePanel(){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+}
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
